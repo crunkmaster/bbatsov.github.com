@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/linux/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-09-09T21:45:57+03:00</updated>
+  <updated>2012-09-09T23:52:00+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,209 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[From Linux to OSX - 1 Year Later]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/09/09/from-linux-to-osx-1-year-later/"/>
+    <updated>2012-09-09T22:11:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/09/09/from-linux-to-osx-1-year-later</id>
+    <content type="html"><![CDATA[<h1>Prelude</h1>
+
+<p>A little more than an year ago I wrote my rant post
+<a href="http://batsov.com/articles/2011/06/11/linux-desktop-experience-killing-linux-on-the-desktop/">The Linux Desktop Experience is Killing Linux on the Desktop</a>
+and for the first time in 8 years I wasn't a desktop Linux user
+anymore. I spent about a month wrestling with Windows 7, but let's
+face it - Windows is ill suited for professional Ruby programmers like
+me (and it's ill suited for most programmers, except maybe Java &amp; .Net I
+guess).</p>
+
+<p>Anyways, it was never my intention to stick with Windows - I was just
+doing my Mac due diligence. Now with 1+ year of OSX usage I'd
+like to share a few things about my experience thus far with you.</p>
+
+<!--more-->
+
+
+<h1>From Linux to OSX</h1>
+
+<p>The transition was initially painful - I felt very odd dragging app
+icons to the <code>Applications</code> folder to install them. To be honest I was
+quite puzzled what was I supposed to do the first time I had to
+install an app this way (it didn't have those helpful hints with the arrows most apps
+do). The Linux distro package management is definitely infinitely
+better, or at least it seems so from where I'm standing. Luckily for me most of the
+tools I use are available from the third-party <a href="http://mxcl.github.com/homebrew/">homebrew</a> package
+manager for OSX. It's like an extremely basic version of the mighty
+Gentoo <code>portage</code>, but it generally gets the job done.</p>
+
+<p>On a more positive note - I was impressed with the quality and
+responsiveness of the OSX desktop and the fact that Emacs keybindings
+are used by default in its editor toolkit (and strangely puzzled by
+the lack of right control key - how is one supposed to hit <code>Control +
+a</code> I dare ask?). One app in particular - <code>spotlight</code>, blew me off the
+water, especially after having dealt on Linux with crappy clones like
+<code>beagle</code> in the past. Spotlight can truly find just about anything,
+was it's own SQL-like query language and is <strong>blazingly</strong> fast.</p>
+
+<p>I quickly found a good terminal emulator (that would be
+<a href="http://www.iterm2.com/#/section/home">iterm2</a> - it's actually the
+best terminal emulator in the world IMHO) and
+most of the command-line apps I used from day to day were already lying around
+(after all OSX <strong>is</strong> Unix) - to my great surprise even stuff like PostgreSQL
+(only on OSX Server) and <code>zsh</code> came preinstalled. Most of the other
+apps I really needed had native OSX ports; the others - worthy
+alternatives.</p>
+
+<p>Having hated OpenOffice.org for many years I was very pleasantly
+surprised by quality of apps like <code>Keynote</code> &amp; <code>Words</code>.</p>
+
+<p>Being a keyboard chap preaching in the church of <code>Das Keyboard</code> I was
+a bit underwhelmed by the whole multi-touch mumbo-jumbo at first, but
+after a while I came to the conclusion that Apple have the only
+trackpads and mice that are actually worth using (even though I still
+like using the keyboard way more).</p>
+
+<p>To sum it all up - I got up to speed fairly quickly, but it was a
+bumpy ride.</p>
+
+<p>Here's a bit more details...</p>
+
+<h1>The things I love about OSX</h1>
+
+<h2>The Desktop</h2>
+
+<p>It's pretty, it's quick, it's stable. It makes KDE4 and GNOME3 look
+like school projects in comparison. And did I mention that the fonts
+on OSX are even prettier than the ones in Windows?</p>
+
+<h2>The OSX flavored apps</h2>
+
+<p><a href="http://sparrowapp.com/">Sparrow</a> is the first desktop mail client I ever liked (shame on
+you Google for killing it).</p>
+
+<p>iTerm2 is the ultimate terminal emulator. It alone warrants the
+purchase of a Mac.</p>
+
+<p>Keynote is the best presentation program I've come to use thus far.</p>
+
+<p><a href="http://www.parallels.com/">Parallels Desktop</a> is light years ahead of VirtualBox and KVM (as far
+as desktop virtualization is concerned).</p>
+
+<p>I could go on a lot like this, but I'll stop now.</p>
+
+<p>It's obvious that Mac users have developed a taste in extremely
+refined software.</p>
+
+<h2>Hardware compatibility</h2>
+
+<p>If something is supposed to work with OSX - it works superbly
+out-of-the-box. I've almost forgotten now the days of constant battle
+with crappy hardware. Sleep &amp; Wake just work. Battery life is
+exceptional (due to very advanced power management capabilities).</p>
+
+<h2>Stability</h2>
+
+<p>One year, three Macs - only two or three system crashes. For a
+developer that likes to tinker a little bit more than he should -
+that's impressive.</p>
+
+<h1>The things that are OK</h1>
+
+<h2>The default apps</h2>
+
+<p>The apps bundled with OSX are not bad at all, but they aren't
+particularly great. Still - Safari is a very good browser, Mail is a
+much better desktop client than Evolution/Thunderbird, Calendar is a
+good organizer (but a bit buggy when it comes down to Google Calendar
+integration), Messages is so-so.</p>
+
+<p>The bottom line is - you can go a long way with the bundled apps, but
+they aren't exactly perfect. My advice - shop for alternatives (both
+open-source and proprietary).</p>
+
+<h2>Mac App Store</h2>
+
+<p>Decent way to distribute proprietary apps, but with all the
+restrictions on the app sandboxing there aren't many interesting apps
+out there. Hopefully it'll get better in time. The ability to upgrade
+your OSX by purchasing the new version from the App Store is very cool
+(for a proprietary OS of course).</p>
+
+<h2>Emacs</h2>
+
+<p>The Cocoa port of Emacs is a bit immature and there are some visual
+glitches here and there (try out <code>M-x linum-mode</code> for instance), but
+they are forgivable. I'm also missing the deep integration Emacs had with Linux.
+And who the fuck designed all the official Mac keyboards without a
+right control key? I finally understood why so many Mac users where on
+vim :-)</p>
+
+<h2>Software Development</h2>
+
+<p>OSX doesn't nurture software development as much as Linux does, but it
+comes pretty close in second place. All the tools you know and love
+are available, but their installation &amp; setup is a little bit more
+involved on OSX. There is a reason why the screenshots in most
+programming books show OSX.</p>
+
+<h2>System administration</h2>
+
+<p>Definitely a step back from Linux. Programs like <code>launchctl</code> (for instance) are not
+exactly fun to work with, but they do get the job done. I'd never use
+an OSX box for anything more than a desktop workstation.</p>
+
+<h1>The things I hate</h1>
+
+<h2>The special keys</h2>
+
+<p>One year and I still hate <code>Command</code> and <code>Option</code> - option is basically <code>Alt</code>
+on a strange location and Command is totally useless IMHO. I'd
+probably wouldn't have hated them as much if there were room left on
+the Apple keyboards for an addition control key. Luckily for me I use an
+external <a href="http://batsov.com/articles/2008/06/16/das-keyboard/">Das Keyboard Ultimate</a> most of the time...</p>
+
+<h2>No standard all mighty package manager</h2>
+
+<p>On Linux I had <code>aptitude</code>, <code>yum</code>, <code>portage</code> and <code>pacman</code> - all amazing at what
+they do. On OSX - <code>homebrew</code> is a decent option, but it's a far cry from
+the might and magic of the Linux package managers. Still, <code>homebrew</code>
+is better than it's alternative, so beware!</p>
+
+<h2>Ugly XML config files</h2>
+
+<p>Here and there in OSX you have to write some appalling <a href="http://en.wikipedia.org/wiki/Property_list">XML config
+files</a>. I thought I'd never see the likes of those again after I put
+Java development behind me :-)</p>
+
+<h2>XCode</h2>
+
+<p>You need to install a giant lame IDE just to get a bunch of command
+line development tools? That's one of the most annoying things I've
+encountered up-to-date in OSX.</p>
+
+<h1>Epilogue</h1>
+
+<p>Am I happier now without Linux? Definitely! Is OSX a better OS than
+Linux? Absolutely not! It does have a <strong>much</strong> better desktop
+experience and since I spend most of the time on a computer
+interacting with the desktop - that's a big win for me. Of course I
+wouldn't mind seeing Linux achieve this level of desktop maturity and
+stability.</p>
+
+<p>Not having to deal with hardware problems and immature desktop apps is
+like a breath of fresh air and it more than compensates for the few
+shortcomings of OSX. Nothing compensates the lack of that right
+control key on most keyboards, but after all that's not an OS problem
+;-)</p>
+
+<p>There is great vibrant hacker community gathered around OSX and it's
+one of the main driving forces of the OS. There is unfortunately a lot
+of corporate pressure from Apple as well, but as you already know by
+now - there are never perfect things, there are always
+compromises. I'd rather use a proprietary OS that stays out of my way,
+than a free OS into which I bump at every turn.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Changelog vs API diff]]></title>
@@ -1029,47 +1232,6 @@ improving server performance. Nobody put it better than
 admin, a former kernel developer so don't bother me with moronic
 comments from the type "you're not doing something right/you should
 try another distro".</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs Tip #1: Set the default font in Emacs 23]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/06/05/emacs-default-font/"/>
-    <updated>2011-06-05T00:00:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/06/05/emacs-default-font</id>
-    <content type="html"><![CDATA[<p>Emacs 23.2 will pick up the default GNOME monospaced font, so if
-you're a GNOME user - you're basically covered. If you're not - don't
-worry.</p>
-
-<p>The simplest way to set the Emacs font is just to add the following
-in your .emacs (or init.el):</p>
-
-<p><code>cl
-(set-default-font "Inconsolata-12")
-</code></p>
-
-<p>This code will set the Emacs font to Inconsolata (my favorite
-monospaced font) with font size 12pt. The problem with this approach
-is that it will not work with a X Emacs client (emacsclient -c)
-connecting to an Emacs daemon (emacs --daemon), because the code will
-get run when the server starts and will basically mean nothing to
-it. You can alleviate this problem by using the appropriate hook for X
-clients, but I find this distasteful. A much simpler solution is to
-forget about <em>set-default-font</em> altogether and simply create a file
-named <strong>.Xdefaults</strong> in your home folder. Put the following in it:</p>
-
-<p><code>bash
-Emacs.font: Inconsolata-12
-</code></p>
-
-<p>Afterwards run the following command:</p>
-
-<p><code>bash
-$ xrdb -merge ~/.Xdefaults
-</code></p>
-
-<p>At this point you can start Emacs (in normal or daemon mode) and
-your new font settings should be in effect.</p>
 ]]></content>
   </entry>
   

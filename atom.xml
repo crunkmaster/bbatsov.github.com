@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-09-09T21:45:57+03:00</updated>
+  <updated>2012-09-09T23:52:00+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,209 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[From Linux to OSX - 1 Year Later]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/09/09/from-linux-to-osx-1-year-later/"/>
+    <updated>2012-09-09T22:11:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/09/09/from-linux-to-osx-1-year-later</id>
+    <content type="html"><![CDATA[<h1>Prelude</h1>
+
+<p>A little more than an year ago I wrote my rant post
+<a href="http://batsov.com/articles/2011/06/11/linux-desktop-experience-killing-linux-on-the-desktop/">The Linux Desktop Experience is Killing Linux on the Desktop</a>
+and for the first time in 8 years I wasn&#8217;t a desktop Linux user
+anymore. I spent about a month wrestling with Windows 7, but let&#8217;s
+face it - Windows is ill suited for professional Ruby programmers like
+me (and it&#8217;s ill suited for most programmers, except maybe Java &amp; .Net I
+guess).</p>
+
+<p>Anyways, it was never my intention to stick with Windows - I was just
+doing my Mac due diligence. Now with 1+ year of OSX usage I&#8217;d
+like to share a few things about my experience thus far with you.</p>
+
+<!--more-->
+
+
+<h1>From Linux to OSX</h1>
+
+<p>The transition was initially painful - I felt very odd dragging app
+icons to the <code>Applications</code> folder to install them. To be honest I was
+quite puzzled what was I supposed to do the first time I had to
+install an app this way (it didn&#8217;t have those helpful hints with the arrows most apps
+do). The Linux distro package management is definitely infinitely
+better, or at least it seems so from where I&#8217;m standing. Luckily for me most of the
+tools I use are available from the third-party <a href="http://mxcl.github.com/homebrew/">homebrew</a> package
+manager for OSX. It&#8217;s like an extremely basic version of the mighty
+Gentoo <code>portage</code>, but it generally gets the job done.</p>
+
+<p>On a more positive note - I was impressed with the quality and
+responsiveness of the OSX desktop and the fact that Emacs keybindings
+are used by default in its editor toolkit (and strangely puzzled by
+the lack of right control key - how is one supposed to hit <code>Control +
+a</code> I dare ask?). One app in particular - <code>spotlight</code>, blew me off the
+water, especially after having dealt on Linux with crappy clones like
+<code>beagle</code> in the past. Spotlight can truly find just about anything,
+was it&#8217;s own SQL-like query language and is <strong>blazingly</strong> fast.</p>
+
+<p>I quickly found a good terminal emulator (that would be
+<a href="http://www.iterm2.com/#/section/home">iterm2</a> - it&#8217;s actually the
+best terminal emulator in the world IMHO) and
+most of the command-line apps I used from day to day were already lying around
+(after all OSX <strong>is</strong> Unix) - to my great surprise even stuff like PostgreSQL
+(only on OSX Server) and <code>zsh</code> came preinstalled. Most of the other
+apps I really needed had native OSX ports; the others - worthy
+alternatives.</p>
+
+<p>Having hated OpenOffice.org for many years I was very pleasantly
+surprised by quality of apps like <code>Keynote</code> &amp; <code>Words</code>.</p>
+
+<p>Being a keyboard chap preaching in the church of <code>Das Keyboard</code> I was
+a bit underwhelmed by the whole multi-touch mumbo-jumbo at first, but
+after a while I came to the conclusion that Apple have the only
+trackpads and mice that are actually worth using (even though I still
+like using the keyboard way more).</p>
+
+<p>To sum it all up - I got up to speed fairly quickly, but it was a
+bumpy ride.</p>
+
+<p>Here&#8217;s a bit more details&#8230;</p>
+
+<h1>The things I love about OSX</h1>
+
+<h2>The Desktop</h2>
+
+<p>It&#8217;s pretty, it&#8217;s quick, it&#8217;s stable. It makes KDE4 and GNOME3 look
+like school projects in comparison. And did I mention that the fonts
+on OSX are even prettier than the ones in Windows?</p>
+
+<h2>The OSX flavored apps</h2>
+
+<p><a href="http://sparrowapp.com/">Sparrow</a> is the first desktop mail client I ever liked (shame on
+you Google for killing it).</p>
+
+<p>iTerm2 is the ultimate terminal emulator. It alone warrants the
+purchase of a Mac.</p>
+
+<p>Keynote is the best presentation program I&#8217;ve come to use thus far.</p>
+
+<p><a href="http://www.parallels.com/">Parallels Desktop</a> is light years ahead of VirtualBox and KVM (as far
+as desktop virtualization is concerned).</p>
+
+<p>I could go on a lot like this, but I&#8217;ll stop now.</p>
+
+<p>It&#8217;s obvious that Mac users have developed a taste in extremely
+refined software.</p>
+
+<h2>Hardware compatibility</h2>
+
+<p>If something is supposed to work with OSX - it works superbly
+out-of-the-box. I&#8217;ve almost forgotten now the days of constant battle
+with crappy hardware. Sleep &amp; Wake just work. Battery life is
+exceptional (due to very advanced power management capabilities).</p>
+
+<h2>Stability</h2>
+
+<p>One year, three Macs - only two or three system crashes. For a
+developer that likes to tinker a little bit more than he should -
+that&#8217;s impressive.</p>
+
+<h1>The things that are OK</h1>
+
+<h2>The default apps</h2>
+
+<p>The apps bundled with OSX are not bad at all, but they aren&#8217;t
+particularly great. Still - Safari is a very good browser, Mail is a
+much better desktop client than Evolution/Thunderbird, Calendar is a
+good organizer (but a bit buggy when it comes down to Google Calendar
+integration), Messages is so-so.</p>
+
+<p>The bottom line is - you can go a long way with the bundled apps, but
+they aren&#8217;t exactly perfect. My advice - shop for alternatives (both
+open-source and proprietary).</p>
+
+<h2>Mac App Store</h2>
+
+<p>Decent way to distribute proprietary apps, but with all the
+restrictions on the app sandboxing there aren&#8217;t many interesting apps
+out there. Hopefully it&#8217;ll get better in time. The ability to upgrade
+your OSX by purchasing the new version from the App Store is very cool
+(for a proprietary OS of course).</p>
+
+<h2>Emacs</h2>
+
+<p>The Cocoa port of Emacs is a bit immature and there are some visual
+glitches here and there (try out <code>M-x linum-mode</code> for instance), but
+they are forgivable. I&#8217;m also missing the deep integration Emacs had with Linux.
+And who the fuck designed all the official Mac keyboards without a
+right control key? I finally understood why so many Mac users where on
+vim :-)</p>
+
+<h2>Software Development</h2>
+
+<p>OSX doesn&#8217;t nurture software development as much as Linux does, but it
+comes pretty close in second place. All the tools you know and love
+are available, but their installation &amp; setup is a little bit more
+involved on OSX. There is a reason why the screenshots in most
+programming books show OSX.</p>
+
+<h2>System administration</h2>
+
+<p>Definitely a step back from Linux. Programs like <code>launchctl</code> (for instance) are not
+exactly fun to work with, but they do get the job done. I&#8217;d never use
+an OSX box for anything more than a desktop workstation.</p>
+
+<h1>The things I hate</h1>
+
+<h2>The special keys</h2>
+
+<p>One year and I still hate <code>Command</code> and <code>Option</code> - option is basically <code>Alt</code>
+on a strange location and Command is totally useless IMHO. I&#8217;d
+probably wouldn&#8217;t have hated them as much if there were room left on
+the Apple keyboards for an addition control key. Luckily for me I use an
+external <a href="http://batsov.com/articles/2008/06/16/das-keyboard/">Das Keyboard Ultimate</a> most of the time&#8230;</p>
+
+<h2>No standard all mighty package manager</h2>
+
+<p>On Linux I had <code>aptitude</code>, <code>yum</code>, <code>portage</code> and <code>pacman</code> - all amazing at what
+they do. On OSX - <code>homebrew</code> is a decent option, but it&#8217;s a far cry from
+the might and magic of the Linux package managers. Still, <code>homebrew</code>
+is better than it&#8217;s alternative, so beware!</p>
+
+<h2>Ugly XML config files</h2>
+
+<p>Here and there in OSX you have to write some appalling <a href="http://en.wikipedia.org/wiki/Property_list">XML config
+files</a>. I thought I&#8217;d never see the likes of those again after I put
+Java development behind me :-)</p>
+
+<h2>XCode</h2>
+
+<p>You need to install a giant lame IDE just to get a bunch of command
+line development tools? That&#8217;s one of the most annoying things I&#8217;ve
+encountered up-to-date in OSX.</p>
+
+<h1>Epilogue</h1>
+
+<p>Am I happier now without Linux? Definitely! Is OSX a better OS than
+Linux? Absolutely not! It does have a <strong>much</strong> better desktop
+experience and since I spend most of the time on a computer
+interacting with the desktop - that&#8217;s a big win for me. Of course I
+wouldn&#8217;t mind seeing Linux achieve this level of desktop maturity and
+stability.</p>
+
+<p>Not having to deal with hardware problems and immature desktop apps is
+like a breath of fresh air and it more than compensates for the few
+shortcomings of OSX. Nothing compensates the lack of that right
+control key on most keyboards, but after all that&#8217;s not an OS problem
+;-)</p>
+
+<p>There is great vibrant hacker community gathered around OSX and it&#8217;s
+one of the main driving forces of the OS. There is unfortunately a lot
+of corporate pressure from Apple as well, but as you already know by
+now - there are never perfect things, there are always
+compromises. I&#8217;d rather use a proprietary OS that stays out of my way,
+than a free OS into which I bump at every turn.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[guru-mode]]></title>
@@ -2063,439 +2266,6 @@ the way).</p>
 
 <p>So what are you waiting for? Give them both a shot and share your
 experience in the comments section! :-)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Why Emacs?]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/11/19/why-emacs/"/>
-    <updated>2011-11-19T09:22:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/11/19/why-emacs</id>
-    <content type="html"><![CDATA[<h2>Prelude</h2>
-
-<blockquote><p>If you are a professional writer – i.e., if someone else is getting paid to worry about how your words are formatted and printed – Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.</p><footer><strong>Neal Stephenson</strong> <cite>In the Beginning &#8230; Was the Command Line</cite></footer></blockquote>
-
-
-<p>I&#8217;m an Emacs user and I&#8217;m proud of the fact. I know my reasons for
-using it (and loving it) for many years now. But many people don&#8217;t. I
-often get asked by various people the same question - &#8220;Why should I
-use Emacs? What makes it better than Eclipse/IntelliJ/vim/etc?&#8221;.</p>
-
-<p>While I wouldn&#8217;t dare to claim that Emacs is better than all the IDEs
-and competing editors I&#8217;ll share here the things that I think are
-making it great. But first&#8230;</p>
-
-<!--more-->
-
-
-<h2>A Text Editor in 2011 - Are You Mental or Something?</h2>
-
-<p>The simple fact is that the popularity of programmer&#8217;s text editors is
-not as high as it once was. With so many integrated development
-environments flying around traditional text editors like Emacs and Vim
-seems to have fallen out of grace with the mainstream
-users/programmers and are mostly used by enthusiasts and old school
-hackers these days.</p>
-
-<p>For all the good things IDEs have brought us (smart auto-completion,
-nice visual debuggers, semantic analysis of the source code, etc) they
-have totally forgot about the most crucial part of software
-development - it&#8217;s mostly about editing text. And
-all the IDEs I&#8217;ve used have extremely poor text editing capabilities
-compared to likes of Emacs and vim. A very trivial example is the fact
-that most IDEs don&#8217;t even have keybindings optimized for touch typing
-- they require you to move your hands often from the home row (such a waste)
-and have mouse-centric UIs.</p>
-
-<p>A programmer&#8217;s editor might not have all the fancy bells and whistles
-- but it has the thing that matters (should matter) the most - a
-decent editing experience.</p>
-
-<h2>The Road to Emacs</h2>
-
-<p>I was not always an Emacs user. And wasn&#8217;t always an Unix user
-either. My journey to computing started in the nineties when I was
-doing some basic programming with Pascal in the Turbo Pascal
-environment, notorious for its horrible editing features. Afterwards I
-was drawn to the allure of C and C++ combined with Microsoft&#8217;s Visual
-Studio IDE. At first I felt it was like magic - so much of the source
-code got generated by various wizards and I felt productive. Felt is
-the key word here. At some
-point, however, I noticed that all the wizard started to become
-annoying - I already knew what they were about the generate and
-sometimes I even had a better idea about the details of a particular
-piece of code. Writing code manually at some point always becomes more
-productive than clicking through wizards.</p>
-
-<p>Then I&#8217;ve started my first professional gig in a company solely
-devoted to FreeBSD, C and Perl. I had never used an Unix system before
-and I captivated by the fact how much of its internals were open for the
-user to tinker with and how many small tools were working together to
-achieve a greater goal. I was also captivated by the editor that all my
-colleagues in the company were using - vim. It was both simple and
-profound - minimalistic UI, handy terminal support, plain-text
-configuration, keybindings 100% optimized for touch typing and it had
-so many cool editing features. I&#8217;ve used vim for a couple of years, but two
-things about it always bothered me - dealing with many files was no
-fun (at least back than - as far I know vim 7 has made some
-improvements in the area) and vimscript (the extension language for
-vim) simply sucked.</p>
-
-<p>I had often heard rumors of a mythical editor so powerful and some
-infinite in its capabilities that people were afraid to approach it. That
-editor&#8217;s name was Emacs. When I first started Emacs I had absolutely
-no knowledge of Lisp what-so-ever, so dealing with it&#8217;s configuration
-in the beginning was a bit hard - I often copied some bits and piece
-of code that I didn&#8217;t fully understand and when there was an error
-within some of those snippets, I was having a really hard time figuring
-it out. Luckily for me I found a copy of
-<a href="http://www.amazon.com/Learning-Emacs-Third-Debra-Cameron/dp/0596006489/ref=sr_1_1?ie=UTF8&amp;qid=1321689125&amp;sr=8-1">Learning Emacs</a>
-- a nice (but not great) book that gently guided me through the
-  maelstrom of Emacs features. At first I was hardly efficient in
-  Emacs, but my proficiency in it quickly grew.</p>
-
-<p>I had a bit of luck that I switched jobs and went to work in a company
-where Emacs had God-like status. All the cool devs there were using it
-and they were also hardcore Lisp hackers. There I learned the true
-power of Emacs, there I got hooked to Lisp and there I truly
-understand what Emacs is about.</p>
-
-<p><em>Emacs is what you want it be. Emacs is power. But with great power,
-comes great responsibility - the responsibility to think.</em></p>
-
-<h2>Why Emacs?</h2>
-
-<p><img src="http://imgs.xkcd.com/comics/real_programmers.png"></p>
-
-<p>Enough small talk, let&#8217;s talk business&#8230; Here&#8217;s a brief overview of
-the things that make Emacs special (at least to me).</p>
-
-<h4>Divine Editing Experience</h4>
-
-<p>You can easily navigate around text buffers, perform all sorts of
-editing operations with a snap, without ever leaving the comfort of
-the home row of your keyboard.</p>
-
-<p>Emacs has support for some pretty fancy stuff like rectangular
-editing, kill-ring (something like an internal clipboard history),
-mark-ring (you can set points of interest in a buffer you can later
-revisit), etc.</p>
-
-<h4>Everything is Possible</h4>
-
-<blockquote><p>Emacs has got a mode for that!</p><footer><strong>Unknown Emacs Hacker</strong> <cite>The Collected Emacs Sayings</cite></footer></blockquote>
-
-
-<p>Naturally every popular programming language is well supported under
-Emacs (with the notable exception of PHP, which has once of the lamest
-Emacs modes I&#8217;ve ever seen). Most not-so-popular programming
-languages are well supported as well.</p>
-
-<p>The quality and the features vary wildly though - some modes like
-SLIME, cc-mode, js2-mode and cperl-mode are nothing short of magical
-and others provide only basic highlighting and indentation support.</p>
-
-<p>But this is only the tip of the iceberg - in Emacs you can easily
-create beautifully typeset documents and books in LaTeX (with the help
-of AUCTeX mode), charts with graphviz-mode, you can check your e-mail
-with gnus (wanderlust and mew are other nice options), chat in IRC
-with ERC, run a terminal session or write your next great blog
-entry. And so many other things - there is even a coffee-mode that
-allows you to control certain kinds of coffee machines from Emacs.</p>
-
-<p>I happen to write all the articles on my site in Emacs and I publish
-them to github pages using the excellent magit (git integration for
-Emacs).</p>
-
-<p>No matter what the task at hand is - you can rely on Emacs&#8217;s superb
-editing capabilities.</p>
-
-<h4>Emacs is Extensible</h4>
-
-<p>The GNU Emacs manual describes Emacs as <em>the extensible, customizable,
-self-documenting, real-time display editor</em>. And with a good reason -
-it&#8217;s extremely easy to add new features to Emacs, due to its
-integrated Emacs Lisp interpreter.</p>
-
-<p>While there are some core things in Emacs, written in C for
-efficiency&#8217;s sake, almost all the great modes and magic commands are
-written in a dialect of Lisp, called Emacs Lisp (that is somewhat
-reminiscent of Common Lisp, albeit lacking many of its features).</p>
-
-<p>What this means is that you get the dynamic nature of Lisp development
-for all of your Emacs extensions - you can write a small bit of Emacs
-Lisp code anywhere, eval it and run it right away. There are no tedious
-compilations steps or huge interfaces that have to be
-implemented. There is virtually no ceremony. For
-instance:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">prelude-google</span> <span class="p">()</span>
-</span><span class='line'>  <span class="s">&quot;Googles a query or region if any.&quot;</span>
-</span><span class='line'>  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nv">browse-url</span>
-</span><span class='line'>   <span class="p">(</span><span class="nv">concat</span>
-</span><span class='line'>    <span class="s">&quot;http://www.google.com/search?ie=utf-8&amp;oe=utf-8&amp;q=&quot;</span>
-</span><span class='line'>    <span class="p">(</span><span class="k">if</span> <span class="nv">mark-active</span>
-</span><span class='line'>        <span class="p">(</span><span class="nv">buffer-substring</span> <span class="p">(</span><span class="nv">region-beginning</span><span class="p">)</span> <span class="p">(</span><span class="nv">region-end</span><span class="p">))</span>
-</span><span class='line'>      <span class="p">(</span><span class="nv">read-string</span> <span class="s">&quot;Google: &quot;</span><span class="p">)))))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This simple bit of code adds to Emacs the ability to invoke Google
-queries from it (with the help of your favorite browser). After
-evaluating this code in Emacs you can simply type <code>M-x prelude-google</code>
-and this new command will be at your disposal.</p>
-
-<p>In Emacs it&#8217;s easy to create modes that support programming languages,
-provide functionality such as IM and email checking, etc.</p>
-
-<h4>Emacs Integrates Well with Lots of External Tools</h4>
-
-<p>Running a shell from Emacs is easy - <code>M-x shell-mode</code>. Running a
-terminal emulator in Emacs is just as easy - <code>M-x ansi-term</code>. And
-there is even a shell written in Emacs Lisp, called <code>eshell</code>, that you
-can use no matter what the underlying operating system is.</p>
-
-<p>You need a file browser for Emacs - we have plenty! <code>Dired</code> is the
-tried and try option, but there are &#8220;more modern&#8221; solutions such as
-emacs-nav.</p>
-
-<p>Version Control integration? You bet! CVS, SVN, bazaar, git, mercurial
-- everything is supported out of the box!</p>
-
-<p>You want to invoke a shell commands on the side? Nothing is easier.</p>
-
-<p>You want to invoke make/rake/whatever from Emacs? Done and done.</p>
-
-<p>You can even use Emacs as a process manager (<code>M-x proced</code>).</p>
-
-<h4>Emacs Doesn&#8217;t Make You Repeat Yourself</h4>
-
-<p>Emacs supports everything in the playbook on DRY (Don&#8217;t Repeat
-Yourself). Command repetition, prefix command arguments, keyboard
-macros, Emacs Lisp functions, etc. I use them all - and I love them all.</p>
-
-<h4>It&#8217;s Easy to Share an Editing Session Between GUI and Terminal</h4>
-
-<p>While many people prefer to do all their editing in the terminal or in
-a GUI application - I don&#8217;t. I spend most of my time in a GUI Emacs
-frame, but from time to time I occasionally fire Emacs from the
-terminal to do some quick edit.</p>
-
-<p>Emacs doesn&#8217;t start up as fast as vim, so I would be pretty pissed if
-I had to wait for it to load every time. Luckily it has a feature
-called Emacs daemon, which allows you to start a headless emacs server to
-which you can afterwards connect to from both GUI and terminal
-clients:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>emacs --daemon
-</span><span class='line'><span class="nv">$ </span>emacsclient -c
-</span><span class='line'><span class="nv">$ </span>emacsclient -t
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>emacsclient -c</code> opens up a new Emacs GUI frame, while <code>emacsclient
--t</code> fires up a new terminal frame. And the best part - all the buffers
-currently opened can be shared between as many clients as it pleases
-you.</p>
-
-<p>You can push the idea a notch further and connect to an Emacs daemon
-running on a remote machine.</p>
-
-<h4>Emacs is Modern</h4>
-
-<p>Contrary to what some people say about Emacs - it is a pretty modern piece of
-software. On *BSD and Linux the GUI is implemented in GTK2/3, on OS X
-it&#8217;s using Cocoa, and on Windows - it&#8217;s naturally using WinAPI. Emacs
-integrates well with the OSes it runs on - for instance the OS&#8217;s
-clipboard is integrated well with Emacs&#8217;s kill-ring out of the
-box. Things like the Trash are also covered.</p>
-
-<p>Emacs supports TTF fonts, has a built-in semantic code parser (called
-Semantic), features a package manager that allows you retrieve Emacs
-packages (extensions) from remote locations automatically (think of a
-tool similar to <code>apt-get</code> or <code>brew</code> for Emacs packages).</p>
-
-<h4>Emacs is Constantly Evolving</h4>
-
-<p>Emacs has literally evolved before my eyes - when I started using it 7
-years ago there was no support for truetype fonts, no Emacs daemon, no
-built-in Semantic, no GTK2 UI, no package manager, etc. I cannot dare
-to imagine what exciting changes are about to come&#8230;</p>
-
-<h4>Other Prominent Tools Use Emacs&#8217;s keybindings</h4>
-
-<p>Most shells (<code>bash</code>, <code>zsh</code>, etc) use Emacs keybindings by default. Most of
-the Emacs keybindings are the same as those found in the readline
-library. Apple&#8217;s Cocoa toolkit uses Emacs keybindings as well - I
-guess this is one of the reasons why so many Emacs users love OSX.</p>
-
-<h2>Emacs vs the World</h2>
-
-<h4>Emacs vs vim</h4>
-
-<p>Emacs vs vim. The most epic battle of them all. More epic than Linux
-vs Windows and Barcelona vs Real Madrid combined&#8230; This, however, is
-no flame post and I&#8217;ll not be bashing vim here. I&#8217;ll just mention my
-brief (and highly personal take on the subject).</p>
-
-<p>For me Emacs has these advantages over vim:</p>
-
-<ul>
-<li>it has better <em>default</em> extension language. I haven&#8217;t wrote any vim
-extension in Python/Ruby, but I can imagine it&#8217;s a much more
-pleasant process than using vimscript.</li>
-<li>it&#8217;s modeless - switching constantly between command-mode and
-editing mode is not very annoying, but I do prefer Emacs&#8217;s way</li>
-<li>it has better integration with external systems</li>
-<li>it has better support for the things that matter to me</li>
-<li>it has a built-in package manager</li>
-<li>it has better infrastructure for editing many files in the same session</li>
-</ul>
-
-
-<p>On the other side vim excels in a few areas for me:</p>
-
-<ul>
-<li>nicer navigation</li>
-<li>much smaller core and much faster to load</li>
-<li>very simple initial config</li>
-<li>it has a more stylish icon than Emacs ;-)</li>
-</ul>
-
-
-<h4>Emacs vs IDEs</h4>
-
-<p>Emacs is considered by many to be the prototype of modern IDEs, but
-it&#8217;s quite different from most of them. IDEs main strengths are good
-refactoring support, semantic code analysis, integrated GUI debuggers
-and GUI design tools, precise auto-completions and good integration
-with external systems such as version control and issue tracking.</p>
-
-<p>IDEs main weakness are their poor editors and their dependency to the
-mouse and an X environment in general. IDEs in general are not
-particularly resource efficient either, but I guess that this matters
-less and less as computers grow more and more powerful. Many people
-(me included) have tried to use Emacs or vim keybindings in a IDE, but
-it&#8217;s a pointless quest - without all of the features of Emacs/vim a
-few keybindings are mostly useless.</p>
-
-<p>For me the true problems of IDEs lies somewhere totally else and it&#8217;s
-less mentioned. The IDEs impair your thinking by thinking instead of
-you. I&#8217;ve seen people generate a lot of code with IDEs without ever
-questioning its workings or quality. When you produce everything
-manually you&#8217;re much more likely to contemplate on its quality and to
-consider ways to make it more concise and more elegant.</p>
-
-<p>This, of course, is highly subjective - I mean no offense to IDE users
-in general. I do, however, know very well the APIs I&#8217;ve programmed in
-Emacs and remember less about APIs I&#8217;ve programmed in IntelliJ (for instance).</p>
-
-<h2>Emacs is not Perfect</h2>
-
-<p>Emacs is not perfect, of course. There a lot of things Emacs users
-would still like to see.</p>
-
-<h4>Replace Emacs Lisp with Scheme or Common Lisp</h4>
-
-<p>While Emacs Lisp has served Emacs well so far, it&#8217;s far from the best
-Lisp dialects out there. While I&#8217;d personally like to see it swapped
-for Common Lisp I guess this is never going to happen. There was,
-however, a rumor last year that there is a long term plan to replace
-Emacs Lisp with Scheme (GNU Guile to be precise). I have absolutely no
-idea how much of a possibility that is - but I do know that we could
-use a bit more powerful and a bit more modern extension language.</p>
-
-<h4>Improvements to the GUI</h4>
-
-<p>While the GUIs in recent Emacs version were much improved there is
-still much to be desired.</p>
-
-<p>For instance - on OSX it would be nice if Emacs used Lion style
-scrollbars and had support for the full-screen app mode. On OSX there
-are some strange Cocoa bugs as well - like linum-mode looking
-corrupted, etc.</p>
-
-<p>I guess that currently Emacs&#8217;s GTK version has the nicest GUI of them
-all, but it would good of the Windows and OSX port got some more love.</p>
-
-<h4>Multi-threading</h4>
-
-<p>Emacs is a single-threaded app and this is problematic, since tasks
-that block that one thread for an extended period of time (like email
-checking) tamper with Emacs&#8217;s responsiveness. Multi-threading support
-is certainly coming to Emacs, but I cannot speculate with a
-time-frame. I guess it will be part of Emacs 25 and we&#8217;re least a
-few years away from it (Emacs 24 is still not released).</p>
-
-<h4>Integrate Semantic tightly into Emacs</h4>
-
-<p>Currently most programming modes in Emacs are implementing syntax
-highlighting just by searching for regexp patterns. This is
-notoriously fragile approach - especially in languages like Ruby, that
-have a very complex grammar. Basing syntax highlighting on a semantic
-analysis of the code would be much more robust. Not to mention that it
-will open the gates for much more advanced features in Emacs
-programming modes. I&#8217;ve read somewhere that such tight integration
-with Semantic is truly planned. We&#8217;ll just have to wait and see (and
-why not even help?). Of course there is the matter with backward compatibility&#8230;</p>
-
-<h2>Getting Started with Emacs</h2>
-
-<p>OK, I&#8217;ve told you some interesting things and I&#8217;ve piqued your
-interest in Emacs. Now you&#8217;re probably wondering how can you get
-started with it. Knowing what I know now - I don&#8217;t recommend my
-personal chaotic approach to mastering Emacs. Here&#8217;s a few tips to get
-you started.</p>
-
-<h4>Obtain a copy of Emacs 24</h4>
-
-<p>Emacs 23 is old news, Emacs 24 is the future. Take a look at my post
-<a href="http://bbatsov.github.com/articles/2011/10/09/getting-started-with-emacs-24/">Getting Started with Emacs 24</a> for more details.</p>
-
-<h4>Obtain a Decent Initial Config</h4>
-
-<p>The default configuration sucks. Luckily there is <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> -
-Emacs 24 configuration that doesn&#8217;t suck. I highly recommend you to
-use Prelude as your initial Emacs config. Studying its source will
-give you a bit of an insight into Emacs Lisp programming</p>
-
-<h4>Read &amp; Practice</h4>
-
-<ul>
-<li>first step - run the built-in Emacs tutorial - <code>C-h t</code></li>
-<li>second step - watch the excellent screencast <a href="https://peepcode.com/products/meet-emacs">Meet Emacs</a></li>
-<li>third step - visit <a href="http://www.masteringemacs.org">Mastering Emacs</a></li>
-<li>forth step - read the official Emacs Manual - <code>C-h r</code></li>
-<li>fifth step - use Emacs day and night for all your work</li>
-</ul>
-
-
-<h2>Epilogue</h2>
-
-<blockquote><p>Emacs is undoubtedly the most powerful programmer&#8217;s editor in existence. It&#8217;s a big, feature-laden program with a great deal of flexibility and customizability. As we observed in the Chapter 14 section on Emacs Lisp, Emacs has an entire programming language inside it that can be used to write arbitrarily powerful editor functions.</p><footer><strong>Eric S. Raymond</strong> <cite>The Art of UNIX Programming</cite></footer></blockquote>
-
-
-<p>Should you give Emacs a shot? I have absolutely no idea&#8230; If you
-found something in my post intriguing - I guess you should. If it was
-to you like the ramblings of mad fanatic with no connection to the real
-world - probably not.</p>
-
-<p>I truly believe that anyone could gain something positive by spending
-some time with Emacs and exploring its vision and culture. I guess
-that in the it all boils down to whether you believe me&#8230;</p>
 ]]></content>
   </entry>
   

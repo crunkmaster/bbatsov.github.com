@@ -9,9 +9,8 @@
   <meta name="author" content="Bozhidar Batsov">
 
   
-  <meta name="description" content="Prelude I&#8217;ve recently been using Debian a lot (mostly Debian Wheezy (aka
-testing)), So I&#8217;ve decided to adapt my
-Fedora 15 post &hellip;">
+  <meta name="description" content="Prelude Recently I&#8217;ve decided to have a look at the current development
+version of Emacs - namely Emacs 24. I was quite impressed with the work &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,57 @@ Fedora 15 post &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2011/08/19/a-peek-at-emacs24/">A Peek at Emacs 24</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-19T00:00:00+03:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
+        
+         | <a href="/articles/2011/08/19/a-peek-at-emacs24/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Prelude</h2>
+
+<p>Recently I&#8217;ve decided to have a look at the current development
+version of Emacs - namely Emacs 24. I was quite impressed with the work done
+by the development team so far so I decided to share some of the cool things
+I&#8217;ve found in Emacs 24.</p>
+
+<p>It seems to me that this will be the most important Emacs release in
+quite some time.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/articles/2011/08/19/a-peek-at-emacs24/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -942,79 +992,6 @@ try another distro&#8221;.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2011/06/05/emacs-default-font/">Emacs Tip #1: Set the Default Font in Emacs 23</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-05T00:00:00+03:00" pubdate data-updated="true">Jun 5<span>th</span>, 2011</time>
-        
-         | <a href="/articles/2011/06/05/emacs-default-font/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Emacs 23.2 will pick up the default GNOME monospaced font, so if
-you&#8217;re a GNOME user - you&#8217;re basically covered. If you&#8217;re not - don&#8217;t
-worry.</p>
-
-<p>The simplest way to set the Emacs font is just to add the following
-in your .emacs (or init.el):</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Inconsolata-12&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This code will set the Emacs font to Inconsolata (my favorite
-monospaced font) with font size 12pt. The problem with this approach
-is that it will not work with a X Emacs client (emacsclient -c)
-connecting to an Emacs daemon (emacs &#8211;daemon), because the code will
-get run when the server starts and will basically mean nothing to
-it. You can alleviate this problem by using the appropriate hook for X
-clients, but I find this distasteful. A much simpler solution is to
-forget about <em>set-default-font</em> altogether and simply create a file
-named <strong>.Xdefaults</strong> in your home folder. Put the following in it:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>Emacs.font: Inconsolata-12
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Afterwards run the following command:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>xrdb -merge ~/.Xdefaults
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>At this point you can start Emacs (in normal or daemon mode) and
-your new font settings should be in effect.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/articles/page/7/">&larr; Older</a>
@@ -1040,6 +1017,10 @@ your new font settings should be in effect.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/">From Linux to OSX - 1 Year Later</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/09/09/guru-mode/">guru-mode</a>
       </li>
     
@@ -1053,10 +1034,6 @@ your new font settings should be in effect.</p>
     
       <li class="post">
         <a href="/articles/2012/05/28/a-true-emacs-knight/">A True Emacs Knight</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/04/07/changelog-vs-api-diff/">Changelog vs API diff</a>
       </li>
     
   </ul>
