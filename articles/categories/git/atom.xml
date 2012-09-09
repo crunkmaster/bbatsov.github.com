@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | (think)]]></title>
+  <link href="http://bbatsov.github.com/articles/categories/git/atom.xml" rel="self"/>
+  <link href="http://bbatsov.github.com/"/>
+  <updated>2012-09-09T20:34:33+03:00</updated>
+  <id>http://bbatsov.github.com/</id>
+  <author>
+    <name><![CDATA[Bozhidar Batsov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs configuration in github]]></title>
+    <link href="http://bbatsov.github.com/articles/2009/07/19/dotemacs-github/"/>
+    <updated>2009-07-19T00:00:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2009/07/19/dotemacs-github</id>
+    <content type="html"><![CDATA[<p>When you have applications, whose configuration is as complex as that
+of Emacs it’s always a good idea to store that configuration under
+version control so you can easily share it between multiple
+computers. You can always set up some version control system yourself,
+but it’s a lot more convenient (and much more reliable) to use an
+already existing code hosting solution such a GitHub. I have created a
+small repo there housing my humble Emacs configuration(.emacs, some
+custom stuff) and this way I can easily access it on all the computers
+that I happen to be working on.</p>
+
+<p><strong>Update</strong></p>
+
+<p>At some point my custom configuration grew into what is known today as
+the <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>(think)</title>
+  <meta name="author" content="Bozhidar Batsov">
+
+  
+  <meta name="description" content="I&#8217;ve always been frustrated with the inability to write a switch on
+String in Java. However the enum type introduced in Java 5.0 somewhat &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bbatsov.github.com/articles/page/13/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="(think)" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22917580-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">(think)</a></h1>
+  
+    <h2>An online novel about the Source, the Force, the real life and everything in between...</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:bbatsov.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a></li>
+  <li><a href="https://github.com/bbatsov/rails-style-guide">Rails Style Guide</a></li>
+  <li><a href="http://batsov.com/prelude">Emacs Prelude</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/colophon">Colophon</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2009/05/04/switch-string-idiom-java/">A Switch on String Idiom for Java</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-04T00:00:00+03:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
+        
+         | <a href="/articles/2009/05/04/switch-string-idiom-java/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve always been frustrated with the inability to write a switch on
+String in Java.  However the enum type introduced in Java 5.0 somewhat
+diminishes the issue. Read this excellent
+<a href="http://www.xefer.com/2006/12/switchonstring">article</a> on the subject.</p>
+
+<p><strong>Update</strong></p>
+
+<p>Java 7 now supports switch on String!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/09/29/singleton-java-ruby/">The Best Way to Implement the Singleton Pattern in Java and Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-29T00:00:00+03:00" pubdate data-updated="true">Sep 29<span>th</span>, 2008</time>
+        
+         | <a href="/articles/2008/09/29/singleton-java-ruby/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I haven’t posted anything lately, but I just received my brand new
+<strong>Das Keyboard</strong> and now I simply can’t stop typing. Recently I’ve been
+going through some effective technics to implement popular design
+patterns and I was surprised to see how few people where aware of
+them. For example since Java 5 the best way to implement the Singleton
+pattern is simply to use an enum like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">enum</span> <span class="n">SomeClass</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">INSTANCE</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is possible due to the fact that in Java(unlike in C++ and C#)
+enums are full-blown classes(although they do not support features
+like inheritance for example). You get an added bonus when using an
+enum class – you do not have to worry about serialization – this is
+handled for you behind the scenes.</p>
+
+<p>And this is how one should implement the Singleton pattern in Ruby:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;singleton&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Some</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Singleton</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Through the magic of Ruby’s mix-ins you get a private constructor for
+your class and an instance method with which you can obtain a
+reference to the single instance of the class. And best of all –
+because this library has undergone a substantial degree of testing it
+is pretty much bulletproof. Things hardly get simpler than that.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/07/27/zsh-prompt/">A Nice Zsh Prompt</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-07-27T00:00:00+03:00" pubdate data-updated="true">Jul 27<span>th</span>, 2008</time>
+        
+         | <a href="/articles/2008/07/27/zsh-prompt/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I switched to zsh, after being a bash user for almost 5
+years. I was in love with everything in zsh from day one, except one
+thing – the default prompt. Although zsh ships with several prompt
+themes, I didn’t like any of them so I looked around a little bit and
+constructed my own humble prompt. Here it goes:</p>
+
+<p><code>PROMPT='[%n@%m %~]$ '</code></p>
+
+<p>In case you’re wondering what this gibberish means:</p>
+
+<p>%n stands for your username(e.g. bozhidar)</p>
+
+<p>%m stands for the first part of your machine’s hostname(you can use %M
+ for the fully qualified name)</p>
+
+<p>%~ stands for the current directory path with your home dir aliased
+ with an ‘~’ (if you want to see the path in its natural form use %d
+ instead)</p>
+
+<p>All of this strange looking character combinations are called “escape
+sequences” and they have special significance to zsh. The rest of the
+characters in the prompt definition are represented literally in the
+resulting prompt. It looks like this(on my machine):</p>
+
+<p><code>[bozhidar@drow ~/store]$</code></p>
+
+<p>If you like it simply put the prompt definition like in your .zshrc
+file. You may want to put a little bit different version of the prompt
+in the root user’s .zshrc(if you use root at all that is):</p>
+
+<p><code>PROMPT='[%n@%m %~]# '</code></p>
+
+<p>This follows the well established pattern that a normal shell and a
+root shell should be easily distinguished visually.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/06/19/emacs-rails/">Using Emacs for Rails Development: The Perfect Setup</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-19T00:00:00+03:00" pubdate data-updated="true">Jun 19<span>th</span>, 2008</time>
+        
+         | <a href="/articles/2008/06/19/emacs-rails/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Updated 29/04/2011</strong></p>
+
+<p>Lately, I’ve started digging more and more into Rails, preparing for
+the start of a Rails powered project. Although there are some IDEs
+offering decent Rails support(namely RubyMine, NetBeans, Komodo and
+Aptana Studio) I have always preferred the comfort of Emacs for
+various reasons. So naturally I embarked on a quest to setup a
+suitable environment for Rails development in Emacs. After a couple of
+days of searching and evaluating possible solutions I finally set up a
+worthy environment. It consists of a couple of components –
+<a href="http://svn.ruby-lang.org/cgi-bin/viewvc.cgi/trunk/misc/ruby-mode.el?view=log">ruby-mode</a>,
+<a href="http://svn.ruby-lang.org/cgi-bin/viewvc.cgi/trunk/misc/inf-ruby.el?view=log">inf-ruby</a>,
+<a href="http://code.google.com/p/autopair/">autopair-mode</a>,
+<a href="http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html">nxhtml-mode</a>,
+<a href="http://code.google.com/p/yasnippet/">yasnippet</a> and
+<a href="http://rinari.rubyforge.org/">rinari</a>.</p>
+
+<p>As you probably have guessed by now <em>ruby-mode</em> provides support for
+editing ruby source files. The mode is pretty feature complete and
+under active development, headed by none other than Matz(Ruby&#8217;s
+creator) himself. I can only assume that Matz is an Emacs user
+himself. You can get it from the ruby svn repository if you&#8217;re using a
+version of Emacs older than Emacs 23(it&#8217;s built-in there).</p>
+
+<p><em>inf-ruby</em> is a mode that spawns and inferior ruby process(irb shell)
+to which you can directly send code from the ruby buffer you&#8217;re
+currently editing. For instance - you can define a function and while
+your cursor is inside it you can press C-M-x - the function definition
+will be evaluated in irb automatically and you can test it there. This
+is extremely handy!</p>
+
+<p><em>autopair-mode</em> provides auto insertion of closing braces, quotes,
+ends, etc. . Instructions how to setup both modes can be found
+here. It&#8217;s a much more generic version of the <em>ruby-electric</em> mode
+that used to do similar tasks, but just in Ruby buffers.</p>
+
+<p>Although many people recommend adding pabbrev(a mode which
+provides auto-completion) to the setup, I don’t recommend it – I find
+the mode mostly annoying and stick to the old school dumb
+auto-completion with M-/ . If you&#8217;re shopping for autocompletion,
+however, a much better and smarter choice would be a
+RSense[http://cx4a.org/software/rsense/].</p>
+
+<p><em>yasnippet</em> is a package that offers dynamically expandable code
+snippets(template), quite similar to ones in TextMate. It&#8217;s very easy
+to add your very own snippets if you wish to.</p>
+
+<p><em>nxhtml-mode</em> is a pretty comprehensive package for web development in
+general. We need it for its excellent support for erb
+templates(.rhtml, .erb.html) and of course xhtml and css. Lately it&#8217;s
+not been as actively developed as it used to be, but it&#8217;s still a
+pretty good mode. Alternatively you can use
+<a href="https://github.com/nex3/haml">Haml</a> and
+<a href="https://github.com/antonj/scss-mode">SASS</a> and forget about
+nxhtml. Both have pretty decent Emacs modes available.</p>
+
+<p><em>rinari</em> is a mode for Rails development – it contains rich
+functionality such as the ability to easily navigate between models,
+views and controllers in a Rails apfplication amongst other
+features. Instructions how to set up rinari together with nxhtml-mode
+can be found on rinari’s home page.</p>
+
+<p>It’s always a good idea to add <a href="http://ecb.sourceforge.net/">ecb</a>(the Emacs code browser) to the mix,
+though this is entirely optional.</p>
+
+<p>A lot of the stuff I discussed here are part of the
+<a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> that I
+develop and maintain. I urge you to use the Emacs Prelude as a starting point to
+develop your very own customized version of Emacs. Prelude comes with a
+few ruby-mode customizations, yari(ri integration for Emacs), haml and
+sass modes, autopair, yaml-mode, yasnippet, css-mode, ecb and a lot of
+other goodies(projectile being one of my favourites).</p>
+
+<p>I hope you enjoy this setup and it helps boost your Rails productivity in Emacs.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2008/06/16/das-keyboard/">Das Keyboard</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-16T00:00:00+03:00" pubdate data-updated="true">Jun 16<span>th</span>, 2008</time>
+        
+         | <a href="/articles/2008/06/16/das-keyboard/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Every professional developer knows how important to the development
+process the keyboard is, so it is only natural to be on the look for
+some quality piece of hardware. After a long research in the area of
+good keyboards I decided to upgrade my current rig to the recently
+released <a href="http://www.daskeyboard.com/">Das Keyboard 3</a>.</p>
+
+<p><img class="mechanical_keyboard.jpg" src="http://www.daskeyboard.com/images/products/mechanical_keyboard.jpg"></p>
+
+<p>Das Keyboard comes in three flavours - Professional(mechanical
+keyboard with labelled keys), Ultimate(the original mechanical
+keyboard with blank keys) and Silent(mechanical keyboard with labelled
+keys that doesn&#8217;t produce the trademarked clicking sound of the
+original Das Keyboard).</p>
+
+<p>I bought the Ultimate model, of course. I&#8217;ve been a touch typist for
+several years now and I didn&#8217;t really cared about the labelled
+keys(though I did miss them in games). Two words describe this
+keyboard perfectly - <strong>Bad Ass</strong>. It&#8217;s without a doubt the single
+finest piece of keyboard hardware that I&#8217;ve touched, it&#8217;s very
+comfortable, very solid and I feel that I&#8217;ve actually improved my
+typing speed with it. My colleagues don&#8217;t like the noisy work of the
+keyboard very much, but I have no problems with it. I actually have
+grown quite fond of it.</p>
+
+<p>The keyboard also features a two port USB hub, that I didn&#8217;t really
+consider when I was buying it, but it turned out quite helpful. I&#8217;ve
+actually stopped using the USB ports of my computer entirely(except
+for input devices) - I use the keyboard hub to plug-in flash drives
+and charge devices. When your computer is sitting beneath a desk you
+learn to appreciate USB hubs very quickly.</p>
+
+<p>I have long heard stories about Das Keyboard&#8217;s quality
+and comfort and I it has totally lived up to its hype. They price is
+admittedly a bit steep(I bought two keyboards for home and for work
+each costing 130$), but this is our hands and productivity we&#8217;re
+talking about so we shouldn&#8217;t be cheap. So what are
+waiting for - research the market yourselves and make your pick, your
+hands deserve a quality keyboard(the Das Keyboard)!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/articles/page/14/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/articles/page/12/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Bozhidar</h1>
+  <p>My name is Bozhidar Batsov and I&#8217;m a professional software engineer
+  from Sofia, Bulgaria. I&#8217;m quite fond of Unix, programming and
+  Emacs. From time to time I teach programming courses and speak at
+  tech conferences. I also happen to blog here (albeit rarely) about
+  various stuff mostly related to programming.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/">Emacs Support for the Slim Template Language</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2012/09/09/long-time-no-see/">Long Time, No See</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2012/05/28/a-true-emacs-knight/">A True Emacs Knight</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2012/04/07/changelog-vs-api-diff/">Changelog vs API diff</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2012/04/06/melpa-homebrew-emacs-edition/">MELPA - homebrew (Emacs Edition)</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/bbatsov">@bbatsov</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bbatsov',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("bbatsov", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/bbatsov" class="twitter-follow-button" data-show-count="false">Follow @bbatsov</a>
+  
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108153044872779739189?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Bozhidar Batsov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'batsov';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Debian post installation setup & tips - (think)</title>
+  <meta name="author" content="Bozhidar Batsov">
+
+  
+  <meta name="description" content="Prelude I&#8217;ve recently been using Debian a lot (mostly Debian Wheezy (aka
+testing)), So I&#8217;ve decided to adapt my
+Fedora 15 post &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bbatsov.github.com/articles/2011/07/04/debian-tips/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="(think)" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22917580-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">(think)</a></h1>
+  
+    <h2>An online novel about the Source, the Force, the real life and everything in between...</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:bbatsov.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a></li>
+  <li><a href="https://github.com/bbatsov/rails-style-guide">Rails Style Guide</a></li>
+  <li><a href="http://batsov.com/prelude">Emacs Prelude</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/colophon">Colophon</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Debian Post Installation Setup & Tips</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-04T00:00:00+03:00" pubdate data-updated="true">Jul 4<span>th</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Prelude</h2>
+
+<p>I&#8217;ve recently been using Debian a lot (mostly Debian Wheezy (aka
+testing)), So I&#8217;ve decided to adapt my
+<a href="/Linux/Fedora/2011/05/31/fedora-15-tips.html">Fedora 15 post installation setup &amp; tips</a>
+article for Debian. Here are some of the common things I add to a
+typical &#8220;graphical desktop&#8221; Debian installation as well as some tips
+and tricks that you&#8217;ll hopefully find useful. Btw, I highly recommend
+you to use the <a href="http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/amd64/iso-cd/debian-testing-amd64-netinst.iso">netinstall Debian distribution</a> - that way you&#8217;ll get an
+up-to-date installation immediately and you won&#8217;t have to download
+huge installation images.</p>
+
+<p>This article will be of use mostly to people using Debian as a desktop
+OS (with GNOME as their desktop environment) - it doesn&#8217;t discuss any
+server configurations.</p>
+
+<!--more-->
+
+
+<h2>Tweak defaults</h2>
+
+<h4>Configure sudo</h4>
+
+<p><code>sudo</code> gives you a way to execute single commands as the superuser. You
+can also do this with <code>su -c</code>, but you have to quote the commands there,
+which I don&#8217;t like very much. To enable sudo for some account first
+run the command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>su -c <span class="s2">&quot;visudo&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The file <code>/etc/sudoers</code> will open up in a customized vi editor. Append
+somewhere to the end of the file the following line:</p>
+
+<p><code>username ALL=(ALL) ALL</code></p>
+
+<p>You should replace <em>username</em> with your username.</p>
+
+<h2>apt-get + apt-cache or aptitude</h2>
+
+<p>There are two common ways (and many others less popular or obsolete)
+to manage packages on a Debian system these days - the simpler <code>apt-get</code>
++ <code>apt-cache</code> combo or the more advanced <code>aptitude</code> tool. I tend to prefer
+using aptitude since it&#8217;s a all-in-one solution - you could use it to both
+query and install packages and has both a CLI and a curses interface.</p>
+
+<p>It doesn&#8217;t really matter whether you decided to use apt-get/apt-cache
+or aptitude, but you shouldn&#8217;t mix their usage - pick one and stay
+with it.</p>
+
+<h2>Install additional software</h2>
+
+<p>I generally install Debian from the netinstall images and don&#8217;t
+customize very much the default package set since it&#8217;s so easy to
+install everything you need afterwards.</p>
+
+<h4>Install REAL text editors</h4>
+
+<p>gedit is ok for causal text editing, but professionals like software
+engineers and system administrators will definitely need something more:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install emacs vim
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Personally I use Emacs most of the time and use vim only to edit
+config files that require root access. If you need an advanced Emacs
+setup my suggestion is the <a href="https://github.com/bbatsov/emacs-dev-kit">Emacs Dev Kit</a>.</p>
+
+<h4>Install Z Shell</h4>
+
+<p>It&#8217;s no secret that I love the Z Shell - after all I
+<a href="/Z%20Shell/2011/04/29/one-shell-to-rule-them-all.html">rave about it</a>
+quite often. It should come as no surprise that I happen to use it and
+probably you should start using it as well:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install zsh
+</span><span class='line'><span class="nv">$ </span>sudo vim /etc/passwd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Find the line about your account and change there <code>/bin/bash</code> to
+<code>/usr/bin/zsh</code>. Alternatively you can use the chsh program to
+achieve the same result:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo chsh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Afterwards start a new login shell and a simple wizard will
+fire up asking you some questions to create a default .zshrc file for
+you. Alternatively you can use the excellent <a href="https://github.com/robbyrussell/oh-my-zsh">O My Zsh</a> config - I&#8217;m
+very fond of it.</p>
+
+<h4>Install guake(a drop down terminal)</h4>
+
+<p>I spend a lot of time at the terminal and like to have one at my
+fingertips always. Since I&#8217;m a GNOME user guake is the best option for
+me:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install guake
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install LibreOffice</h4>
+
+<p>LibreOffice is currently the best Linux option for word processing,
+spreadsheet handling and presentation creation. It&#8217;s generally
+installed by default if you select the &#8220;Graphical Desktop&#8221; option in
+the installation wizard, but you can install the
+most common components at any time with the following command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install libreoffice-calc libreoffice-impress libreoffice-draw libreoffice-writer
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>LibreOffice uses hunspell to do spellchecking. An English dictionary
+will be installed by default, but you&#8217;ll need to install additional
+dictionaries manually:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install hunspell-bg
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This command will install the Bulgarian hunspell dictionary. You
+likely don&#8217;t need it so install some more helpful dictionary instead. :-)</p>
+
+<h4>Install OpenJDK</h4>
+
+<p>If you need to run Java programs/applets:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install openjdk-6-jre
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you&#8217;re planning to do some Java development:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install openjdk-6-jdk openjdk-6-doc openjdk-6-demo openjdk-6-source
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install Deluge torrent client</h4>
+
+<p>The default Transmission torrent client is pretty basic. I recommend
+you to replace it with the much more feature-rich deluge:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install deluge
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install Inconsolata font</h4>
+
+<p>I&#8217;m a software engineer and I obviously spend a lot of time reading
+and writing source code. I&#8217;m very picking about the monospace font
+that I use and currently Inconsolata happens to be my favorite:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install ttf-inconsolata
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install GIMP</h4>
+
+<p>A lot of you might need an image editor. GIMP is generally
+considered the best option so you might want to install it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install gimp
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Install additional patent encumbered/proprietary software</h2>
+
+<h4>Enable non-free repo</h4>
+
+<p>Just add contrib and non-free to the list of your enabled repos. Your
+first line in /etc/apt/sources.list should look like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>deb http://ftp.bg.debian.org/debian/ wheezy main contrib non-free
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then do a:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude update
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install proprietary codecs</h4>
+
+<p>No MP3 support in Debian by default? And almost no video codecs?
+Non-free to the rescue! Type this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install gstreamer-plugins-ugly gstreamer-plugins-bad gstreamer-ffmpeg
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install VLC</h4>
+
+<p>With MPlayer&#8217;s development in stagnation VLC has established itself as
+the best video player for Linux recently. Installing it is as easy as typing the following command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install vlc
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install Adobe Flash Player</h4>
+
+<p>Love it or hate it - you probably need it.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install flashplugin-nonfree
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can omit this if you&#8217;re planning to use Google Chrome (on a 32bit system), since it
+comes with Flash Player built-in.</p>
+
+<h4>Install Skype</h4>
+
+<p>In a perfect world everyone would be using Google Talk&#8230; In the real one:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install skype
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install Oracle JDK</h4>
+
+<p>OpenJDK is great, but due to licensing problems it&#8217;s not quite the
+same as the Oracle JDK. If you start experiencing strange problems
+(mostly in Swing programs) you&#8217;d probably do well to try the Oracle
+JDK instead. The magic incantation goes like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install sun-java6-jdk sun-java6-demo sun-java6-source sun-java6-plugin
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Debian uses OpenJDK by default, so you&#8217;ll have to do some more work to
+tell it to start using Oracle JDK. The <code>alternatives</code> program allows
+you to select between multiple installed versions of a program:</p>
+
+<p>These commands will make alternative aware of the java binaries and
+set high priorities to them which will make them the default Java
+binaries. You can use &#8220;alternatives &#8211;config binaryname&#8221; to select
+active binaries manually.</p>
+
+<h4>Install Google Chrome</h4>
+
+<p>Firefox is dying, Google Chrome is the new king of the
+browsers. Download it from the <a href="http://www.google.com/chrome">official site</a> and install it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo dpk -i ~/Downloads/google-chrome-stable_current_i386.deb
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Google Chrome will install a apt repository as well, so you&#8217;ll receive
+updates as soon as they arrive.</p>
+
+<p>Alternatively you can use Chromium - Chrome&#8217;s open source sibling:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install chromium-browser
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Install DropBox</h4>
+
+<p><a href="http://www.dropbox.com">DropBox</a> is a great file sharing service
+which allows you to sync files between all of your computers and
+mobile devices(Android, iPhone, iPad, etc). It has a great Linux
+client which I use all the time. It&#8217;s available in the non-free repo
+so you can install it like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo aptitude install nautilus-dropbox
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Epilogue</h2>
+
+<p>Hopefully some of my setup has made your setup more enjoyable and more
+productive. I&#8217;ll update this article along the way if I stumble upon
+other things that I consider to be generally helpful.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Bozhidar Batsov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-04T00:00:00+03:00" pubdate data-updated="true">Jul 4<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/articles/categories/debian/'>Debian</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://bbatsov.github.com/articles/2011/07/04/debian-tips/" data-via="bbatsov" data-counturl="http://bbatsov.github.com/articles/2011/07/04/debian-tips/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/articles/2011/06/19/django-vs-rails/" title="Previous Post: Django 1.3 vs Rails 3: A not so final showdown">&laquo; Django 1.3 vs Rails 3: A not so final showdown</a>
+      
+      
+        <a class="basic-alignment right" href="/articles/2011/08/19/a-peek-at-emacs24/" title="Next Post: A peek at Emacs 24">A peek at Emacs 24 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Bozhidar</h1>
+  <p>My name is Bozhidar Batsov and I'm a professional software engineer
+  from Sofia, Bulgaria. I'm quite fond of Unix, programming and
+  Emacs. From time to time I teach programming courses and speak at
+  tech conferences. I also happen to blog here (albeit rarely) about
+  various stuff mostly related to programming.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/">Emacs Support for the Slim Template Language</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2012/09/09/long-time-no-see/">Long Time, No See</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2012/05/28/a-true-emacs-knight/">A True Emacs Knight</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2012/04/07/changelog-vs-api-diff/">Changelog vs API diff</a>
+      </li>
+    
+      <li class="post">
+        <a href="/articles/2012/04/06/melpa-homebrew-emacs-edition/">MELPA - homebrew (Emacs Edition)</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bbatsov">@bbatsov</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bbatsov',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("bbatsov", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/bbatsov" class="twitter-follow-button" data-show-count="false">Follow @bbatsov</a>
+  
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108153044872779739189?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Bozhidar Batsov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'batsov';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bbatsov.github.com/articles/2011/07/04/debian-tips/';
+        var disqus_url = 'http://bbatsov.github.com/articles/2011/07/04/debian-tips/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

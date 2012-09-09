@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tip | (think)]]></title>
+  <link href="http://bbatsov.github.com/articles/categories/tip/atom.xml" rel="self"/>
+  <link href="http://bbatsov.github.com/"/>
+  <updated>2012-09-09T20:34:33+03:00</updated>
+  <id>http://bbatsov.github.com/</id>
+  <author>
+    <name><![CDATA[Bozhidar Batsov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs Tip #5: Save Buffers Automatically on Buffer or Window Switch]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch/"/>
+    <updated>2012-03-08T15:58:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch</id>
+    <content type="html"><![CDATA[<p>When I program in Java I usually leave the comfort of Emacs and use
+IntelliJ IDEA instead (for various reasons that are irrelevant to this
+post). IDEA has one particularly nice feature - "auto-save on focus
+lost". Basically you never have to hit <code>C-s</code> there explicitly, because
+any time your current editor window loses focus its contents get
+flushed to the disk automatically. Implementing something exactly the
+same in Emacs is impossible (at least in Emacs Lisp), but we can
+create a solution that is similar in spirit at least - we can
+auto-save buffers when we switch the Emacs window or the current
+buffer (which are more or less the most popular ways to change editing
+focus in Emacs). This is easy to achieve in Emacs Lisp:</p>
+
+<p>```cl
+;; use shift + arrow keys to switch between visible buffers
+(require 'windmove)
+(windmove-default-keybindings 'super)</p>
+
+<p>;; automatically save buffers associated with files on buffer switch
+;; and on windows switch
+(defadvice switch-to-buffer (before save-buffer-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice other-window (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice windmove-up (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice windmove-down (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice windmove-left (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice windmove-right (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
+```</p>
+
+<p>Obviously this code could have been written in a more compact manner
+with the use of a macro, but I've decided to use this more verbose
+variant for the sake of simplicity. We assume that you want to
+auto-save your current work (buffer) when you switch to a new buffer
+or to a new window (with either <code>C-x o</code> (<code>other-window</code>) or a
+<code>windmove</code> command).</p>
+
+<p>XEmacs has a hook called <code>deselect-frame-hook</code> that can take the
+concept even further, but it's absent from GNU Emacs.</p>
+
+<p>So, that's all for this tip, folks! I hope you've enjoyed it!
+Personally I find it much more useful that the standard auto-save
+mechanism in Emacs. And one more thing -
+<a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> naturally
+enables this functionality by default.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Tip #2: Get a List of All Rake Tasks]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks/"/>
+    <updated>2012-03-08T15:28:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks</id>
+    <content type="html"><![CDATA[<p>Many people are having trouble remembering all the rake tasks defined
+in a particular project's <code>Rakefile</code> (especially if they hadn't
+authored it). This is quite normal given the fact that Rails's
+Rakefile, for instance, defines 39 tasks (as of version
+3.2.2). Personally I never memorize anything, but the most basic rake
+tasks - for everything else there is the <code>rake -T</code> (or <code>rake --tasks</code>)
+command. Here's the command in action for Octopress's Rakefile:</p>
+
+<p><code>bash
+$ rake -T
+rake clean                 # Clean out caches: .pygments-cache, .gist-cache, .sass-cache
+rake copydot[source,dest]  # copy dot files for deployment
+rake deploy                # Default deploy task
+rake gen_deploy            # Generate website and deploy
+rake generate              # Generate jekyll site
+rake install[theme]        # Initial setup for Octopress: copies the default theme into the path of Jekyll's generator.
+rake integrate             # Move all stashed posts back into the posts directory, ready for site generation.
+rake isolate[filename]     # Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much quicker.
+rake list                  # list tasks
+rake new_page[filename]    # Create a new page in source/(filename)/index.markdown
+rake new_post[title]       # Begin a new post in source/_posts
+rake preview               # preview the site in a web browser
+rake push                  # deploy public directory to github pages
+rake rsync                 # Deploy website via rsync
+rake set_root_dir[dir]     # Update configurations to support publishing to root or sub directory
+rake setup_github_pages    # Set up _deploy folder and deploy branch for Github Pages deployment
+rake update_source[theme]  # Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source.old's navigation
+rake update_style[theme]   # Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom
+rake watch                 # Watch the site and regenerate when it
+changes
+</code></p>
+
+<p>Not only did you get a list of all the tasks, but nice descriptions of
+the tasks as well.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs Tip #4: Repeat Last Command]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/03/08/emacs-tip-number-4-repeat-last-command/"/>
+    <updated>2012-03-08T15:09:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/03/08/emacs-tip-number-4-repeat-last-command</id>
+    <content type="html"><![CDATA[<p>Some times you'd want to quickly repeat an Emacs command several times and
+most of the time it won't have a convenient keybinding you can use to
+do this. Enter <code>C-x z</code> (<code>repeat</code>) - it simply repeats the most
+recently executed command. And the best part? After you've pressed
+<code>C-x z</code> once you can continue repeating the last command simply by
+pressing <code>z</code>. Vi(m) users will probably note that this is quite similar
+to the <code>.</code> command there.</p>
+
+<p>For instance - if you want to execute the <code>er/expand-region</code> command
+(part of the
+<a href="https://github.com/magnars/expand-region.el">expand-region package</a>)
+a few times you can do it like this:</p>
+
+<p><code>
+M-x er/expand-region
+C-x z
+z
+z
+z
+</code></p>
+
+<p>Neat, ah?</p>
+]]></content>
+  </entry>
+  
+</feed>
