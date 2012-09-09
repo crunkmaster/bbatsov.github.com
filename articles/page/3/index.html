@@ -9,8 +9,8 @@
   <meta name="author" content="Bozhidar Batsov">
 
   
-  <meta name="description" content="Some times you&#8217;d want to quickly repeat an Emacs command several times and
-most of the time it won&#8217;t have a convenient keybinding you can &hellip;">
+  <meta name="description" content="Many people are having trouble remembering all the rake tasks defined
+in a particular project&#8217;s Rakefile (especially if they hadn&#8217;t &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,98 @@ most of the time it won&#8217;t have a convenient keybinding you can &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks/">Ruby Tip #2: Get a List of All Rake Tasks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-08T15:28:00+02:00" pubdate data-updated="true">Mar 8<span>th</span>, 2012</time>
+        
+         | <a href="/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Many people are having trouble remembering all the rake tasks defined
+in a particular project&#8217;s <code>Rakefile</code> (especially if they hadn&#8217;t
+authored it). This is quite normal given the fact that Rails&#8217;s
+Rakefile, for instance, defines 39 tasks (as of version
+3.2.2). Personally I never memorize anything, but the most basic rake
+tasks - for everything else there is the <code>rake -T</code> (or <code>rake --tasks</code>)
+command. Here&#8217;s the command in action for Octopress&#8217;s Rakefile:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake -T
+</span><span class='line'>rake clean                 <span class="c"># Clean out caches: .pygments-cache, .gist-cache, .sass-cache</span>
+</span><span class='line'>rake copydot<span class="o">[</span><span class="nb">source</span>,dest<span class="o">]</span>  <span class="c"># copy dot files for deployment</span>
+</span><span class='line'>rake deploy                <span class="c"># Default deploy task</span>
+</span><span class='line'>rake gen_deploy            <span class="c"># Generate website and deploy</span>
+</span><span class='line'>rake generate              <span class="c"># Generate jekyll site</span>
+</span><span class='line'>rake install<span class="o">[</span>theme<span class="o">]</span>        <span class="c"># Initial setup for Octopress: copies the default theme into the path of Jekyll&#39;s generator.</span>
+</span><span class='line'>rake integrate             <span class="c"># Move all stashed posts back into the posts directory, ready for site generation.</span>
+</span><span class='line'>rake isolate<span class="o">[</span>filename<span class="o">]</span>     <span class="c"># Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much quicker.</span>
+</span><span class='line'>rake list                  <span class="c"># list tasks</span>
+</span><span class='line'>rake new_page<span class="o">[</span>filename<span class="o">]</span>    <span class="c"># Create a new page in source/(filename)/index.markdown</span>
+</span><span class='line'>rake new_post<span class="o">[</span>title<span class="o">]</span>       <span class="c"># Begin a new post in source/_posts</span>
+</span><span class='line'>rake preview               <span class="c"># preview the site in a web browser</span>
+</span><span class='line'>rake push                  <span class="c"># deploy public directory to github pages</span>
+</span><span class='line'>rake rsync                 <span class="c"># Deploy website via rsync</span>
+</span><span class='line'>rake set_root_dir<span class="o">[</span>dir<span class="o">]</span>     <span class="c"># Update configurations to support publishing to root or sub directory</span>
+</span><span class='line'>rake setup_github_pages    <span class="c"># Set up _deploy folder and deploy branch for Github Pages deployment</span>
+</span><span class='line'>rake update_source<span class="o">[</span>theme<span class="o">]</span>  <span class="c"># Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source.old&#39;s navigation</span>
+</span><span class='line'>rake update_style<span class="o">[</span>theme<span class="o">]</span>   <span class="c"># Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom</span>
+</span><span class='line'>rake watch                 <span class="c"># Watch the site and regenerate when it</span>
+</span><span class='line'>changes
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Not only did you get a list of all the tasks, but nice descriptions of
+the tasks as well.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -330,64 +422,6 @@ coloring in most prominent modes out of the box.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/">The Ultimate Collection of Emacs Resources</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-30T20:56:00+02:00" pubdate data-updated="true">Nov 30<span>th</span>, 2011</time>
-        
-         | <a href="/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Prelude</h2>
-
-<p>Anyone who&#8217;s ever dabbled in the dark art that is Emacs knows that
-chances are you&#8217;ll be overwhelmed before you start making sense of
-Emacs&#8217; unique view of the world. There is just too much information
-out there&#8230;</p>
-
-<p>There are many great Emacs resources targeting different
-groups of Emacs users. The problems is that often the people that would
-benefit the most from some of those resources don&#8217;t even know about
-their existence. That&#8217;s why I&#8217;m putting together this article - to collect the
-best resources in a single location and categorize them
-accordingly. Surely I&#8217;ll miss a lot of stuff - I&#8217;m just one man and I
-certainly don&#8217;t know about many great repositories of Emacs wisdom. I
-hope you&#8217;ll help me by pointing out such repositories in the comments
-section. So here we go&#8230;</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/articles/page/4/">&larr; Older</a>
@@ -413,6 +447,10 @@ section. So here we go&#8230;</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/articles/2012/09/09/guru-mode/">guru-mode</a>
+      </li>
+    
+      <li class="post">
         <a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/">Emacs Support for the Slim Template Language</a>
       </li>
     
@@ -426,10 +464,6 @@ section. So here we go&#8230;</p>
     
       <li class="post">
         <a href="/articles/2012/04/07/changelog-vs-api-diff/">Changelog vs API diff</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/04/06/melpa-homebrew-emacs-edition/">MELPA - homebrew (Emacs Edition)</a>
       </li>
     
   </ul>

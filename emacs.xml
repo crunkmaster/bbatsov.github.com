@@ -4,7 +4,7 @@
   <title><![CDATA[Emacs @ (think)]]></title>
   <link href="http://bbatsov.github.com/emacs.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-09-09T20:34:33+03:00</updated>
+  <updated>2012-09-09T21:45:57+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[guru-mode]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/09/09/guru-mode/"/>
+    <updated>2012-09-09T21:17:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/09/09/guru-mode</id>
+    <content type="html"><![CDATA[<p>Getting started with Emacs is hard. That&#8217;s a fact of life and you
+shouldn&#8217;t believe anyone telling you otherwise.</p>
+
+<p>One of the harder parts of the journey to Emacs mastery is remembering
+all those keybindings at the beginning (<code>C-h t</code>), which can be really
+overwhelming. To make matters worse for many common commands there are
+two sets of keybindings - the Emacs ones (that are touch typing
+friendly) and the popular ones (that typically involve the use of the
+arrow keys). Most people never get to use the <em>proper</em> keybindings and
+forever make use of the arrow keys.</p>
+
+<p>To help Emacs newcomers get used to the proper Emacs keybindings I&#8217;ve
+created <a href="http://github.com/bbatsov/guru-mode">guru-mode</a> - a simple
+minor mode that will show you a (helpful) message in the minibuffer
+every time you try to use a <em>non Emacs way</em> keybinding.</p>
+
+<p><img src="http://bbatsov.github.com/images/articles/guru-mode.png"></p>
+
+<p>It will probably annoy you <strong>a lot</strong> in the beginning, but trust me -
+it&#8217;ll be worth it in the long run.</p>
+
+<p><code>guru-mode</code> comes bundled with
+<a href="http://github.com/bbatsov/prelude">Emacs Prelude</a> and is available
+for installation from <a href="http://marmalade-repo.org">Marmalade</a> and <a href="http://melpa.milkbox.net">MELPA</a>.</p>
+
+<p>P.S. True Emacs mastery cannot be achieved if you do not practice
+touch typing; if you&#8217;re doing hunt-and-peck typing you&#8217;d better fire up the
+venerable <code>gtypist</code> before looking at <code>guru-mode</code>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs Support for the Slim Template Language]]></title>
@@ -36,6 +72,8 @@ font-locking). Any help from interested parties is, naturally, most
 welcome. I very much doubt that me and
 <a href="https://github.com/minad">Daniel Mendler</a> are the only two people
 dreaming of great Slim experience in Emacs. :-)</p>
+
+<p><img src="http://bbatsov.github.com/images/articles/slim-mode.png"></p>
 
 <p>Let us together eliminate that big Haml advantage. :-)</p>
 ]]></content>
@@ -2455,67 +2493,6 @@ If you&#8217;re unhappy with something - create an issue in GitHub (or even
 better send me a pull request with your suggested improvements).</p>
 
 <p>It&#8217;s my desire to make the new <a href="https://github.com/bbatsov/zenburn-emacs">Zenburn for Emacs</a> just as good as the original.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs Dev Kit]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/04/24/emacs-dev-kit/"/>
-    <updated>2011-04-24T00:00:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/04/24/emacs-dev-kit</id>
-    <content type="html"><![CDATA[<p>During the past few months I&#8217;ve been working on a project to convert
-my vast Emacs configuration into something generally useful and
-self-contained that could help the general software engineer. Thus the
-<a href="https://github.com/bbatsov/emacs-dev-kit">Emacs Dev Kit</a> was
-born. Conceptually it&#8217;s similar to the older
-<a href="https://github.com/technomancy/emacs-starter-kit">Emacs Starter Kit</a>
-and it even shares a bit of code with it. The Emacs Dev Kit, however,
-target more programming languages and features more
-customizations/enhancements.</p>
-
-<p>EDT relies on ELPA for packages that are available there and packages
-everything else locally. At some point I&#8217;ve played with the idea of
-using el-get instead, but I had a lot of problems with it and thought
-that using only ELPA would be better since it would be part of
-Emacs 24. Everything is tested only on the latest version of GNU
-Emacs(currently 23.2). I&#8217;ve tried to do everything in the most
-efficient and modern way - for instance SLIME is supposed to be
-installed via Quicklisp so it could be easily updated without waiting
-for a new version of the EDK.</p>
-
-<p>EDK currently offers enhanced(well, I know that this is subjective,
-but it feels enhanced at least to me) support for the following
-languages:</p>
-
-<ul>
-<li>C/C++</li>
-<li>Clojure</li>
-<li>Common Lisp</li>
-<li>Emacs Lisp</li>
-<li>Haskell</li>
-<li>Java</li>
-<li>LaTeX</li>
-<li>Perl</li>
-<li>Prolog</li>
-<li>Python</li>
-<li>Ruby</li>
-<li>Scala</li>
-<li>Scheme</li>
-<li>XML</li>
-</ul>
-
-
-<p>It also offers an advanced ERC configuration(so that you can ask your
-questions on #freenode), extended keybindings and lots of general
-purpose utility functions.</p>
-
-<p>EDT goes a step further and even includes a different color-theme by
-default - zenburn. You can turn it off easily of course, but I have
-the feeling that many programmers will appreciate its eye strain
-reducing qualities.</p>
-
-<p>The project is still very young and mostly untested. I&#8217;d be thankful
-for feedback, bug reports and suggestions.</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-09-09T20:34:33+03:00</updated>
+  <updated>2012-09-09T21:45:57+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[guru-mode]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/09/09/guru-mode/"/>
+    <updated>2012-09-09T21:17:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/09/09/guru-mode</id>
+    <content type="html"><![CDATA[<p>Getting started with Emacs is hard. That&#8217;s a fact of life and you
+shouldn&#8217;t believe anyone telling you otherwise.</p>
+
+<p>One of the harder parts of the journey to Emacs mastery is remembering
+all those keybindings at the beginning (<code>C-h t</code>), which can be really
+overwhelming. To make matters worse for many common commands there are
+two sets of keybindings - the Emacs ones (that are touch typing
+friendly) and the popular ones (that typically involve the use of the
+arrow keys). Most people never get to use the <em>proper</em> keybindings and
+forever make use of the arrow keys.</p>
+
+<p>To help Emacs newcomers get used to the proper Emacs keybindings I&#8217;ve
+created <a href="http://github.com/bbatsov/guru-mode">guru-mode</a> - a simple
+minor mode that will show you a (helpful) message in the minibuffer
+every time you try to use a <em>non Emacs way</em> keybinding.</p>
+
+<p><img src="http://bbatsov.github.com/images/articles/guru-mode.png"></p>
+
+<p>It will probably annoy you <strong>a lot</strong> in the beginning, but trust me -
+it&#8217;ll be worth it in the long run.</p>
+
+<p><code>guru-mode</code> comes bundled with
+<a href="http://github.com/bbatsov/prelude">Emacs Prelude</a> and is available
+for installation from <a href="http://marmalade-repo.org">Marmalade</a> and <a href="http://melpa.milkbox.net">MELPA</a>.</p>
+
+<p>P.S. True Emacs mastery cannot be achieved if you do not practice
+touch typing; if you&#8217;re doing hunt-and-peck typing you&#8217;d better fire up the
+venerable <code>gtypist</code> before looking at <code>guru-mode</code>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs Support for the Slim Template Language]]></title>
@@ -36,6 +72,8 @@ font-locking). Any help from interested parties is, naturally, most
 welcome. I very much doubt that me and
 <a href="https://github.com/minad">Daniel Mendler</a> are the only two people
 dreaming of great Slim experience in Emacs. :-)</p>
+
+<p><img src="http://bbatsov.github.com/images/articles/slim-mode.png"></p>
 
 <p>Let us together eliminate that big Haml advantage. :-)</p>
 ]]></content>
@@ -2458,56 +2496,6 @@ world - probably not.</p>
 <p>I truly believe that anyone could gain something positive by spending
 some time with Emacs and exploring its vision and culture. I guess
 that in the it all boils down to whether you believe me&#8230;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs Tip #2: Open File in External Program]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/11/12/emacs-tip-number-2-open-file-in-external-program/"/>
-    <updated>2011-11-12T11:16:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/11/12/emacs-tip-number-2-open-file-in-external-program</id>
-    <content type="html"><![CDATA[<p>Sometimes it&#8217;s useful to be able to open the file you&#8217;re editing in
-Emacs in an external program. For instance - you might be editing
-some HTML file and you might want to see how is it looking in a
-browser. I use the following handy command to do so:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">prelude-open-with</span> <span class="p">()</span>
-</span><span class='line'>  <span class="s">&quot;Simple function that allows us to open the underlying</span>
-</span><span class='line'><span class="s">file of a buffer in an external program.&quot;</span>
-</span><span class='line'>  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span>
-</span><span class='line'>    <span class="p">(</span><span class="nv">shell-command</span> <span class="p">(</span><span class="nv">concat</span>
-</span><span class='line'>                    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">eq</span> <span class="nv">system-type</span> <span class="ss">&#39;darwin</span><span class="p">)</span>
-</span><span class='line'>                        <span class="s">&quot;open&quot;</span>
-</span><span class='line'>                      <span class="p">(</span><span class="nv">read-shell-command</span> <span class="s">&quot;Open current file with: &quot;</span><span class="p">))</span>
-</span><span class='line'>                    <span class="s">&quot; &quot;</span>
-</span><span class='line'>                    <span class="nv">buffer-file-name</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>On OSX it would use the <code>open</code> program to decide which program to open
-the file with, otherwise you&#8217;d be prompted to enter the name of the
-program in the minibuffer.</p>
-
-<p>I find it convenient to bind the command to <code>C-c o</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c o&quot;</span><span class="p">)</span> <span class="ss">&#39;prelude-open-with</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This command is naturally part of <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a>.</p>
 ]]></content>
   </entry>
   
