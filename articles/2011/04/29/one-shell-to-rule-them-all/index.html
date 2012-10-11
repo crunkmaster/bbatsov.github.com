@@ -1,116 +1,98 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>One shell to rule them all... - (think)</title>
-  <meta name="author" content="Bozhidar Batsov">
+	<meta charset="utf-8">
+	<title>One shell to rule them all... - (think)</title>
+	<meta name="author" content="Bozhidar Batsov">
 
-  
-  <meta name="description" content="Prelude I&#8217;ve been using zsh for about three years now and continue to be
+	
+	<meta name="description" content="Prelude I&#8217;ve been using zsh for about three years now and continue to be
 impressed the its immense power and flexibility. Switching from bash &hellip;">
-  
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://bbatsov.github.com/articles/2011/04/29/one-shell-to-rule-them-all/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="(think)" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22917580-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
+	<link href="/atom.xml" rel="alternate" title="(think)" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">(think)</a></h1>
-  
-    <h2>An online novel about the Source, the Force, the real life and everything in between...</h2>
-  
-</hgroup>
+<body>
+	<header id="header" class="inner"><h1><a href="/">(think)</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:bbatsov.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		<a class="google" href="https://plus.google.com/108153044872779739189?rel=author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/bbatsov" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/bbatsov" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:bbatsov.github.com">
+	</form>
+</nav>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:bbatsov.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a></li>
-  <li><a href="https://github.com/bbatsov/rails-style-guide">Rails Style Guide</a></li>
-  <li><a href="http://batsov.com/prelude">Emacs Prelude</a></li>
-  <li><a href="/about">About</a></li>
-  <li><a href="/colophon">Colophon</a></li>
-</ul>
+	
+		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/bbatsov">bbatsov</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('bbatsov', 4, false);
+	})(jQuery);
+</script>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">One Shell to Rule Them All...</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-29T00:00:00+03:00" pubdate data-updated="true">Apr 29<span>th</span>, 2011</time>
-        
-         | <a href="#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><h2>Prelude</h2>
+	
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">One Shell to Rule Them All...</h1>
+	<div class="entry-content"><h2>Prelude</h2>
 
 <p>I&#8217;ve been using zsh for about three years now and continue to be
 impressed the its immense power and flexibility. Switching from bash
@@ -407,14 +389,8 @@ well enough(of which I&#8217;m most certain you should have a look at the resour
 </div>
 
 
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Bozhidar Batsov</span></span>
-
-      
+<div class="meta">
+	<div class="date">
 
 
 
@@ -426,151 +402,48 @@ well enough(of which I&#8217;m most certain you should have a look at the resour
   
 
 
-<time datetime="2011-04-29T00:00:00+03:00" pubdate data-updated="true">Apr 29<span>th</span>, 2011</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/articles/categories/z-shell/'>Z Shell</a>
-  
-</span>
+<time datetime="2011-04-29T00:00:00+03:00" pubdate data-updated="true">Apr 29<span>th</span>, 2011</time></div>
+	<div class="tags">
 
 
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://bbatsov.github.com/articles/2011/04/29/one-shell-to-rule-them-all/" data-via="bbatsov" data-counturl="http://bbatsov.github.com/articles/2011/04/29/one-shell-to-rule-them-all/" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-</div>
+	<a class='category' href='/articles/categories/z-shell/'>Z Shell</a>
 
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/articles/2011/04/29/career-development/" title="Previous Post: Career development - Should I stay or should I go?">&laquo; Career development - Should I stay or should I go?</a>
-      
-      
-        <a class="basic-alignment right" href="/articles/2011/04/30/parsing-numbers-from-string-in-lisp/" title="Next Post: Parsing numbers from string in Common Lisp">Parsing numbers from string in Common Lisp &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
 
 </div>
+	
+		<span class="comments"><a href="/articles/2011/04/29/one-shell-to-rule-them-all/#disqus_thread">Comments</a></span>
+	
+</div></article>
 
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Bozhidar</h1>
-  <p>My name is Bozhidar Batsov and I'm a professional software engineer
-  from Sofia, Bulgaria. I'm quite fond of Unix, programming and
-  Emacs. From time to time I teach programming courses and speak at
-  tech conferences. I also happen to blog here (albeit rarely) about
-  various stuff mostly related to programming.</p>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/">Setting up fallback locale(s) in Rails 3</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/">From Linux to OSX - 1 Year Later</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/09/09/guru-mode/">guru-mode</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/">Emacs Support for the Slim Template Language</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/09/09/long-time-no-see/">Long Time, No See</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/bbatsov">@bbatsov</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'bbatsov',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
 
-<section>
-  <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating...</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("bbatsov", 4, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/bbatsov" class="twitter-follow-button" data-show-count="false">Follow @bbatsov</a>
-  
-</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
 
-
-
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/108153044872779739189?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Bozhidar Batsov -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+    Bozhidar Batsov
 
 </footer>
-  
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
 
 <script type="text/javascript">
       var disqus_shortname = 'batsov';
@@ -587,29 +460,17 @@ well enough(of which I&#8217;m most certain you should have a look at the resour
 
 
 
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-22917580-1']);
+		_gaq.push(['_trackPageview']);
 
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 

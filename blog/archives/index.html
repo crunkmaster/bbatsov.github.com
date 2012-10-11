@@ -1,1193 +1,1440 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Blog Archive - (think)</title>
-  <meta name="author" content="Bozhidar Batsov">
+	<meta charset="utf-8">
+	<title>Blog Archives - (think)</title>
+	<meta name="author" content="Bozhidar Batsov">
 
-  
-  <meta name="description" content="Blog Archive 2012 Setting up fallback locale(s) in Rails 3
-Sep 12 2012 posted in programming, rails, ruby From Linux to OSX - 1 Year Later
-Sep 09 &hellip;">
-  
+	
+	<meta name="description" content="2012 Setting up fallback locale(s) in Rails 3 Sep 12 programming, rails, ruby Comments From Linux to OSX - 1 Year Later Sep 9 Linux, OSX, misc &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://bbatsov.github.com/blog/archives/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="(think)" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-22917580-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
+	<link href="/atom.xml" rel="alternate" title="(think)" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">(think)</a></h1>
-  
-    <h2>An online novel about the Source, the Force, the real life and everything in between...</h2>
-  
-</hgroup>
+<body>
+	<header id="header" class="inner"><h1><a href="/">(think)</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:bbatsov.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		<a class="google" href="https://plus.google.com/108153044872779739189?rel=author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/bbatsov" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/bbatsov" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:bbatsov.github.com">
+	</form>
+</nav>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:bbatsov.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a></li>
-  <li><a href="https://github.com/bbatsov/rails-style-guide">Rails Style Guide</a></li>
-  <li><a href="http://batsov.com/prelude">Emacs Prelude</a></li>
-  <li><a href="/about">About</a></li>
-  <li><a href="/colophon">Colophon</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article role="article">
-  
-  <header>
-    <h1 class="entry-title">Blog Archive</h1>
-    
-  </header>
-  
-  <div id="blog-archives">
-
-
-
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/">Setting up fallback locale(s) in Rails 3</a></h1>
-<time datetime="2012-09-12T14:56:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>12</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/rails/'>rails</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/">From Linux to OSX - 1 Year Later</a></h1>
-<time datetime="2012-09-09T22:11:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>09</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/osx/'>OSX</a>, <a class='category' href='/articles/categories/misc/'>misc</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/09/09/guru-mode/">guru-mode</a></h1>
-<time datetime="2012-09-09T21:17:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>09</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/">Emacs Support for the Slim Template Language</a></h1>
-<time datetime="2012-09-09T20:16:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>09</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/rails/'>Rails</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/09/09/long-time-no-see/">Long Time, No See</a></h1>
-<time datetime="2012-09-09T19:50:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>09</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/misc/'>misc</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/05/28/a-true-emacs-knight/">A True Emacs Knight</a></h1>
-<time datetime="2012-05-28T15:39:00+03:00" pubdate><span class='month'>May</span> <span class='day'>28</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/04/07/changelog-vs-api-diff/">Changelog vs API diff</a></h1>
-<time datetime="2012-04-07T12:22:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>07</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/software/'>Software</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/04/06/melpa-homebrew-emacs-edition/">MELPA - homebrew (Emacs Edition)</a></h1>
-<time datetime="2012-04-06T18:04:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>06</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/03/26/wikemacs-the-other-emacs-wiki/">WikEmacs - The Other Emacs Wiki</a></h1>
-<time datetime="2012-03-26T11:23:00+03:00" pubdate><span class='month'>Mar</span> <span class='day'>26</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/03/21/all-hands-on-deck-or-the-action-plan-for-a-new-emacs-community-wiki/">All Hands on Deck! (or the Action Plan for a new Emacs community wiki)</a></h1>
-<time datetime="2012-03-21T11:11:00+02:00" pubdate><span class='month'>Mar</span> <span class='day'>21</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/03/20/die-emacswiki/">Die EmacsWiki, Die!</a></h1>
-<time datetime="2012-03-20T14:49:00+02:00" pubdate><span class='month'>Mar</span> <span class='day'>20</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/rant/'>Rant</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch/">Emacs Tip #5: Save Buffers Automatically on Buffer or Window Switch</a></h1>
-<time datetime="2012-03-08T15:58:00+02:00" pubdate><span class='month'>Mar</span> <span class='day'>08</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks/">Ruby Tip #2: Get a List of All Rake Tasks</a></h1>
-<time datetime="2012-03-08T15:28:00+02:00" pubdate><span class='month'>Mar</span> <span class='day'>08</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/tip/'>Tip</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/03/08/emacs-tip-number-4-repeat-last-command/">Emacs Tip #4: Repeat Last Command</a></h1>
-<time datetime="2012-03-08T15:09:00+02:00" pubdate><span class='month'>Mar</span> <span class='day'>08</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/">Package Management in Emacs: The Good, the Bad and the Ugly</a></h1>
-<time datetime="2012-02-19T12:18:00+02:00" pubdate><span class='month'>Feb</span> <span class='day'>19</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2012/02/19/color-theming-in-emacs-reloaded/">Color Theming in Emacs: Reloaded</a></h1>
-<time datetime="2012-02-19T12:17:00+02:00" pubdate><span class='month'>Feb</span> <span class='day'>19</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-  
-  <h2>2011</h2>
-
-<article>
-  
-<h1><a href="/articles/2011/12/03/solarized-for-emacs/">Solarized for Emacs</a></h1>
-<time datetime="2011-12-03T14:44:00+02:00" pubdate><span class='month'>Dec</span> <span class='day'>03</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/">The Ultimate Collection of Emacs Resources</a></h1>
-<time datetime="2011-11-30T20:56:00+02:00" pubdate><span class='month'>Nov</span> <span class='day'>30</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/11/28/ruby-tip-number-1-demystifying-the-difference-between-equals-equals-and-eql/">Ruby Tip #1: Demystifying the Difference Between == and eql?</a></h1>
-<time datetime="2011-11-28T16:54:00+02:00" pubdate><span class='month'>Nov</span> <span class='day'>28</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/tips/'>Tips</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/11/25/emacs-tip-number-3-whitespace-cleanup/">Emacs Tip #3: Whitespace Cleanup</a></h1>
-<time datetime="2011-11-25T14:26:00+02:00" pubdate><span class='month'>Nov</span> <span class='day'>25</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/11/20/admin-interfaces-for-rails-apps-railsadmin-vs-activeadmin/">Admin Interfaces for Rails Apps: RailsAdmin vs ActiveAdmin</a></h1>
-<time datetime="2011-11-20T09:24:00+02:00" pubdate><span class='month'>Nov</span> <span class='day'>20</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/activeadmin/'>ActiveAdmin</a>, <a class='category' href='/articles/categories/railsadmin/'>RailsAdmin</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/ruby-on-rails/'>Ruby on Rails</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/11/19/why-emacs/">Why Emacs?</a></h1>
-<time datetime="2011-11-19T09:22:00+02:00" pubdate><span class='month'>Nov</span> <span class='day'>19</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/11/12/emacs-tip-number-2-open-file-in-external-program/">Emacs Tip #2: Open File in External Program</a></h1>
-<time datetime="2011-11-12T11:16:00+02:00" pubdate><span class='month'>Nov</span> <span class='day'>12</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/11/11/blogging-like-a-hacker-evolution/">Blogging Like a Hacker: Evolution</a></h1>
-<time datetime="2011-11-11T08:52:00+02:00" pubdate><span class='month'>Nov</span> <span class='day'>11</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/jekyll/'>Jekyll</a>, <a class='category' href='/articles/categories/octopress/'>Octopress</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/10/30/deploying-rails31-apps-on-celadon-cedar/">Deploying Rails 3.1 applications on Heroku&#8217;s Celadon Cedar stack</a></h1>
-<time datetime="2011-10-30T00:00:00+03:00" pubdate><span class='month'>Oct</span> <span class='day'>30</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/heroku/'>Heroku</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/ruby-on-rails/'>Ruby on Rails</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/10/09/getting-started-with-emacs-24/">Getting started with Emacs 24</a></h1>
-<time datetime="2011-10-09T00:00:00+03:00" pubdate><span class='month'>Oct</span> <span class='day'>09</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/08/19/a-peek-at-emacs24/">A peek at Emacs 24</a></h1>
-<time datetime="2011-08-19T00:00:00+03:00" pubdate><span class='month'>Aug</span> <span class='day'>19</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/07/04/debian-tips/">Debian post installation setup & tips</a></h1>
-<time datetime="2011-07-04T00:00:00+03:00" pubdate><span class='month'>Jul</span> <span class='day'>04</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/debian/'>Debian</a>, <a class='category' href='/articles/categories/linux/'>Linux</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/06/19/django-vs-rails/">Django 1.3 vs Rails 3: A not so final showdown</a></h1>
-<time datetime="2011-06-19T00:00:00+03:00" pubdate><span class='month'>Jun</span> <span class='day'>19</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/django/'>Django</a>, <a class='category' href='/articles/categories/python/'>Python</a>, <a class='category' href='/articles/categories/rails/'>Rails</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/06/14/linux-desktop-part-2/">The Linux desktop experience is killing Linux on the desktop, Part II</a></h1>
-<time datetime="2011-06-14T00:00:00+03:00" pubdate><span class='month'>Jun</span> <span class='day'>14</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/rant/'>Rant</a>, <a class='category' href='/articles/categories/windows/'>Windows</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/06/11/linux-desktop-experience-killing-linux-on-the-desktop/">The Linux desktop experience is killing Linux on the desktop</a></h1>
-<time datetime="2011-06-11T00:00:00+03:00" pubdate><span class='month'>Jun</span> <span class='day'>11</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/rant/'>Rant</a>, <a class='category' href='/articles/categories/windows/'>Windows</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/06/05/emacs-default-font/">Emacs Tip #1: Set the default font in Emacs 23</a></h1>
-<time datetime="2011-06-05T00:00:00+03:00" pubdate><span class='month'>Jun</span> <span class='day'>05</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/linux/'>Linux</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/06/04/phaser-3117-fedora-15/">Running Xerox Phaser 3117 under Fedora 15</a></h1>
-<time datetime="2011-06-04T00:00:00+03:00" pubdate><span class='month'>Jun</span> <span class='day'>04</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/hardware/'>Hardware</a>, <a class='category' href='/articles/categories/linux/'>Linux</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/05/31/fedora-15-tips/">Fedora 15 post installation setup & tips</a></h1>
-<time datetime="2011-05-31T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>31</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/linux/'>Linux</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/05/18/jvm-langs-jruby/">Java.next() - JRuby: The Rubyists Strike Back</a></h1>
-<time datetime="2011-05-18T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>18</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/05/17/recommended-ruby-books/">Recommended Ruby books</a></h1>
-<time datetime="2011-05-17T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>17</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/books/'>Books</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/05/12/jvm-langs-clojure/">Java.next() - Clojure: The Return of the Lispers</a></h1>
-<time datetime="2011-05-12T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>12</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/clojure/'>Clojure</a>, <a class='category' href='/articles/categories/java/'>Java</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/05/11/zenburn-emacs/">A new Zenburn theme for Emacs</a></h1>
-<time datetime="2011-05-11T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>11</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/05/08/jvm-langs-scala/">Java.next() - Scala: The Revenge of the Static Typing</a></h1>
-<time datetime="2011-05-08T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>08</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/scala/'>Scala</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/05/06/jvm-langs-groovy/">Java.next() - The Groovy Programming Language</a></h1>
-<time datetime="2011-05-06T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>06</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/groovy/'>Groovy</a>, <a class='category' href='/articles/categories/java/'>Java</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/05/03/ruby-or-python/">Ruby or Python? Well, it depends&#8230;</a></h1>
-<time datetime="2011-05-03T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>03</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/programming/'>Programming</a>, <a class='category' href='/articles/categories/python/'>Python</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/30/parsing-numbers-from-string-in-lisp/">Parsing numbers from string in Common Lisp</a></h1>
-<time datetime="2011-04-30T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>30</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/common-lisp/'>Common Lisp</a>, <a class='category' href='/articles/categories/programming/'>Programming</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/29/one-shell-to-rule-them-all/">One shell to rule them all&#8230;</a></h1>
-<time datetime="2011-04-29T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>29</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/z-shell/'>Z Shell</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/29/career-development/">Career development - Should I stay or should I go?</a></h1>
-<time datetime="2011-04-29T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>29</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/misc/'>Misc</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/27/programming-languages-worth-learning/">Programming languages worth learning</a></h1>
-<time datetime="2011-04-27T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>27</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/programming/'>Programming</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/26/thoughts-on-the-kindle/">Thoughts on the Amazon Kindle</a></h1>
-<time datetime="2011-04-26T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>26</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/misc/'>Misc</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/26/jrebel-with-scala/">Incremental development with Scala and JRebel</a></h1>
-<time datetime="2011-04-26T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>26</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/programming/'>Programming</a>, <a class='category' href='/articles/categories/scala/'>Scala</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/24/emacs-dev-kit/">Emacs Dev Kit</a></h1>
-<time datetime="2011-04-24T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>24</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/programming/'>Programming</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/24/add-atom-feed-to-jekyll/">Add Atom feed to Jekyll powered blog</a></h1>
-<time datetime="2011-04-24T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>24</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/jekyll/'>Jekyll</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2011/04/23/moving-to-jekyll/">Moving from WordPress to Jekyll</a></h1>
-<time datetime="2011-04-23T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>23</span> <span class='year'>2011</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/jekyll/'>Jekyll</a>, <a class='category' href='/articles/categories/misc/'>Misc</a></span>
-</footer>
-
-
-</article>
-
-
-
-  
-  <h2>2010</h2>
-
-<article>
-  
-<h1><a href="/articles/2010/09/07/cv-in-latex/">My professional CV in LaTeX</a></h1>
-<time datetime="2010-09-07T00:00:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>07</span> <span class='year'>2010</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/latex/'>LaTeX</a>, <a class='category' href='/articles/categories/misc/'>Misc</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2010/05/26/3d-support-nouveau-fedora-13/">Enabling 3D support for Nouveau in Fedora 13</a></h1>
-<time datetime="2010-05-26T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>26</span> <span class='year'>2010</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/hardware/'>Hardware</a>, <a class='category' href='/articles/categories/linux/'>Linux</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2010/04/19/changing-laf-in-netbeans/">Changing the look & feel in NetBeans 6.8</a></h1>
-<time datetime="2010-04-19T00:00:00+03:00" pubdate><span class='month'>Apr</span> <span class='day'>19</span> <span class='year'>2010</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/netbeans/'>NetBeans</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2010/02/26/enable-aa-in-swing/">How to enable font anti-aliasing in a Java Swing app</a></h1>
-<time datetime="2010-02-26T00:00:00+02:00" pubdate><span class='month'>Feb</span> <span class='day'>26</span> <span class='year'>2010</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/swing/'>Swing</a></span>
-</footer>
-
-
-</article>
-
-
-
-  
-  <h2>2009</h2>
-
-<article>
-  
-<h1><a href="/articles/2009/12/18/center-jdialog-over-jframe/">How to center a JDialog over a JFrame in Swing</a></h1>
-<time datetime="2009-12-18T00:00:00+02:00" pubdate><span class='month'>Dec</span> <span class='day'>18</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/swing/'>Swing</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/12/05/menubar-emacs/">Accessing the menu bar in Emacs</a></h1>
-<time datetime="2009-12-05T00:00:00+02:00" pubdate><span class='month'>Dec</span> <span class='day'>05</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/linux/'>Linux</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/12/05/execute-stuff-after-zsh-login/">Automatically execute programs after zsh login</a></h1>
-<time datetime="2009-12-05T00:00:00+02:00" pubdate><span class='month'>Dec</span> <span class='day'>05</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/z-shell/'>Z Shell</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/09/25/xerox-phaser-3117-fedora/">Using Xerox Phaser 3117 on Fedora</a></h1>
-<time datetime="2009-09-25T00:00:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>25</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/hardware/'>Hardware</a>, <a class='category' href='/articles/categories/linux/'>Linux</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/09/03/jboss-jvm-params/">Mofidy JVM parameters for JBoss AS</a></h1>
-<time datetime="2009-09-03T00:00:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>03</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/jboss/'>JBoss</a>, <a class='category' href='/articles/categories/java/'>Java</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/07/19/dotemacs-github/">Emacs configuration in github</a></h1>
-<time datetime="2009-07-19T00:00:00+03:00" pubdate><span class='month'>Jul</span> <span class='day'>19</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/git/'>Git</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/07/14/yum-provides/">Find out quickly which package provides a certain library with YUM</a></h1>
-<time datetime="2009-07-14T00:00:00+03:00" pubdate><span class='month'>Jul</span> <span class='day'>14</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/linux/'>Linux</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/07/13/java-type-indicators-eclipse/">Java type indicators in Eclipse</a></h1>
-<time datetime="2009-07-13T00:00:00+03:00" pubdate><span class='month'>Jul</span> <span class='day'>13</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/eclipse/'>Eclipse</a>, <a class='category' href='/articles/categories/java/'>Java</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/05/19/emacs-shift-return/">Emulate the behaviour of Return+Shift(insert new line) from popular IDEs(IDEA, Eclipse) in Emacs</a></h1>
-<time datetime="2009-05-19T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>19</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/intellij/'>IntelliJ</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2009/05/04/switch-string-idiom-java/">A switch on String idiom for Java</a></h1>
-<time datetime="2009-05-04T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>04</span> <span class='year'>2009</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/java/'>Java</a></span>
-</footer>
-
-
-</article>
-
-
-
-  
-  <h2>2008</h2>
-
-<article>
-  
-<h1><a href="/articles/2008/09/29/singleton-java-ruby/">The best way to implement the Singleton pattern in Java and Ruby</a></h1>
-<time datetime="2008-09-29T00:00:00+03:00" pubdate><span class='month'>Sep</span> <span class='day'>29</span> <span class='year'>2008</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/design-patterns/'>Design Patterns</a>, <a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2008/07/27/zsh-prompt/">A nice zsh prompt</a></h1>
-<time datetime="2008-07-27T00:00:00+03:00" pubdate><span class='month'>Jul</span> <span class='day'>27</span> <span class='year'>2008</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/z-shell/'>Z Shell</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2008/06/19/emacs-rails/">Using Emacs for Rails development: The perfect setup</a></h1>
-<time datetime="2008-06-19T00:00:00+03:00" pubdate><span class='month'>Jun</span> <span class='day'>19</span> <span class='year'>2008</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/rails/'>Rails</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2008/06/16/das-keyboard/">Das Keyboard</a></h1>
-<time datetime="2008-06-16T00:00:00+03:00" pubdate><span class='month'>Jun</span> <span class='day'>16</span> <span class='year'>2008</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/hardware/'>Hardware</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/articles/2008/05/05/first-post/">Every blog has its first post&#8230;</a></h1>
-<time datetime="2008-05-05T00:00:00+03:00" pubdate><span class='month'>May</span> <span class='day'>05</span> <span class='year'>2008</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/articles/categories/misc/'>Misc</a></span>
-</footer>
-
-
-</article>
-
+	
+		
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/bbatsov">bbatsov</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
 </div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('bbatsov', 4, false);
+	})(jQuery);
+</script>
 
-  
+	
+	<div id="content" class="inner">
+	
+
+
+	
+	
+	<section class="archives"><h1 class="year">2012</h1>
+
+<article>
+	<h1 class="title"><a href="/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/">Setting up fallback locale(s) in Rails 3</a></h1>
+	<div class="meta">
+		<span class="date">Sep 12</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/rails/'>rails</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/#disqus_thread">Comments</a></span>
+	    
+	</div>
 </article>
 
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/">From Linux to OSX - 1 Year Later</a></h1>
+	<div class="meta">
+		<span class="date">Sep  9</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/osx/'>OSX</a>, <a class='category' href='/articles/categories/misc/'>misc</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/09/09/guru-mode/">guru-mode</a></h1>
+	<div class="meta">
+		<span class="date">Sep  9</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/09/09/guru-mode/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/">Emacs Support for the Slim Template Language</a></h1>
+	<div class="meta">
+		<span class="date">Sep  9</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/rails/'>Rails</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/09/09/long-time-no-see/">Long Time, No See</a></h1>
+	<div class="meta">
+		<span class="date">Sep  9</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/misc/'>misc</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/09/09/long-time-no-see/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/05/28/a-true-emacs-knight/">A True Emacs Knight</a></h1>
+	<div class="meta">
+		<span class="date">May 28</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/05/28/a-true-emacs-knight/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/04/07/changelog-vs-api-diff/">Changelog vs API diff</a></h1>
+	<div class="meta">
+		<span class="date">Apr  7</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/software/'>Software</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/04/07/changelog-vs-api-diff/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/04/06/melpa-homebrew-emacs-edition/">MELPA - homebrew (Emacs Edition)</a></h1>
+	<div class="meta">
+		<span class="date">Apr  6</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/04/06/melpa-homebrew-emacs-edition/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/03/26/wikemacs-the-other-emacs-wiki/">WikEmacs - The Other Emacs Wiki</a></h1>
+	<div class="meta">
+		<span class="date">Mar 26</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/03/26/wikemacs-the-other-emacs-wiki/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/03/21/all-hands-on-deck-or-the-action-plan-for-a-new-emacs-community-wiki/">All Hands on Deck! (or the Action Plan for a new Emacs community wiki)</a></h1>
+	<div class="meta">
+		<span class="date">Mar 21</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/03/21/all-hands-on-deck-or-the-action-plan-for-a-new-emacs-community-wiki/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/03/20/die-emacswiki/">Die EmacsWiki, Die!</a></h1>
+	<div class="meta">
+		<span class="date">Mar 20</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/rant/'>Rant</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/03/20/die-emacswiki/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch/">Emacs Tip #5: Save Buffers Automatically on Buffer or Window Switch</a></h1>
+	<div class="meta">
+		<span class="date">Mar  8</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks/">Ruby Tip #2: Get a List of All Rake Tasks</a></h1>
+	<div class="meta">
+		<span class="date">Mar  8</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/03/08/emacs-tip-number-4-repeat-last-command/">Emacs Tip #4: Repeat Last Command</a></h1>
+	<div class="meta">
+		<span class="date">Mar  8</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/03/08/emacs-tip-number-4-repeat-last-command/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/">Package Management in Emacs: The Good, the Bad and the Ugly</a></h1>
+	<div class="meta">
+		<span class="date">Feb 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2012/02/19/color-theming-in-emacs-reloaded/">Color Theming in Emacs: Reloaded</a></h1>
+	<div class="meta">
+		<span class="date">Feb 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2012/02/19/color-theming-in-emacs-reloaded/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+	
+	
+		</section>
+	
+	<section class="archives"><h1 class="year">2011</h1>
+
+<article>
+	<h1 class="title"><a href="/articles/2011/12/03/solarized-for-emacs/">Solarized for Emacs</a></h1>
+	<div class="meta">
+		<span class="date">Dec  3</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/12/03/solarized-for-emacs/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/">The Ultimate Collection of Emacs Resources</a></h1>
+	<div class="meta">
+		<span class="date">Nov 30</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/11/28/ruby-tip-number-1-demystifying-the-difference-between-equals-equals-and-eql/">Ruby Tip #1: Demystifying the Difference Between == and eql?</a></h1>
+	<div class="meta">
+		<span class="date">Nov 28</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/tips/'>Tips</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/11/28/ruby-tip-number-1-demystifying-the-difference-between-equals-equals-and-eql/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/11/25/emacs-tip-number-3-whitespace-cleanup/">Emacs Tip #3: Whitespace Cleanup</a></h1>
+	<div class="meta">
+		<span class="date">Nov 25</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/11/25/emacs-tip-number-3-whitespace-cleanup/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/11/20/admin-interfaces-for-rails-apps-railsadmin-vs-activeadmin/">Admin Interfaces for Rails Apps: RailsAdmin vs ActiveAdmin</a></h1>
+	<div class="meta">
+		<span class="date">Nov 20</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/activeadmin/'>ActiveAdmin</a>, <a class='category' href='/articles/categories/railsadmin/'>RailsAdmin</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/ruby-on-rails/'>Ruby on Rails</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/11/20/admin-interfaces-for-rails-apps-railsadmin-vs-activeadmin/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/11/19/why-emacs/">Why Emacs?</a></h1>
+	<div class="meta">
+		<span class="date">Nov 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/11/19/why-emacs/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/11/12/emacs-tip-number-2-open-file-in-external-program/">Emacs Tip #2: Open File in External Program</a></h1>
+	<div class="meta">
+		<span class="date">Nov 12</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/11/12/emacs-tip-number-2-open-file-in-external-program/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/11/11/blogging-like-a-hacker-evolution/">Blogging Like a Hacker: Evolution</a></h1>
+	<div class="meta">
+		<span class="date">Nov 11</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/jekyll/'>Jekyll</a>, <a class='category' href='/articles/categories/octopress/'>Octopress</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/11/11/blogging-like-a-hacker-evolution/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/10/30/deploying-rails31-apps-on-celadon-cedar/">Deploying Rails 3.1 applications on Heroku&#8217;s Celadon Cedar stack</a></h1>
+	<div class="meta">
+		<span class="date">Oct 30</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/heroku/'>Heroku</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/ruby-on-rails/'>Ruby on Rails</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/10/30/deploying-rails31-apps-on-celadon-cedar/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/10/09/getting-started-with-emacs-24/">Getting started with Emacs 24</a></h1>
+	<div class="meta">
+		<span class="date">Oct  9</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/08/19/a-peek-at-emacs24/">A peek at Emacs 24</a></h1>
+	<div class="meta">
+		<span class="date">Aug 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/08/19/a-peek-at-emacs24/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/07/04/debian-tips/">Debian post installation setup & tips</a></h1>
+	<div class="meta">
+		<span class="date">Jul  4</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/debian/'>Debian</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/07/04/debian-tips/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/06/19/django-vs-rails/">Django 1.3 vs Rails 3: A not so final showdown</a></h1>
+	<div class="meta">
+		<span class="date">Jun 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/django/'>Django</a>, <a class='category' href='/articles/categories/python/'>Python</a>, <a class='category' href='/articles/categories/rails/'>Rails</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/06/19/django-vs-rails/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/06/14/linux-desktop-part-2/">The Linux desktop experience is killing Linux on the desktop, Part II</a></h1>
+	<div class="meta">
+		<span class="date">Jun 14</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/rant/'>Rant</a>, <a class='category' href='/articles/categories/windows/'>Windows</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/06/11/linux-desktop-experience-killing-linux-on-the-desktop/">The Linux desktop experience is killing Linux on the desktop</a></h1>
+	<div class="meta">
+		<span class="date">Jun 11</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/rant/'>Rant</a>, <a class='category' href='/articles/categories/windows/'>Windows</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/06/05/emacs-default-font/">Emacs Tip #1: Set the default font in Emacs 23</a></h1>
+	<div class="meta">
+		<span class="date">Jun  5</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/06/04/phaser-3117-fedora-15/">Running Xerox Phaser 3117 under Fedora 15</a></h1>
+	<div class="meta">
+		<span class="date">Jun  4</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/hardware/'>Hardware</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/05/31/fedora-15-tips/">Fedora 15 post installation setup & tips</a></h1>
+	<div class="meta">
+		<span class="date">May 31</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2011/05/31/fedora-15-tips/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/05/18/jvm-langs-jruby/">Java.next() - JRuby: The Rubyists Strike Back</a></h1>
+	<div class="meta">
+		<span class="date">May 18</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/05/17/recommended-ruby-books/">Recommended Ruby books</a></h1>
+	<div class="meta">
+		<span class="date">May 17</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/books/'>Books</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/05/12/jvm-langs-clojure/">Java.next() - Clojure: The Return of the Lispers</a></h1>
+	<div class="meta">
+		<span class="date">May 12</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/clojure/'>Clojure</a>, <a class='category' href='/articles/categories/java/'>Java</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/05/11/zenburn-emacs/">A new Zenburn theme for Emacs</a></h1>
+	<div class="meta">
+		<span class="date">May 11</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/05/08/jvm-langs-scala/">Java.next() - Scala: The Revenge of the Static Typing</a></h1>
+	<div class="meta">
+		<span class="date">May  8</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/scala/'>Scala</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/05/06/jvm-langs-groovy/">Java.next() - The Groovy Programming Language</a></h1>
+	<div class="meta">
+		<span class="date">May  6</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/groovy/'>Groovy</a>, <a class='category' href='/articles/categories/java/'>Java</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/05/03/ruby-or-python/">Ruby or Python? Well, it depends&#8230;</a></h1>
+	<div class="meta">
+		<span class="date">May  3</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/programming/'>Programming</a>, <a class='category' href='/articles/categories/python/'>Python</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/30/parsing-numbers-from-string-in-lisp/">Parsing numbers from string in Common Lisp</a></h1>
+	<div class="meta">
+		<span class="date">Apr 30</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/common-lisp/'>Common Lisp</a>, <a class='category' href='/articles/categories/programming/'>Programming</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/29/one-shell-to-rule-them-all/">One shell to rule them all&#8230;</a></h1>
+	<div class="meta">
+		<span class="date">Apr 29</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/z-shell/'>Z Shell</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/29/career-development/">Career development - Should I stay or should I go?</a></h1>
+	<div class="meta">
+		<span class="date">Apr 29</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/misc/'>Misc</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/27/programming-languages-worth-learning/">Programming languages worth learning</a></h1>
+	<div class="meta">
+		<span class="date">Apr 27</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/programming/'>Programming</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/26/thoughts-on-the-kindle/">Thoughts on the Amazon Kindle</a></h1>
+	<div class="meta">
+		<span class="date">Apr 26</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/misc/'>Misc</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/26/jrebel-with-scala/">Incremental development with Scala and JRebel</a></h1>
+	<div class="meta">
+		<span class="date">Apr 26</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/programming/'>Programming</a>, <a class='category' href='/articles/categories/scala/'>Scala</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/24/emacs-dev-kit/">Emacs Dev Kit</a></h1>
+	<div class="meta">
+		<span class="date">Apr 24</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/programming/'>Programming</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/24/add-atom-feed-to-jekyll/">Add Atom feed to Jekyll powered blog</a></h1>
+	<div class="meta">
+		<span class="date">Apr 24</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/jekyll/'>Jekyll</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2011/04/23/moving-to-jekyll/">Moving from WordPress to Jekyll</a></h1>
+	<div class="meta">
+		<span class="date">Apr 23</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/jekyll/'>Jekyll</a>, <a class='category' href='/articles/categories/misc/'>Misc</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+	
+	
+		</section>
+	
+	<section class="archives"><h1 class="year">2010</h1>
+
+<article>
+	<h1 class="title"><a href="/articles/2010/09/07/cv-in-latex/">My professional CV in LaTeX</a></h1>
+	<div class="meta">
+		<span class="date">Sep  7</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/latex/'>LaTeX</a>, <a class='category' href='/articles/categories/misc/'>Misc</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2010/05/26/3d-support-nouveau-fedora-13/">Enabling 3D support for Nouveau in Fedora 13</a></h1>
+	<div class="meta">
+		<span class="date">May 26</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/hardware/'>Hardware</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2010/04/19/changing-laf-in-netbeans/">Changing the look & feel in NetBeans 6.8</a></h1>
+	<div class="meta">
+		<span class="date">Apr 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/netbeans/'>NetBeans</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2010/02/26/enable-aa-in-swing/">How to enable font anti-aliasing in a Java Swing app</a></h1>
+	<div class="meta">
+		<span class="date">Feb 26</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/swing/'>Swing</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+	
+	
+		</section>
+	
+	<section class="archives"><h1 class="year">2009</h1>
+
+<article>
+	<h1 class="title"><a href="/articles/2009/12/18/center-jdialog-over-jframe/">How to center a JDialog over a JFrame in Swing</a></h1>
+	<div class="meta">
+		<span class="date">Dec 18</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/swing/'>Swing</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/12/05/menubar-emacs/">Accessing the menu bar in Emacs</a></h1>
+	<div class="meta">
+		<span class="date">Dec  5</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/12/05/execute-stuff-after-zsh-login/">Automatically execute programs after zsh login</a></h1>
+	<div class="meta">
+		<span class="date">Dec  5</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/z-shell/'>Z Shell</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/09/25/xerox-phaser-3117-fedora/">Using Xerox Phaser 3117 on Fedora</a></h1>
+	<div class="meta">
+		<span class="date">Sep 25</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/hardware/'>Hardware</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/09/03/jboss-jvm-params/">Mofidy JVM parameters for JBoss AS</a></h1>
+	<div class="meta">
+		<span class="date">Sep  3</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/jboss/'>JBoss</a>, <a class='category' href='/articles/categories/java/'>Java</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/07/19/dotemacs-github/">Emacs configuration in github</a></h1>
+	<div class="meta">
+		<span class="date">Jul 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/git/'>Git</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/07/14/yum-provides/">Find out quickly which package provides a certain library with YUM</a></h1>
+	<div class="meta">
+		<span class="date">Jul 14</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/07/13/java-type-indicators-eclipse/">Java type indicators in Eclipse</a></h1>
+	<div class="meta">
+		<span class="date">Jul 13</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/eclipse/'>Eclipse</a>, <a class='category' href='/articles/categories/java/'>Java</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/05/19/emacs-shift-return/">Emulate the behaviour of Return+Shift(insert new line) from popular IDEs(IDEA, Eclipse) in Emacs</a></h1>
+	<div class="meta">
+		<span class="date">May 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/intellij/'>IntelliJ</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2009/05/04/switch-string-idiom-java/">A switch on String idiom for Java</a></h1>
+	<div class="meta">
+		<span class="date">May  4</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/java/'>Java</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+	
+	
+		</section>
+	
+	<section class="archives"><h1 class="year">2008</h1>
+
+<article>
+	<h1 class="title"><a href="/articles/2008/09/29/singleton-java-ruby/">The best way to implement the Singleton pattern in Java and Ruby</a></h1>
+	<div class="meta">
+		<span class="date">Sep 29</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/design-patterns/'>Design Patterns</a>, <a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2008/07/27/zsh-prompt/">A nice zsh prompt</a></h1>
+	<div class="meta">
+		<span class="date">Jul 27</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/z-shell/'>Z Shell</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2008/06/19/emacs-rails/">Using Emacs for Rails development: The perfect setup</a></h1>
+	<div class="meta">
+		<span class="date">Jun 19</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/rails/'>Rails</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2008/06/16/das-keyboard/">Das Keyboard</a></h1>
+	<div class="meta">
+		<span class="date">Jun 16</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/hardware/'>Hardware</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2008/06/16/das-keyboard/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
+
+	
+
+
+<article>
+	<h1 class="title"><a href="/articles/2008/05/05/first-post/">Every blog has its first post&#8230;</a></h1>
+	<div class="meta">
+		<span class="date">May  5</span>
+		<span class="tags">
+
+
+	<a class='category' href='/articles/categories/misc/'>Misc</a>
+
+
+</span>
+	    
+	    <span class="comments"><a href="/articles/2008/05/05/first-post/#disqus_thread">Comments</a></span>
+	    
+	</div>
+</article>
 </div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
 
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Bozhidar</h1>
-  <p>My name is Bozhidar Batsov and I'm a professional software engineer
-  from Sofia, Bulgaria. I'm quite fond of Unix, programming and
-  Emacs. From time to time I teach programming courses and speak at
-  tech conferences. I also happen to blog here (albeit rarely) about
-  various stuff mostly related to programming.</p>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/">Setting up fallback locale(s) in Rails 3</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/">From Linux to OSX - 1 Year Later</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/09/09/guru-mode/">guru-mode</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/">Emacs Support for the Slim Template Language</a>
-      </li>
-    
-      <li class="post">
-        <a href="/articles/2012/09/09/long-time-no-see/">Long Time, No See</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/bbatsov">@bbatsov</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'bbatsov',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-<section>
-  <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating...</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("bbatsov", 4, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/bbatsov" class="twitter-follow-button" data-show-count="false">Follow @bbatsov</a>
-  
-</section>
-
-
-
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/108153044872779739189?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Bozhidar Batsov -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+    Bozhidar Batsov
 
 </footer>
-  
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
 
 <script type="text/javascript">
       var disqus_shortname = 'batsov';
@@ -1204,29 +1451,17 @@ Sep 09 &hellip;">
 
 
 
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-22917580-1']);
+		_gaq.push(['_trackPageview']);
 
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 
