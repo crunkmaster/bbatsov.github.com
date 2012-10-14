@@ -321,12 +321,16 @@
         <lastmod>2012-10-14T18:22:58+03:00</lastmod>
     </url>
     <url>
+        <loc>http://bbatsov.github.com/articles/2012/10/14/emacs-on-osx/</loc>
+        <lastmod>2012-10-14T22:50:12+03:00</lastmod>
+    </url>
+    <url>
         <loc>http://bbatsov.github.com/about/</loc>
         <lastmod>2012-10-11T21:16:05+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/blog/archives/</loc>
-        <lastmod>2012-10-14T18:22:58+03:00</lastmod>
+        <lastmod>2012-10-14T22:50:12+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/colophon/</loc>
@@ -338,7 +342,7 @@
     </url>
     <url>
         <loc>http://bbatsov.github.com/</loc>
-        <lastmod>2012-10-14T18:22:58+03:00</lastmod>
+        <lastmod>2012-10-14T22:50:12+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/lisp-problems/</loc>

@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>(think)</title>
+	<title>Emacs on OSX - (think)</title>
 	<meta name="author" content="Bozhidar Batsov">
 
 	
@@ -94,13 +94,9 @@ running Emacs under the Max OSX operating system. Installation While &hellip;">
 </script>
 
 	
-	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/10/14/emacs-on-osx/">Emacs on OSX</a></h1>
-	<div class="entry-content">
-		<h2>Prelude</h2>
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Emacs on OSX</h1>
+	<div class="entry-content"><h2>Prelude</h2>
 
 <p>In this article I&#8217;ll share with you a few tips and tricks about
 running Emacs under the Max OSX operating system.</p>
@@ -244,10 +240,7 @@ Emacs on OSX and get a lot of extra firepower you might want to install
 <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> - an enhanced
 Emacs 24.x configuration (developed by yours truly) that should make
 your experience with Emacs both more pleasant and more powerful.</p>
-
-		
-		
-	</div>
+</div>
 
 
 <div class="meta">
@@ -274,278 +267,28 @@ your experience with Emacs both more pleasant and more powerful.</p>
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console/">Rails Tip #1: Use Pry Instead of Irb for the Rails Console</a></h1>
-	<div class="entry-content">
-		<p>This tip is going to be a really short one. Hopefully by now you&#8217;ve
-heard about <a href="http://pryrepl.org/">pry</a> - a fantastic <code>irb</code>
-replacement, that somewhat reminds me of the mighty Lisp REPLs. What
-you might not know is how to hook it into Rails so that the <code>rails
-console</code> (a.k.a. <code>rails c</code>) command would fire a pry shell instead of
-an irb one. There are several ways to do so, but I find one
-particularly straightforward - the awesome little gem
-<a href="https://github.com/rweng/pry-rails">pry-rails</a>.</p>
-
-<p>So what are you waiting for? Go ahead, install the little sucker and
-enjoy your new pry-powered Rails console.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-14T18:06:00+03:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/rails/'>rails</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>, <a class='category' href='/articles/categories/tip/'>tip</a>
-
-
-</div>
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/10/14/ruby-tip-number-3-matching-on-an-objects-class-in-a-case-expression/">Ruby Tip #3: Matching on an Object&#8217;s Class in a Case Expression</a></h1>
-	<div class="entry-content">
-		<p>From time to time you might want to take different actions depending
-on an object&#8217;s class. One handy way to do so is with a <code>case</code>
-expression:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="n">object</span>
-</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
-</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
-</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Behind the scenes this is transformed to:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="n">object</span>
-</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
-</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
-</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>A lot of people seem to make the following mistake, so beware:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># WRONG - Class === Class will return false</span>
-</span><span class='line'><span class="k">case</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span>
-</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
-</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
-</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Hopefully you&#8217;ll find this small tip useful.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-14T15:23:00+03:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>
-
-
-</div>
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/">Setting Up Fallback Locale(s) in Rails 3</a></h1>
-	<div class="entry-content">
-		<p>I18n(internationalization) and l10n(localization) are topics that are
-covered superbly by the
-<a href="http://guides.rubyonrails.org/i18n.html">Rails Guides</a>. The one thing
-that&#8217;s left out is the setup of fallback locales in case something is
-missing in the currently selected locale (and mark my words -
-something probably is). Therefore I&#8217;m writing this
-post.</p>
-
-<p>Ideally we&#8217;d have i18n-ed and localized everything perfectly, but
-that&#8217;s rarely the case. I&#8217;d rather have the users see things from
-another locale than error messages. So how do we do that in Rails 3?
-It&#8217;s pretty simple actually. There are three fallback options we can
-select and they all require small changes to the <code>application.rb</code> file.</p>
-
-<ul>
-<li>fallback to the default locale</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># fallback to what&#39;s specified in config.i18n.default_locale</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="kp">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>fallback to a specified locale</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># fallback to en, regardless of what&#39;s in config.i18n.default_locale</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="o">[</span><span class="ss">:en</span><span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>specify a fallback map (different fallback locales for different
-locales)</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># missing translations of es and fr languages will fallback to english</span>
-</span><span class='line'><span class="c1"># missing translations in german will fallback to french</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;es&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;fr&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;de&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;fr&#39;</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Well, that&#8217;s the gist of it. Happy coding!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-12T14:56:00+03:00" pubdate data-updated="true">Sep 12<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/rails/'>rails</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>
-
-
-</div>
+	<a class="addthis_button_tweet"></a>
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/">From Linux to OSX - 1 Year Later</a></h1>
-	<div class="entry-content">
-		<h2>Prelude</h2>
-
-<p>A little more than an year ago I wrote my rant post
-<a href="http://batsov.com/articles/2011/06/11/linux-desktop-experience-killing-linux-on-the-desktop/">The Linux Desktop Experience is Killing Linux on the Desktop</a>
-and for the first time in 8 years I wasn&#8217;t a desktop Linux user
-anymore. I spent about a month wrestling with Windows 7, but let&#8217;s
-face it - Windows is ill suited for professional Ruby programmers like
-me (and it&#8217;s ill suited for most programmers, except maybe Java &amp; .Net I
-guess).</p>
-
-<p>Anyways, it was never my intention to stick with Windows - I was just
-doing my Mac due diligence. Now with 1+ year of OSX usage I&#8217;d
-like to share a few things about my experience thus far with you.</p>
-
-
-		
-		<a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-09T22:11:00+03:00" pubdate data-updated="true">Sep 9<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/osx/'>OSX</a>, <a class='category' href='/articles/categories/misc/'>misc</a>
-
-
-</div>
 	
-</div></article>
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
-<nav id="pagenavi">
-    
-    
-        <a href="/articles/page/2/" class="next">Next</a>
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav></div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
 	<footer id="footer" class="inner">Copyright &copy; 2012
 
     Bozhidar Batsov
@@ -564,7 +307,10 @@ like to share a few things about my experience thus far with you.</p>
       var disqus_shortname = 'batsov';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bbatsov.github.com/articles/2012/10/14/emacs-on-osx/';
+        var disqus_url = 'http://bbatsov.github.com/articles/2012/10/14/emacs-on-osx/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: OSX | (think)]]></title>
+  <title><![CDATA[Category: osx | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/osx/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-14T18:23:37+03:00</updated>
+  <updated>2012-10-14T22:51:51+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -14,245 +14,134 @@
 
   
   <entry>
-    <title type="html"><![CDATA[From Linux to OSX - 1 Year Later]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/09/09/from-linux-to-osx-1-year-later/"/>
-    <updated>2012-09-09T22:11:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/09/09/from-linux-to-osx-1-year-later</id>
+    <title type="html"><![CDATA[Emacs on OSX]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/10/14/emacs-on-osx/"/>
+    <updated>2012-10-14T22:03:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/10/14/emacs-on-osx</id>
     <content type="html"><![CDATA[<h2>Prelude</h2>
 
-<p>A little more than an year ago I wrote my rant post
-<a href="http://batsov.com/articles/2011/06/11/linux-desktop-experience-killing-linux-on-the-desktop/">The Linux Desktop Experience is Killing Linux on the Desktop</a>
-and for the first time in 8 years I wasn't a desktop Linux user
-anymore. I spent about a month wrestling with Windows 7, but let's
-face it - Windows is ill suited for professional Ruby programmers like
-me (and it's ill suited for most programmers, except maybe Java &amp; .Net I
-guess).</p>
+<p>In this article I'll share with you a few tips and tricks about
+running Emacs under the Max OSX operating system.</p>
 
-<p>Anyways, it was never my intention to stick with Windows - I was just
-doing my Mac due diligence. Now with 1+ year of OSX usage I'd
-like to share a few things about my experience thus far with you.</p>
+<h2>Installation</h2>
 
-<!--more-->
+<p>While Emacs is available for installation from
+<a href="http://wikemacs.org/wiki/Installing_Emacs_on_OS_X">various sources</a>
+I personally recommend you to use the
+<a href="http://wikemacs.org/wiki/Installing_Emacs_on_OS_X">Emacs for Mac OSX binary distribution</a>.</p>
 
+<p>Installation via Homebrew is also a decent option, although it more time consuming.</p>
 
-<h2>From Linux to OSX</h2>
+<p>After the installation you might want to wipe out the ancient Emacs 22
+that ships with OSX by default(its presence will only cause headaches, trust me):</p>
 
-<p>The transition was initially painful - I felt very odd dragging app
-icons to the <code>Applications</code> folder to install them. To be honest I was
-quite puzzled what was I supposed to do the first time I had to
-install an app this way (it didn't have those helpful hints with the arrows most apps
-do). The Linux distro package management is definitely infinitely
-better, or at least it seems so from where I'm standing. Luckily for me most of the
-tools I use are available from the third-party <a href="http://mxcl.github.com/homebrew/">homebrew</a> package
-manager for OSX. It's like an extremely basic version of the mighty
-Gentoo <code>portage</code>, but it generally gets the job done.</p>
+<p><code>bash
+$ sudo rm /usr/bin/emacs
+$ sudo rm -rf /usr/share/emacs
+</code></p>
 
-<p>On a more positive note - I was impressed with the quality and
-responsiveness of the OSX desktop and the fact that Emacs keybindings
-are used by default in its editor toolkit (and strangely puzzled by
-the lack of right control key - how is one supposed to hit <code>Control +
-a</code> I dare ask?). One app in particular - <code>spotlight</code>, blew me off the
-water, especially after having dealt on Linux with crappy clones like
-<code>beagle</code> in the past. Spotlight can truly find just about anything,
-was it's own SQL-like query language and is <strong>blazingly</strong> fast.</p>
+<p>Alternatively you can just create an alias in your shell and when you
+invoke <code>emacs</code> it will run the newly installed version:</p>
 
-<p>I quickly found a good terminal emulator (that would be
-<a href="http://www.iterm2.com/#/section/home">iterm2</a> - it's actually the
-best terminal emulator in the world IMHO) and
-most of the command-line apps I used from day to day were already lying around
-(after all OSX <strong>is</strong> Unix) - to my great surprise even stuff like PostgreSQL
-(only on OSX Server) and <code>zsh</code> came preinstalled. Most of the other
-apps I really needed had native OSX ports; the others - worthy
-alternatives.</p>
+<p><code>bash
+$ alias emacs="/Applications/Emacs.app/Contents/MacOS/"
+</code></p>
 
-<p>Having hated OpenOffice.org for many years I was very pleasantly
-surprised by quality of apps like <code>Keynote</code> &amp; <code>Words</code>.</p>
+<p>If you installed via Homebrew that path might look like this:</p>
 
-<p>Being a keyboard chap preaching in the church of <code>Das Keyboard</code> I was
-a bit underwhelmed by the whole multi-touch mumbo-jumbo at first, but
-after a while I came to the conclusion that Apple have the only
-trackpads and mice that are actually worth using (even though I still
-like using the keyboard way more).</p>
+<p><code>bash
+$ alias emacs="/usr/local/Cellar/emacs/24.2/Emacs.app/Contents/MacOS/Emacs -nw"
+</code></p>
 
-<p>To sum it all up - I got up to speed fairly quickly, but it was a
-bumpy ride.</p>
+<p>To make it permanent, if using bash, add that line to
+<code>~/.bash_profile</code>. zsh users will want to update <code>~/.zshrc</code> instead.</p>
 
-<p>Here's a bit more details...</p>
+<h2>Full-screen support</h2>
 
-<h2>The things I love about OSX</h2>
+<p>The Homebrew Emacs formula includes a patch providing the <code>M-x
+ns-toggle-fullscreen</code> command for switching between normal and
+full-screen modes. It works well, but does not provide the typical OS
+X Lion full-screen app experience. In particular, it remains on the
+desktop, obscuring non-full-screen applications, rather than moving to
+its own space. For OSX Lion style fullscreen support have a look at
+this
+<a href="http://sourcematters.org/2012/04/10/full-screen-emacs-24-for-os-x-lion.html">article</a>.</p>
 
-<h3>The Desktop</h3>
+<p>Another option that you might want to explore is
+the <a href="http://osxdaily.com/2011/07/22/enable-full-screen-support-all-apps-os-x-lion-maximizer/">maximizer</a>
+utility that brings full-screen support for all Cocoa apps under Lion.</p>
 
-<p>It's pretty, it's quick, it's stable. It makes KDE4 and GNOME3 look
-like school projects in comparison. And did I mention that the fonts
-on OSX are even prettier than the ones in Windows?</p>
+<h2>Keybindings</h2>
 
-<h3>The OSX flavored apps</h3>
+<p>I heartily recommend you to remap your <em>Caps Lock</em> key to <em>Control</em>. This
+can be easily done via <em>Preferences -> Keyboard -> Modifier Keys</em>. If
+you're using a laptop keyboard or the bluetooth keyboard you'll
+definitely want to remap your right Option key to Control as
+well. No one can use effectively Emacs without a right Control
+key. Remapping it is a bit more involved and requires the use of the
+third-party utility
+<a href="http://pqrs.org/macosx/keyremap4macbook/">KeyRemap4MacBook</a>.</p>
 
-<p><a href="http://sparrowapp.com/">Sparrow</a> is the first desktop mail client I ever liked (shame on
-you Google for killing it).</p>
+<p>On a regular Mac keyboard you'll probably want to map Command to Meta
+and Option to Super. On an external Windows keyboard you'll want to
+map Command to Super and Option to Meta (on Windows keyboard the
+Command and Option keys are swapped). Add this to your <code>init.el</code> (or
+<code>.emacs</code>) file:</p>
 
-<p>iTerm2 is the ultimate terminal emulator. It alone warrants the
-purchase of a Mac.</p>
+<p><code>cl
+(setq mac-command-modifier 'super)
+(setq mac-option-modifier 'meta)
+</code></p>
 
-<p>Keynote is the best presentation program I've come to use thus far.</p>
+<p>If you often switch between your laptop keyboard and an external
+Windows keyboard (like me) you might want to define this helper
+command and bind it to some key combo (<code>C-c w</code> in the example):</p>
 
-<p><a href="http://www.parallels.com/">Parallels Desktop</a> is light years ahead of VirtualBox and KVM (as far
-as desktop virtualization is concerned).</p>
+<p>``` cl
+(defun swap-meta-and-super ()
+  "Swap the mapping of meta and super. Very useful for people using their Mac
+with a Windows external keyboard from time to time."
+  (interactive)
+  (if (eq mac-command-modifier 'super)</p>
 
-<p>I could go on a lot like this, but I'll stop now.</p>
+<pre><code>  (progn
+    (setq mac-command-modifier 'meta)
+    (setq mac-option-modifier 'super)
+    (message "Command is now bound to META and Option is bound to SUPER."))
+(progn
+  (setq mac-command-modifier 'super)
+  (setq mac-option-modifier 'meta)
+  (message "Command is now bound to SUPER and Option is bound to META."))))
+</code></pre>
 
-<p>It's obvious that Mac users have developed a taste in extremely
-refined software.</p>
+<p>(global-set-key (kbd "C-c w") 'swap-meta-and-super)
+```</p>
 
-<h3>Hardware compatibility</h3>
+<h2>Setting the PATH variable</h2>
 
-<p>If something is supposed to work with OSX - it works superbly
-out-of-the-box. I've almost forgotten now the days of constant battle
-with crappy hardware. Sleep &amp; Wake just work. Battery life is
-exceptional (due to very advanced power management capabilities).</p>
+<p>Long story short - if you're running Emacs from Spotlight (or any
+other launcher for that matter) your <code>PATH</code> and <code>exec-path</code> variables
+won't be same as the ones in your shell (and that's every nasty since
+you want be able to run some external programs from Emacs). The best
+way to handle this would be installing the package
+<a href="https://github.com/purcell/exec-path-from-shell">exec-path-from-shell</a>
+by Steve Purcell.</p>
 
-<p>Certainly controlling all of the hardware an OS will run on helps a
-lot, but we still have to acknowledge Apple's achievement.</p>
+<h2>Flyspell</h2>
 
-<h3>Stability</h3>
+<p>For flyspell to work correctly you'll need to install aspell plus a few dictionaries.</p>
 
-<p>One year, three Macs - only two or three system crashes. For a
-developer that likes to tinker a little bit more than he should -
-that's impressive.</p>
+<p><code>bash
+$ brew install aspell --lang=en
+</code></p>
 
-<p>That having said I had some Linux desktops that used run for more than
-half an year without reboots (and the reboots were often caused by
-power outages or distro/kernel updates). Linux stability on a (fairly
-new) laptop? Well, that's a whole different story...</p>
+<h2>More goodies</h2>
 
-<h2>The things that are OK</h2>
-
-<h3>The default apps</h3>
-
-<p>The apps bundled with OSX are not bad at all, but they aren't
-particularly great. Still - Safari is a very good browser, Mail is a
-much better desktop client than Evolution/Thunderbird, Calendar is a
-good organizer (but a bit buggy when it comes down to Google Calendar
-integration), Messages is so-so.</p>
-
-<p>The bottom line is - you can go a long way with the bundled apps, but
-they aren't exactly perfect. My advice - shop for alternatives (both
-open-source and proprietary).</p>
-
-<h3>Mac App Store</h3>
-
-<p>Decent way to distribute proprietary apps, but with all the
-restrictions on the app sandboxing there aren't many interesting apps
-out there. Hopefully it'll get better in time. The ability to upgrade
-your OSX by purchasing the new version from the App Store is very cool
-(for a proprietary OS of course).</p>
-
-<h3>Emacs</h3>
-
-<p>The Cocoa port of Emacs is a bit immature and there are some visual
-glitches here and there (try out <code>M-x linum-mode</code> for instance), but
-they are forgivable. I'm also missing the deep integration Emacs had with Linux.
-And who the fuck designed all the official Mac keyboards without a
-right control key? I finally understood why so many Mac users where on
-vim :-)</p>
-
-<p>Btw, remapping the <code>Caps</code> to <code>Control</code> is not the answer. I do it now,
-I did it on Linux as well. You simply not supposed to hit Control +
-any other key with the same hand. It's disruptive to your
-typing... But then again - you should probably do most of your typing
-will a full sized keyboard :-)</p>
-
-<h3>Software Development</h3>
-
-<p>OSX doesn't nurture software development as much as Linux does, but it
-comes pretty close in second place. All the tools you know and love
-are available, but their installation &amp; setup is a little bit more
-involved on OSX. There is a reason why the screenshots in most
-programming books show OSX.</p>
-
-<h3>System administration</h3>
-
-<p>Definitely a step back from Linux. Programs like <code>launchctl</code> (for instance) are not
-exactly fun to work with, but they do get the job done. I'd never use
-an OSX box for anything more than a desktop workstation. Setting up a
-sensible <code>$PATH</code> is not as trivial as it was on Linux either
-(<code>/etc/paths</code> and some plist I forgotten come to mind).</p>
-
-<h2>The things I hate</h2>
-
-<h3>The special keys</h3>
-
-<p>Not exactly an OSX feature, but still...</p>
-
-<p>One year and I still hate <code>Command</code> and <code>Option</code> - option is basically <code>Alt</code>
-on a strange location and Command is totally useless IMHO. I'd
-probably wouldn't have hated them as much if there were room left on
-the Apple keyboards (expect of course the old wired Apple keyboard) for an addition control key. Luckily for me I use an
-external
-<a href="http://batsov.com/articles/2008/06/16/das-keyboard/">Das Keyboard Ultimate</a>
-most of the time...</p>
-
-<p>Command and Option do have some value, I'd probably would have
-appreciated it if they didn't come at the cost of my beloved right
-control (which I guess only Emacs users are missing anyways).</p>
-
-<h3>No standard all mighty package manager</h3>
-
-<p>On Linux I had <code>aptitude</code>, <code>yum</code>, <code>portage</code> and <code>pacman</code> - all amazing at what
-they do. On OSX - <code>homebrew</code> is a decent option, but it's a far cry from
-the might and magic of the Linux package managers. Still, <code>homebrew</code>
-is better than it's alternative, so beware!</p>
-
-<h3>Ugly XML config files</h3>
-
-<p>Here and there in OSX you have to write some appalling <a href="http://en.wikipedia.org/wiki/Property_list">XML config
-files</a>. I thought I'd never see the likes of those again after I put
-Java development behind me :-)</p>
-
-<h3>XCode</h3>
-
-<p>You need to install a giant lame IDE just to get a bunch of command
-line development tools? That's one of the most annoying things I've
-encountered up-to-date in OSX.</p>
-
-<p>Yep, I know about the tools being available
-<a href="http://kennethreitz.com/xcode-gcc-and-homebrew.html">separately</a> for
-couple of months now, but requesting an Apple developer registration
-just to get them seems a bit to much to me.</p>
-
-<h2>Epilogue</h2>
-
-<p>Am I happier now without Linux? Definitely! Is OSX a better OS than
-Linux? Absolutely not! It does have a <strong>much</strong> better desktop
-experience and since I spend most of the time on a computer
-interacting with the desktop - that's a big win for me. Of course I
-wouldn't mind seeing Linux achieve this level of desktop maturity and
-stability.</p>
-
-<p>Should you dump Linux and join me in <strong>darkness</strong>? How the hell should
-I know? :-) I'm just sharing my two cents - if you're happy using
-Linux you should <strong>definitely</strong> stick with it. Obviously I wasn't and
-there weren't that many alternatives lying around.</p>
-
-<p>Not having to deal with hardware problems and immature desktop apps is
-like a breath of fresh air and it more than compensates for the few
-shortcomings of OSX. Nothing compensates the lack of that right
-control key on most keyboards, but after all that's not an OS problem
-;-)</p>
-
-<p>There is great vibrant hacker community gathered around OSX and it's
-one of the main driving forces of the OS. There is unfortunately a lot
-of corporate pressure from Apple as well, but as you already know by
-now - there are never perfect things, there are always
-compromises. I'd rather use a proprietary OS that stays out of my way,
-than a free OS into which I bump at every turn.</p>
-
-<p>Soon I'll blog a little bit more about the practical aspects and
-implication of the migration. Cheers, mates!</p>
-
-<p><strong>P.S. I've updated the original post a bit to reflect some of the
-initial feedback I received.</strong></p>
+<p>If you want to spare yourself part of the headache of configuring
+Emacs on OSX and get a lot of extra firepower you might want to install
+<a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> - an enhanced
+Emacs 24.x configuration (developed by yours truly) that should make
+your experience with Emacs both more pleasant and more powerful.</p>
 ]]></content>
   </entry>
   
