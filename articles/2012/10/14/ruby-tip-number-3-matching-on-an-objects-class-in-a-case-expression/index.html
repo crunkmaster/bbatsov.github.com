@@ -3,12 +3,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Emacs Tip #1: Set the default font in Emacs 23 - (think)</title>
+	<title>Ruby Tip #3: Matching on an Object's Class in a Case Expression - (think)</title>
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Emacs 23.2 will pick up the default GNOME monospaced font, so if
-you&#8217;re a GNOME user - you&#8217;re basically covered. If you&#8217;re not - &hellip;">
+	<meta name="description" content="From time to time you might want to take different actions depending
+on an object&#8217;s class. One handy way to do so is with a case
+expression: 1 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,43 +96,57 @@ you&#8217;re a GNOME user - you&#8217;re basically covered. If you&#8217;re not 
 
 	
 	<div id="content" class="inner"><article class="post">
-	<h1 class="title">Emacs Tip #1: Set the Default Font in Emacs 23</h1>
-	<div class="entry-content"><p>Emacs 23.2 will pick up the default GNOME monospaced font, so if
-you&#8217;re a GNOME user - you&#8217;re basically covered. If you&#8217;re not - don&#8217;t
-worry.</p>
-
-<p>The simplest way to set the Emacs font is just to add the following
-in your .emacs (or init.el):</p>
+	<h1 class="title">Ruby Tip #3: Matching on an Object's Class in a Case Expression</h1>
+	<div class="entry-content"><p>From time to time you might want to take different actions depending
+on an object&#8217;s class. One handy way to do so is with a <code>case</code>
+expression:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Inconsolata-12&quot;</span><span class="p">)</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="n">object</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>This code will set the Emacs font to Inconsolata (my favorite
-monospaced font) with font size 12pt. The problem with this approach
-is that it will not work with a X Emacs client (emacsclient -c)
-connecting to an Emacs daemon (emacs &#8211;daemon), because the code will
-get run when the server starts and will basically mean nothing to
-it. You can alleviate this problem by using the appropriate hook for X
-clients, but I find this distasteful. A much simpler solution is to
-forget about <em>set-default-font</em> altogether and simply create a file
-named <strong>.Xdefaults</strong> in your home folder. Put the following in it:</p>
+<p>Behind the scenes this is transformed to:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>Emacs.font: Inconsolata-12
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="n">object</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Afterwards run the following command:</p>
+<p>A lot of people seem to make the following mistake, so beware:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>xrdb -merge ~/.Xdefaults
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># WRONG - Class === Class will return false</span>
+</span><span class='line'><span class="k">case</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>At this point you can start Emacs (in normal or daemon mode) and
-your new font settings should be in effect.</p>
+<p>Hopefully you&#8217;ll find this small tip useful.</p>
 </div>
 
 
@@ -148,11 +163,11 @@ your new font settings should be in effect.</p>
   
 
 
-<time datetime="2011-06-05T00:00:00+03:00" pubdate data-updated="true">Jun 5<span>th</span>, 2011</time></div>
+<time datetime="2012-10-14T15:23:00+03:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+	<a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>
 
 
 </div>
@@ -174,6 +189,12 @@ your new font settings should be in effect.</p>
 </div>
 
 
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2012
 
@@ -193,7 +214,10 @@ your new font settings should be in effect.</p>
       var disqus_shortname = 'batsov';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bbatsov.github.com/articles/2012/10/14/ruby-tip-number-3-matching-on-an-objects-class-in-a-case-expression/';
+        var disqus_url = 'http://bbatsov.github.com/articles/2012/10/14/ruby-tip-number-3-matching-on-an-objects-class-in-a-case-expression/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

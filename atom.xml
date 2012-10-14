@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-12T18:38:04+03:00</updated>
+  <updated>2012-10-14T15:40:37+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Tip #3: Matching on an Object's Class in a Case Expression]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/10/14/ruby-tip-number-3-matching-on-an-objects-class-in-a-case-expression/"/>
+    <updated>2012-10-14T15:23:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/10/14/ruby-tip-number-3-matching-on-an-objects-class-in-a-case-expression</id>
+    <content type="html"><![CDATA[<p>From time to time you might want to take different actions depending
+on an object&#8217;s class. One handy way to do so is with a <code>case</code>
+expression:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="n">object</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Behind the scenes this is transformed to:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="n">object</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A lot of people seem to make the following mistake, so beware:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># WRONG - Class === Class will return false</span>
+</span><span class='line'><span class="k">case</span> <span class="n">object</span><span class="o">.</span><span class="n">class</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hopefully you&#8217;ll find this small tip useful.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting up fallback locale(s) in Rails 3]]></title>
@@ -1938,77 +1996,6 @@ before I started playing around with Ruby.</p>
 <p>Hopefully, I&#8217;ve managed to make the difference between <code>==</code> and <code>eql?</code>
 clear. That&#8217;s some fairly esoteric matter that&#8217;s not totally
 understood by even some fairly experienced Ruby developers.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs Tip #3: Whitespace Cleanup]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/11/25/emacs-tip-number-3-whitespace-cleanup/"/>
-    <updated>2011-11-25T14:26:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/11/25/emacs-tip-number-3-whitespace-cleanup</id>
-    <content type="html"><![CDATA[<p>Good developers are very careful about the proper use of
-whitespace in their files - there should be no empty lines at the
-beginning of a file, no empty lines at the end of a file, no trailing
-whitespace, no mixture of tabs and spaces, etc.</p>
-
-<p>Emacs, naturally, wants to help with every problem possible and
-provides a very nice solution in the form of the <code>whitespace-cleanup</code>
-command. It&#8217;s a much more powerful alternative to the older
-<code>delete-trailing-whitespace</code> command, that simply deletes trailing
-whitespace, and it&#8217;s aware of the <code>whitespace-style</code> variable, used by <code>whitespace-mode</code>.</p>
-
-<p>It usually applies to the whole buffer, but in transient mark
-mode when the mark is active, it applies to the region.  It also
-applies to the region when it is not in transient mark mode, the
-mark is active and <code>C-u</code> was pressed just before
-calling <code>whitespace-cleanup</code> interactively. There is also a similar
-command called <code>whitespace-cleanup-region</code>.</p>
-
-<p>The problems cleaned up are (borrowed from the official documentation):</p>
-
-<ol>
-<li><p>Empty lines at beginning of buffer.</p></li>
-<li><p>Empty lines at end of buffer.
-If <code>whitespace-style</code> includes the value <code>empty</code>, remove all
-empty lines at beginning and/or end of buffer.</p></li>
-<li><p>8 or more SPACEs at beginning of line.
-If <code>whitespace-style</code> includes the value <code>indentation</code>:
-replace 8 or more SPACEs at beginning of line by TABs, if
-<code>indent-tabs-mode</code> is non-nil; otherwise, replace TABs by
-SPACEs.
-If <code>whitespace-style</code> includes the value <code>indentation::tab</code>,
-replace 8 or more SPACEs at beginning of line by TABs.
-If <code>whitespace-style</code> includes the value <code>indentation::space</code>,
-replace TABs by SPACEs.</p></li>
-<li><p>SPACEs before TAB.
-If <code>whitespace-style</code> includes the value <code>space-before-tab</code>:
-replace SPACEs by TABs, if <code>indent-tabs-mode</code> is non-nil;
-otherwise, replace TABs by SPACEs.
-If <code>whitespace-style</code> includes the value
-<code>space-before-tab::tab</code>, replace SPACEs by TABs.
-If <code>whitespace-style</code> includes the value
-<code>space-before-tab::space</code>, replace TABs by SPACEs.</p></li>
-<li><p>SPACEs or TABs at end of line.
-If <code>whitespace-style</code> includes the value <code>trailing</code>, remove
-all SPACEs or TABs at end of line.</p></li>
-<li><p>8 or more SPACEs after TAB.
-If <code>whitespace-style</code> includes the value <code>space-after-tab</code>:
-replace SPACEs by TABs, if <code>indent-tabs-mode</code> is non-nil;
-otherwise, replace TABs by SPACEs.
-If <code>whitespace-style</code> includes the value
-<code>space-after-tab::tab</code>, replace SPACEs by TABs.
-If <code>whitespace-style</code> includes the value
-<code>space-after-tab::space</code>, replace TABs by SPACEs.</p></li>
-</ol>
-
-
-<p>It might be a good idea to add <code>whitespace-cleanup</code> to your
-<code>before-save-hook</code> so that every buffer would be cleaned up before it&#8217;s saved:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;before-save-hook</span> <span class="ss">&#39;whitespace-cleanup</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

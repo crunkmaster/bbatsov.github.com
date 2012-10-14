@@ -7,8 +7,8 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Prelude If there is something that people love as much as tweaking their
-editing configurations it&#8217;s probably the selection of color themes. A &hellip;">
+	<meta name="description" content="Prelude Let&#8217;s face it - although a vanilla Emacs installation is quite
+powerful almost nobody is using Emacs without a pile of add-ons. And &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -24,7 +24,7 @@ editing configurations it&#8217;s probably the selection of color themes. A &hel
 <body>
 	<header id="header" class="inner"><h1><a href="/">(think)</a></h1>
 <nav id="main-nav"><ul class="main">
-	<li><a href="/">Blog</a></li>
+	<li><a href="/">Home</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
 	<li><a href="/about">About Bozhidar</a></li>
 	<li><a href="/colophon">Colophon</a></li>
@@ -34,7 +34,7 @@ editing configurations it&#8217;s probably the selection of color themes. A &hel
 	<div class="alignleft menu">
 		<a class="button">Menu</a>
 		<div class="container"><ul class="main">
-	<li><a href="/">Blog</a></li>
+	<li><a href="/">Home</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
 	<li><a href="/about">About Bozhidar</a></li>
 	<li><a href="/colophon">Colophon</a></li>
@@ -95,6 +95,64 @@ editing configurations it&#8217;s probably the selection of color themes. A &hel
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/">Package Management in Emacs: The Good, the Bad and the Ugly</a></h1>
+	<div class="entry-content">
+		<h2>Prelude</h2>
+
+<p>Let&#8217;s face it - although a vanilla Emacs installation is quite
+powerful almost nobody is using Emacs without a pile of add-ons. And
+managing those add-ons is quite frankly a pain in the ass. Traditional
+options included installing Emacs add-ons via the operating system&#8217;s
+package manager (if available), downloading <code>.el</code> files from various
+locations (everybody hates packages distributed only on Emacs Wiki
+with no canonical version control repo) and simply sticking them on
+the <code>load-path</code>, etc. It&#8217;s more than obvious that such solutions are
+less than ideal.</p>
+
+<p>For instance if you&#8217;re installing Emacs add-ons via a package manager
+and you have to change OSes (or machines) you&#8217;re mostly fucked. On the
+other hand piling files manually in <code>.emacs.d</code> is equal to hell in the
+version and dependency tracking department. There has to be a better
+way, right? Wouldn&#8217;t it be nice if Emacs had its own package manager
+similar to the likes of <code>homebrew</code>, <code>apt</code> or <code>yum</code>?</p>
+
+<p><a href="http://batsov.com/articles/2011/08/19/a-peek-at-emacs24/">Emacs 24</a>
+finally introduces such a tool - its name is <code>package.el</code> (very
+original, right?) and it&#8217;s promise is to make you&#8217;re lives a bit
+easier. Does it manage to deliver on that promise? We&#8217;ll see that in a bit&#8230;</p>
+
+
+		
+		<a href="/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-19T12:18:00+02:00" pubdate data-updated="true">Feb 19<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -359,103 +417,6 @@ understood by even some fairly experienced Ruby developers.</p>
 
 
 	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/tips/'>Tips</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2011/11/25/emacs-tip-number-3-whitespace-cleanup/">Emacs Tip #3: Whitespace Cleanup</a></h1>
-	<div class="entry-content">
-		<p>Good developers are very careful about the proper use of
-whitespace in their files - there should be no empty lines at the
-beginning of a file, no empty lines at the end of a file, no trailing
-whitespace, no mixture of tabs and spaces, etc.</p>
-
-<p>Emacs, naturally, wants to help with every problem possible and
-provides a very nice solution in the form of the <code>whitespace-cleanup</code>
-command. It&#8217;s a much more powerful alternative to the older
-<code>delete-trailing-whitespace</code> command, that simply deletes trailing
-whitespace, and it&#8217;s aware of the <code>whitespace-style</code> variable, used by <code>whitespace-mode</code>.</p>
-
-<p>It usually applies to the whole buffer, but in transient mark
-mode when the mark is active, it applies to the region.  It also
-applies to the region when it is not in transient mark mode, the
-mark is active and <code>C-u</code> was pressed just before
-calling <code>whitespace-cleanup</code> interactively. There is also a similar
-command called <code>whitespace-cleanup-region</code>.</p>
-
-<p>The problems cleaned up are (borrowed from the official documentation):</p>
-
-<ol>
-<li><p>Empty lines at beginning of buffer.</p></li>
-<li><p>Empty lines at end of buffer.
-If <code>whitespace-style</code> includes the value <code>empty</code>, remove all
-empty lines at beginning and/or end of buffer.</p></li>
-<li><p>8 or more SPACEs at beginning of line.
-If <code>whitespace-style</code> includes the value <code>indentation</code>:
-replace 8 or more SPACEs at beginning of line by TABs, if
-<code>indent-tabs-mode</code> is non-nil; otherwise, replace TABs by
-SPACEs.
-If <code>whitespace-style</code> includes the value <code>indentation::tab</code>,
-replace 8 or more SPACEs at beginning of line by TABs.
-If <code>whitespace-style</code> includes the value <code>indentation::space</code>,
-replace TABs by SPACEs.</p></li>
-<li><p>SPACEs before TAB.
-If <code>whitespace-style</code> includes the value <code>space-before-tab</code>:
-replace SPACEs by TABs, if <code>indent-tabs-mode</code> is non-nil;
-otherwise, replace TABs by SPACEs.
-If <code>whitespace-style</code> includes the value
-<code>space-before-tab::tab</code>, replace SPACEs by TABs.
-If <code>whitespace-style</code> includes the value
-<code>space-before-tab::space</code>, replace TABs by SPACEs.</p></li>
-<li><p>SPACEs or TABs at end of line.
-If <code>whitespace-style</code> includes the value <code>trailing</code>, remove
-all SPACEs or TABs at end of line.</p></li>
-<li><p>8 or more SPACEs after TAB.
-If <code>whitespace-style</code> includes the value <code>space-after-tab</code>:
-replace SPACEs by TABs, if <code>indent-tabs-mode</code> is non-nil;
-otherwise, replace TABs by SPACEs.
-If <code>whitespace-style</code> includes the value
-<code>space-after-tab::tab</code>, replace SPACEs by TABs.
-If <code>whitespace-style</code> includes the value
-<code>space-after-tab::space</code>, replace TABs by SPACEs.</p></li>
-</ol>
-
-
-<p>It might be a good idea to add <code>whitespace-cleanup</code> to your
-<code>before-save-hook</code> so that every buffer would be cleaned up before it&#8217;s saved:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;before-save-hook</span> <span class="ss">&#39;whitespace-cleanup</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-25T14:26:00+02:00" pubdate data-updated="true">Nov 25<span>th</span>, 2011</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
 
 
 </div>
