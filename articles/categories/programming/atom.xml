@@ -4,7 +4,7 @@
   <title><![CDATA[Category: programming | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/programming/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-14T22:51:51+03:00</updated>
+  <updated>2012-10-15T00:00:21+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -33,10 +33,12 @@ end
 <p>Behind the scenes this is transformed to:</p>
 
 <p><code>ruby
-case object
-when Fixnum === object then puts 'Object is an integer number'
-when String === object then puts 'Object is a string'
-when Hash === object then puts 'Object is a hash'
+if Fixnum === object
+  puts 'Object is an integer number'
+elsif String === object
+  puts 'Object is a string'
+elsif Hash === object
+  puts 'Object is a hash'
 end
 </code></p>
 

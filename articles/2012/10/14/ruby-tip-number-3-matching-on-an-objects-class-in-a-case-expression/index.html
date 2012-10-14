@@ -121,10 +121,14 @@ expression:</p>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="n">object</span>
-</span><span class='line'><span class="k">when</span> <span class="no">Fixnum</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
-</span><span class='line'><span class="k">when</span> <span class="nb">String</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
-</span><span class='line'><span class="k">when</span> <span class="no">Hash</span> <span class="o">===</span> <span class="n">object</span> <span class="k">then</span> <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Fixnum</span> <span class="o">===</span> <span class="n">object</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Object is an integer number&#39;</span>
+</span><span class='line'><span class="k">elsif</span> <span class="nb">String</span> <span class="o">===</span> <span class="n">object</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Object is a string&#39;</span>
+</span><span class='line'><span class="k">elsif</span> <span class="no">Hash</span> <span class="o">===</span> <span class="n">object</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s1">&#39;Object is a hash&#39;</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
