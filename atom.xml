@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-14T18:21:42+03:00</updated>
+  <updated>2012-10-14T18:23:37+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -24,7 +24,7 @@ replacement, that somewhat reminds me of the mighty Lisp REPLs. What
 you might not know is how to hook it into Rails so that the <code>rails
 console</code> (a.k.a. <code>rails c</code>) command would fire a pry shell instead of
 an irb one. There are several ways to do so, but I find one
-particularly nice - the awesome little gem
+particularly straightforward - the awesome little gem
 <a href="https://github.com/rweng/pry-rails">pry-rails</a>.</p>
 
 <p>So what are you waiting for? Go ahead, install the little sucker and
