@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-14T15:40:37+03:00</updated>
+  <updated>2012-10-14T18:21:42+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Tip #1: Use Pry Instead of irb for the Rails Console]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console/"/>
+    <updated>2012-10-14T18:06:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console</id>
+    <content type="html"><![CDATA[<p>This tip is going to be a really short one. Hopefully by now you&#8217;ve
+heard about <a href="http://pryrepl.org/">pry</a> - a fantastic <code>irb</code>
+replacement, that somewhat reminds me of the mighty Lisp REPLs. What
+you might not know is how to hook it into Rails so that the <code>rails
+console</code> (a.k.a. <code>rails c</code>) command would fire a pry shell instead of
+an irb one. There are several ways to do so, but I find one
+particularly nice - the awesome little gem
+<a href="https://github.com/rweng/pry-rails">pry-rails</a>.</p>
+
+<p>So what are you waiting for? Go ahead, install the little sucker and
+enjoy your new pry-powered Rails console.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Tip #3: Matching on an Object's Class in a Case Expression]]></title>
@@ -1913,89 +1932,6 @@ here.</p>
 <p>In the beginning of the article I said I&#8217;m certainly going to miss
 many great bits of Emacs wisdom. I&#8217;d like to ask you to mention them
 in the comments section so that I could add them to the article.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Tip #1: Demystifying the Difference Between == and eql?]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/11/28/ruby-tip-number-1-demystifying-the-difference-between-equals-equals-and-eql/"/>
-    <updated>2011-11-28T16:54:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/11/28/ruby-tip-number-1-demystifying-the-difference-between-equals-equals-and-eql</id>
-    <content type="html"><![CDATA[<p>Newcomers to Ruby are often confused by the fact the <code>Object</code> class
-defines three methods related to equality - <code>==</code>, <code>eql?</code> and
-<code>equals?</code>. Of the three the one that it&#8217;s easiest to describe is
-<code>equal?</code> - it implements what&#8217;s commonly known as reference equality
-check. The method returns <code>true</code> only if its receiver (the object upon
-the method was invoked) and parameter (the object we&#8217;re comparing to) are
-the same object (Java developers should think of the <code>==</code> operator
-there).</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">some_word</span> <span class="o">=</span> <span class="s2">&quot;word&quot;</span>
-</span><span class='line'><span class="n">some_other_word</span> <span class="o">=</span> <span class="n">some_word</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">some_word</span><span class="o">.</span><span class="n">equals?</span> <span class="n">some_other_word</span> <span class="c1"># true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Both <code>==</code> and <code>eql?</code> implement value equality checks - they are not
-interested in whether two variables point to the same object in
-memory, but whether two objects are equal in terms of their
-values. For instance &#8220;cat&#8221; and &#8220;cat&#8221; might very well be two completely
-different <code>String</code> objects, but they are quite obviously the same as
-far as their value is concerned.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;cat&quot;</span><span class="o">.</span><span class="n">equals?</span> <span class="s2">&quot;cat&quot;</span>    <span class="c1"># false</span>
-</span><span class='line'><span class="s2">&quot;cat&quot;</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span>         <span class="c1"># true</span>
-</span><span class='line'><span class="s2">&quot;cat&quot;</span><span class="o">.</span><span class="n">eql?</span> <span class="s2">&quot;cat&quot;</span>       <span class="c1"># true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>What&#8217;s not immediately obvious is why are there two different
-methods that seem to be doing exactly the same thing. The answer is
-simple - <code>eql?</code> is meant to be used as a stricter version of <code>==</code>, if
-there is a need for such stricter version.<code>eql?</code> most prominent usage
-is probably in the <code>Hash</code> class, where it&#8217;s used to test members for equality.</p>
-
-<p>In the <code>Object</code> class <code>eql?</code> is synonym with <code>==</code>. Most subclasses
-continue this tradition, but there are a few classes that provide a
-different implementation for <code>eql?</code>.  Numeric types, for example,
-perform type conversion across <code>==</code>, but not across <code>eql?</code>, so:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>       <span class="c1"># true</span>
-</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span>     <span class="c1"># true</span>
-</span><span class='line'><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>     <span class="c1"># true</span>
-</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>   <span class="c1"># false</span>
-</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span> <span class="c1"># true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>As you can see clearly from this example - <code>eql?</code> for <code>Numeric</code> classes
-requires both objects to be instances of the same class, apart from
-having equal values, to return <code>true</code>.</p>
-
-<p>If you&#8217;re wondering about the origins of that convention I should probably
-refer you to Common Lisp (one of the languages cited as principle
-inspiration for Ruby). Common Lisp has <a href="http://eli.thegreenplace.net/2004/08/08/equality-in-lisp/">quite a few equality
-predicates</a>,
-dealing with various aspects of equality. I guess I never found <code>==</code>
-and <code>eql?</code> in Ruby particularly confusing, because I knew Common Lisp,
-before I started playing around with Ruby.</p>
-
-<p>Hopefully, I&#8217;ve managed to make the difference between <code>==</code> and <code>eql?</code>
-clear. That&#8217;s some fairly esoteric matter that&#8217;s not totally
-understood by even some fairly experienced Ruby developers.</p>
 ]]></content>
   </entry>
   

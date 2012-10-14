@@ -7,8 +7,8 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Prelude Let&#8217;s face it - although a vanilla Emacs installation is quite
-powerful almost nobody is using Emacs without a pile of add-ons. And &hellip;">
+	<meta name="description" content="Some times you&#8217;d want to quickly repeat an Emacs command several times and
+most of the time it won&#8217;t have a convenient keybinding you &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +95,66 @@ powerful almost nobody is using Emacs without a pile of add-ons. And &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2012/03/08/emacs-tip-number-4-repeat-last-command/">Emacs Tip #4: Repeat Last Command</a></h1>
+	<div class="entry-content">
+		<p>Some times you&#8217;d want to quickly repeat an Emacs command several times and
+most of the time it won&#8217;t have a convenient keybinding you can use to
+do this. Enter <code>C-x z</code> (<code>repeat</code>) - it simply repeats the most
+recently executed command. And the best part? After you&#8217;ve pressed
+<code>C-x z</code> once you can continue repeating the last command simply by
+pressing <code>z</code>. Vi(m) users will probably note that this is quite similar
+to the <code>.</code> command there.</p>
+
+<p>For instance - if you want to execute the <code>er/expand-region</code> command
+(part of the
+<a href="https://github.com/magnars/expand-region.el">expand-region package</a>)
+a few times you can do it like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>M-x er/expand-region
+</span><span class='line'>C-x z
+</span><span class='line'>z
+</span><span class='line'>z
+</span><span class='line'>z</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Neat, ah?</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-08T15:09:00+02:00" pubdate data-updated="true">Mar 8<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -308,115 +368,6 @@ section. So here we go&#8230;</p>
 
 
 	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2011/11/28/ruby-tip-number-1-demystifying-the-difference-between-equals-equals-and-eql/">Ruby Tip #1: Demystifying the Difference Between == and Eql?</a></h1>
-	<div class="entry-content">
-		<p>Newcomers to Ruby are often confused by the fact the <code>Object</code> class
-defines three methods related to equality - <code>==</code>, <code>eql?</code> and
-<code>equals?</code>. Of the three the one that it&#8217;s easiest to describe is
-<code>equal?</code> - it implements what&#8217;s commonly known as reference equality
-check. The method returns <code>true</code> only if its receiver (the object upon
-the method was invoked) and parameter (the object we&#8217;re comparing to) are
-the same object (Java developers should think of the <code>==</code> operator
-there).</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">some_word</span> <span class="o">=</span> <span class="s2">&quot;word&quot;</span>
-</span><span class='line'><span class="n">some_other_word</span> <span class="o">=</span> <span class="n">some_word</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">some_word</span><span class="o">.</span><span class="n">equals?</span> <span class="n">some_other_word</span> <span class="c1"># true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Both <code>==</code> and <code>eql?</code> implement value equality checks - they are not
-interested in whether two variables point to the same object in
-memory, but whether two objects are equal in terms of their
-values. For instance &#8220;cat&#8221; and &#8220;cat&#8221; might very well be two completely
-different <code>String</code> objects, but they are quite obviously the same as
-far as their value is concerned.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;cat&quot;</span><span class="o">.</span><span class="n">equals?</span> <span class="s2">&quot;cat&quot;</span>    <span class="c1"># false</span>
-</span><span class='line'><span class="s2">&quot;cat&quot;</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span>         <span class="c1"># true</span>
-</span><span class='line'><span class="s2">&quot;cat&quot;</span><span class="o">.</span><span class="n">eql?</span> <span class="s2">&quot;cat&quot;</span>       <span class="c1"># true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>What&#8217;s not immediately obvious is why are there two different
-methods that seem to be doing exactly the same thing. The answer is
-simple - <code>eql?</code> is meant to be used as a stricter version of <code>==</code>, if
-there is a need for such stricter version.<code>eql?</code> most prominent usage
-is probably in the <code>Hash</code> class, where it&#8217;s used to test members for equality.</p>
-
-<p>In the <code>Object</code> class <code>eql?</code> is synonym with <code>==</code>. Most subclasses
-continue this tradition, but there are a few classes that provide a
-different implementation for <code>eql?</code>.  Numeric types, for example,
-perform type conversion across <code>==</code>, but not across <code>eql?</code>, so:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>       <span class="c1"># true</span>
-</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span>     <span class="c1"># true</span>
-</span><span class='line'><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>     <span class="c1"># true</span>
-</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>   <span class="c1"># false</span>
-</span><span class='line'><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span> <span class="c1"># true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>As you can see clearly from this example - <code>eql?</code> for <code>Numeric</code> classes
-requires both objects to be instances of the same class, apart from
-having equal values, to return <code>true</code>.</p>
-
-<p>If you&#8217;re wondering about the origins of that convention I should probably
-refer you to Common Lisp (one of the languages cited as principle
-inspiration for Ruby). Common Lisp has <a href="http://eli.thegreenplace.net/2004/08/08/equality-in-lisp/">quite a few equality
-predicates</a>,
-dealing with various aspects of equality. I guess I never found <code>==</code>
-and <code>eql?</code> in Ruby particularly confusing, because I knew Common Lisp,
-before I started playing around with Ruby.</p>
-
-<p>Hopefully, I&#8217;ve managed to make the difference between <code>==</code> and <code>eql?</code>
-clear. That&#8217;s some fairly esoteric matter that&#8217;s not totally
-understood by even some fairly experienced Ruby developers.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-28T16:54:00+02:00" pubdate data-updated="true">Nov 28<span>th</span>, 2011</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/tips/'>Tips</a>
 
 
 </div>

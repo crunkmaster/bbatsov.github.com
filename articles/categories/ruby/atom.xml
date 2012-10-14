@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/ruby/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-14T15:40:37+03:00</updated>
+  <updated>2012-10-14T18:21:42+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Tip #1: Use Pry Instead of irb for the Rails Console]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console/"/>
+    <updated>2012-10-14T18:06:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console</id>
+    <content type="html"><![CDATA[<p>This tip is going to be a really short one. Hopefully by now you've
+heard about <a href="http://pryrepl.org/">pry</a> - a fantastic <code>irb</code>
+replacement, that somewhat reminds me of the mighty Lisp REPLs. What
+you might not know is how to hook it into Rails so that the <code>rails
+console</code> (a.k.a. <code>rails c</code>) command would fire a pry shell instead of
+an irb one. There are several ways to do so, but I find one
+particularly nice - the awesome little gem
+<a href="https://github.com/rweng/pry-rails">pry-rails</a>.</p>
+
+<p>So what are you waiting for? Go ahead, install the little sucker and
+enjoy your new pry-powered Rails console.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Tip #3: Matching on an Object's Class in a Case Expression]]></title>

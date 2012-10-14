@@ -3,11 +3,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Category: ruby - (think)</title>
+	<title>Rails Tip #1: Use Pry Instead of irb for the Rails Console - (think)</title>
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Category: ruby">
+	<meta name="description" content="This tip is going to be a really short one. Hopefully by now you&#8217;ve
+heard about pry - a fantastic irb
+replacement, that somewhat reminds me of &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,65 +95,67 @@
 </script>
 
 	
-	<div id="content" class="inner">
-	
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Rails Tip #1: Use Pry Instead of Irb for the Rails Console</h1>
+	<div class="entry-content"><p>This tip is going to be a really short one. Hopefully by now you&#8217;ve
+heard about <a href="http://pryrepl.org/">pry</a> - a fantastic <code>irb</code>
+replacement, that somewhat reminds me of the mighty Lisp REPLs. What
+you might not know is how to hook it into Rails so that the <code>rails
+console</code> (a.k.a. <code>rails c</code>) command would fire a pry shell instead of
+an irb one. There are several ways to do so, but I find one
+particularly nice - the awesome little gem
+<a href="https://github.com/rweng/pry-rails">pry-rails</a>.</p>
+
+<p>So what are you waiting for? Go ahead, install the little sucker and
+enjoy your new pry-powered Rails console.</p>
+</div>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2012</h1>
+<div class="meta">
+	<div class="date">
 
-<article>
-	<h1 class="title"><a href="/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console/">Rails Tip #1: Use Pry Instead of irb for the Rails Console</a></h1>
-	<div class="meta">
-		<span class="date">Oct 14</span>
-		<span class="tags">
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-14T18:06:00+03:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time></div>
+	<div class="tags">
 
 
 	<a class='category' href='/articles/categories/rails/'>rails</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>, <a class='category' href='/articles/categories/tip/'>tip</a>
 
 
-</span>
-	    
-	</div>
-</article>
-
+</div>
 	
+</div></article>
 
-
-<article>
-	<h1 class="title"><a href="/articles/2012/10/14/ruby-tip-number-3-matching-on-an-objects-class-in-a-case-expression/">Ruby Tip #3: Matching on an Object's Class in a Case Expression</a></h1>
-	<div class="meta">
-		<span class="date">Oct 14</span>
-		<span class="tags">
-
-
-	<a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>
-
-
-</span>
-	    
-	</div>
-</article>
-
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-
-
-<article>
-	<h1 class="title"><a href="/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/">Setting up fallback locale(s) in Rails 3</a></h1>
-	<div class="meta">
-		<span class="date">Sep 12</span>
-		<span class="tags">
-
-
-	<a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/rails/'>rails</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>
-
-
-</span>
-	    
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-</article>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2012
 
@@ -171,7 +175,10 @@
       var disqus_shortname = 'batsov';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bbatsov.github.com/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console/';
+        var disqus_url = 'http://bbatsov.github.com/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -315,12 +315,18 @@
         <lastmod>2012-10-14T15:37:50+03:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://bbatsov.github.com/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console/
+        </loc>
+        <lastmod>2012-10-14T18:20:20+03:00</lastmod>
+    </url>
+    <url>
         <loc>http://bbatsov.github.com/about/</loc>
         <lastmod>2012-10-11T21:16:05+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/blog/archives/</loc>
-        <lastmod>2012-10-14T15:37:50+03:00</lastmod>
+        <lastmod>2012-10-14T18:20:20+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/colophon/</loc>
@@ -332,7 +338,7 @@
     </url>
     <url>
         <loc>http://bbatsov.github.com/</loc>
-        <lastmod>2012-10-14T15:37:50+03:00</lastmod>
+        <lastmod>2012-10-14T18:20:20+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/lisp-problems/</loc>
