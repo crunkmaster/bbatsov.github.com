@@ -4,7 +4,7 @@
   <title><![CDATA[Category: emacs | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/emacs/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-15T00:00:21+03:00</updated>
+  <updated>2012-10-15T16:51:52+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -40,11 +40,14 @@ $ sudo rm /usr/bin/emacs
 $ sudo rm -rf /usr/share/emacs
 </code></p>
 
+<p>Keep in mind that the OSX updates will (unfortunately) bring Emacs 22 back from the dead, so
+you might consider altering your <code>PATH</code> instead.</p>
+
 <p>Alternatively you can just create an alias in your shell and when you
 invoke <code>emacs</code> it will run the newly installed version:</p>
 
 <p><code>bash
-$ alias emacs="/Applications/Emacs.app/Contents/MacOS/"
+$ alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 </code></p>
 
 <p>If you installed via Homebrew that path might look like this:</p>
