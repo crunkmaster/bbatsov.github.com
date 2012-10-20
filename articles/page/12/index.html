@@ -7,9 +7,9 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Recently I’ve been trying to switch my work environment theme to
-something with lower contrast(notably the excellent zenburn theme for
-emacs, vim, &hellip;">
+	<meta name="description" content="Most of you probably have heard that Fedora 13 will feature
+experimental 3D support for the Nouveau open source driver for Nvidia
+cards. This &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +96,53 @@ emacs, vim, &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2010/05/26/3d-support-nouveau-fedora-13/">Enabling 3D Support for Nouveau in Fedora 13</a></h1>
+	<div class="entry-content">
+		<p>Most of you probably have heard that Fedora 13 will feature
+experimental 3D support for the Nouveau open source driver for Nvidia
+cards. This support, however, is not enabled by default. To enable it
+you need to install the mesa-dri-drivers-experimental package. I,
+personally, do it like this(if you haven’t configured sudo, you’ll
+have to perform this as root):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo yum install mesa-dri-drivers-experimental
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Afterwards you can enable Compuz, play chromium-bsu or whatever your heart desires.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-26T00:00:00+03:00" pubdate data-updated="true">May 26<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/fedora/'>Fedora</a>, <a class='category' href='/articles/categories/hardware/'>Hardware</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -292,57 +339,6 @@ the new modes, so being able to access it is generally a good thing.</p>
 
 
 	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2009/12/05/execute-stuff-after-zsh-login/">Automatically Execute Programs After Zsh Login</a></h1>
-	<div class="entry-content">
-		<p>Sometimes you may want to start a couple of programs just after an
-interactive login to your favourite shell, which in my case would be
-zsh.</p>
-
-<p>For example - I use Emacs as daemon process(emacs &#8211;daemon). I cannot use an init
-script to start it since the daemon is usable on a per user basis. The
-solution in this case is really simple - just create a <strong>.zlogin</strong> file in
-your home folder and put in it all the commands you want executed
-after you&#8217;ve logged into the shell. In my case I put:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>emacs --daemon
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>there and as soon as I&#8217;m logged in, the Emacs daemon is up waiting for
-incoming connections.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-05T00:00:00+02:00" pubdate data-updated="true">Dec 5<span>th</span>, 2009</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/z-shell/'>Z Shell</a>
 
 
 </div>

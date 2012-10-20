@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-15T16:51:52+03:00</updated>
+  <updated>2012-10-20T20:46:52+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs Tip #6: Remove variable &amp; function definitions]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/10/20/emacs-tip-number-6-remove-variable-and-function-definitions/"/>
+    <updated>2012-10-20T20:29:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/10/20/emacs-tip-number-6-remove-variable-and-function-definitions</id>
+    <content type="html"><![CDATA[<p>From time to time you might want to void (unbind) a variable or a
+function definition in Emacs. Most often you&#8217;ll probably be dealing
+with variables created with <code>defvar</code> whose values you&#8217;ll want to
+update.  The magic functions you need are the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="c1">;; this will make the symbol my-nasty-variable&#39;s value void</span>
+</span><span class='line'><span class="p">(</span><span class="nb">makunbound</span> <span class="ss">&#39;my-nasty-variable</span><span class="p">)</span>
+</span><span class='line'><span class="c1">;; this will make the symbol my-nasty-function&#39;s</span>
+</span><span class='line'><span class="c1">;; function definition void</span>
+</span><span class='line'><span class="p">(</span><span class="nb">fmakunbound</span> <span class="ss">&#39;my-nasty-function</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The names aren&#8217;t exactly intuitive and even I happen to forget them from time to
+time. Now at least I&#8217;ll now where to look for them if that happens
+again. :-)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs on OSX]]></title>
@@ -1776,39 +1805,6 @@ to Marmalade.</p>
 
 <p>And if you&#8217;ve never developed a color theme for Emacs because you were
 afraid it was too hard - now is the time to do it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Solarized for Emacs]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/12/03/solarized-for-emacs/"/>
-    <updated>2011-12-03T14:44:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/12/03/solarized-for-emacs</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve created a new port of the
-<a href="http://ethanschoonover.com/solarized">Solarized color theme</a> for
-Emacs 24. While there is
-<a href="https://github.com/sellout/emacs-color-theme-solarized">another existing port of the theme</a>
-I&#8217;ve decided to into a separate direction since I&#8217;ve wanted to keep
-the development of Solarized and
-<a href="https://github.com/bbatsov/zenburn-emacs">Zenburn</a> for Emacs in sync.</p>
-
-<p>So without further ado here&#8217;s a screenshot of the theme (or the dark
-variant to be precise):</p>
-
-<p><img src="http://bbatsov.github.com/images/articles/solarized-emacs.png"></p>
-
-<p>Note that this is a very early version and I haven&#8217;t fine tuned all
-the colors yet. The source code and installation instructions can be
-found on <a href="https://github.com/bbatsov/solarized-emacs">GitHub</a>.</p>
-
-<p>The theme is already bundled in
-<a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> and I&#8217;ll
-submit it to Marmalade soon. Note that I&#8217;ve dropped some things like
-the degraded palette and the 16 color palette (at least for now),
-since I doubt many people need them. On the other hand - you&#8217;ll proper
-coloring in most prominent modes out of the box.</p>
-
-<p>Feedback, suggestions and patches are always welcome.</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: emacs | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/emacs/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-15T16:51:52+03:00</updated>
+  <updated>2012-10-20T20:46:52+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs Tip #6: Remove variable &amp; function definitions]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/10/20/emacs-tip-number-6-remove-variable-and-function-definitions/"/>
+    <updated>2012-10-20T20:29:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/10/20/emacs-tip-number-6-remove-variable-and-function-definitions</id>
+    <content type="html"><![CDATA[<p>From time to time you might want to void (unbind) a variable or a
+function definition in Emacs. Most often you'll probably be dealing
+with variables created with <code>defvar</code> whose values you'll want to
+update.  The magic functions you need are the following:</p>
+
+<p><code>cl
+;; this will make the symbol my-nasty-variable's value void
+(makunbound 'my-nasty-variable)
+;; this will make the symbol my-nasty-function's
+;; function definition void
+(fmakunbound 'my-nasty-function)
+</code></p>
+
+<p>The names aren't exactly intuitive and even I happen to forget them from time to
+time. Now at least I'll now where to look for them if that happens
+again. :-)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs on OSX]]></title>
