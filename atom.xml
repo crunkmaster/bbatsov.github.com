@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-20T20:46:52+03:00</updated>
+  <updated>2012-12-06T16:58:52+02:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs Tip #7: Remap Return to Control in OSX]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/12/06/emacs-tip-number-7-remap-return-to-control-in-osx/"/>
+    <updated>2012-12-06T16:06:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/12/06/emacs-tip-number-7-remap-return-to-control-in-osx</id>
+    <content type="html"><![CDATA[<p>One of the major problems when using
+<a href="http://batsov.com/articles/2012/10/14/emacs-on-osx/">Emacs on OSX</a> is
+not related to OSX itself - the problem has to do with the Mac&#8217;s
+hardware. Recent Mac keyboards(both laptop and desktop, with the
+exception of the wired full size Mac keyboard) lack a right <code>Control</code>
+key and it happens to be extremely important if you&#8217;re looking to
+fully leverage the power of Emacs.</p>
+
+<p>The traditional solution to the problem is to use a tool like
+<a href="http://pqrs.org/macosx/keyremap4macbook/">KeyRemap4MacBook</a> to remap
+the right <code>Option</code> key to right <code>Control</code> and to use a snippet like
+this to make <code>Command</code> behave like <code>Meta</code> in Emacs:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">mac-command-modifier</span> <span class="ss">&#39;meta</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This works, but it&#8217;s hardly ideal since you&#8217;re remapping <code>Option</code> at
+fairly low level and you won&#8217;t be able to use it anywhere as <code>Option</code>.</p>
+
+<p>A much better idea would be to leverage a little know capability of
+KeyRemap4MacBook (a great program which despite its name works with
+desktop Macs as well) and map the <code>Return</code> key to <code>Control</code> only
+when it&#8217;s held down (it will behave like a normal Return key in all
+other situations). The option you&#8217;ll have to find in KeyRemap4MacBook
+is in the <code>Change Return</code> section and it labeled <code>Return to Control_R
+(+ When you type Return only, send Return)</code>.</p>
+
+<p>This approach has several advantages.  First and foremost you&#8217;re not
+sacrificing a valuable key like <code>Option</code>. Second - it&#8217;s much easier to
+hit <code>Return</code> with your right pinky than it is to hit <code>Option</code>
+(especially if you&#8217;re using a US layout keyboard - these have long
+single row <code>Return</code> keys, compared to the short 2 row Returns found on
+European keyboards). Lastly, if you&#8217;ve already remapped <code>CapsLock</code> to
+<code>Control</code> (like so many people do) you&#8217;re getting a pretty symmetrical
+mapping on the opposite side of your keyboard.</p>
+
+<p>All in all - remapping <code>Return</code> to <code>Control</code> is a huge win if you&#8217;re
+using heavily one of Apple&#8217;s smaller keyboards. Of course, if you have
+the option to use an external keyboard you&#8217;d do yourself a solid if you
+obtained a good full size keyboard like the
+<a href="http://batsov.com/articles/2008/06/16/das-keyboard/">Das Keyboard</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs Tip #6: Remove variable &amp; function definitions]]></title>
@@ -1649,162 +1700,6 @@ up-to-date. Your users will love you for that!</p>
 <p>I&#8217;d like to see a replacement to Marmalade in the future as well. A
 more robust and polished solution, maintained by a team of several
 people. Hopefully that moment is not that far in the future.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Color Theming in Emacs: Reloaded]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/02/19/color-theming-in-emacs-reloaded/"/>
-    <updated>2012-02-19T12:17:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/02/19/color-theming-in-emacs-reloaded</id>
-    <content type="html"><![CDATA[<h2>Prelude</h2>
-
-<p>If there is something that people love as much as tweaking their
-editing configurations it&#8217;s probably the selection of color themes. A
-good color theme can make your work much more pleasant and a bad one
-that literally impair your vision. It&#8217;s a fact of life that I&#8217;m a firm
-supporter of low-contrast color themes with dark backgrounds - I find
-them easy on the eyes and I feel that they don&#8217;t strain the eyes as
-much as most themes. I&#8217;ve even ported a couple of popular themes to
-Emacs - <a href="https://github.com/bbatsov/zenburn-emacs">Zenburn</a> and
-<a href="https://github.com/bbatsov/solarized-emacs">Solarized</a>.</p>
-
-<p>In this short article we&#8217;ll see how color theming has changed in Emacs
-24 and I&#8217;ll share with you a few tips on theme creation and
-distribution.</p>
-
-<!--more-->
-
-
-<h2>Color Theming in Emacs 24</h2>
-
-<p>Prior to Emacs 24 the most popular way to incorporate custom color
-themes into Emacs was the
-<a href="http://www.emacswiki.org/emacs/ColorTheme">color-theme package</a>. While
-it usually got the job done it had some problems that I won&#8217;t be
-discussing here and more importantly - it&#8217;s a third-party package,
-that&#8217;s not part of Emacs proper.</p>
-
-<p><a href="http://batsov.com/articles/2011/08/19/a-peek-at-emacs24/">Emacs 24</a>
-finally introduced a new standard way of dealing with color themes
-(based on Emacs&#8217;s built-in customize facility). While it doesn&#8217;t have
-a proper name (as far as I know) it&#8217;s commonly referred to as the
-<code>deftheme</code> facility, since <code>deftheme</code> is the name of the macro you&#8217;d
-use to create such a theme. ( <code>deftheme</code> has actually been around
-since Emacs 23, but it was heavily improved in Emacs 24 )</p>
-
-<p>Emacs 24 comes with a selection of built-in themes that you can choose
-from, so you&#8217;re no longer bound to the default theme (which I find
-quite ugly). To choose a new theme just do a <code>M-x load-theme</code> (tab
-completion is available for the names of the available themes). At
-this point you can give the command a try with the <code>tango</code> theme. If you
-like a theme so much that you&#8217;d want to use it all the time you can
-put in your Emacs configuration (<code>.emacs</code> or <code>init.el</code> for instance) like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">load-theme</span> <span class="ss">&#39;theme-name</span> <span class="no">t</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If you&#8217;d like to return to the default-theme just do a <code>M-x disable-theme</code>.</p>
-
-<p>How do you create a <code>deftheme</code> theme? Quite simply actually - just do
-a &#8220;M-x customize-create-theme&#8221;. You&#8217;ll be presented with an UI
-prompting you for a theme name, description and faces. After you save
-the theme a file called <code>name-theme.el</code> will be written on your
-filesystem. Here&#8217;s its skeleton:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">deftheme</span> <span class="nv">demo</span>
-</span><span class='line'>  <span class="s">&quot;Demo theme&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="nv">custom-theme-set-faces</span>
-</span><span class='line'> <span class="ss">&#39;demo</span>
-</span><span class='line'> <span class="c1">;;; list of custom faces</span>
-</span><span class='line'> <span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="nv">provide-theme</span> <span class="ss">&#39;demo</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There was also an online theme generator
-<a href="http://elpa.gnu.org/themes/">here</a>, but it seems to be down at the
-moment.</p>
-
-<p>Personally I dislike customize a lot, so when I needed to create a
-Emacs 24 theme for the first time I&#8217;ve just opened the source code of
-the built-in tango theme and used it as a reference.</p>
-
-<p>Once you&#8217;ve created the new theme you&#8217;ll have to drop it in a folder
-that&#8217;s on the <code>custom-theme-load-path</code>. I&#8217;d suggest the following:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;custom-theme-load-path</span> <span class="s">&quot;~/.emacs.d/themes&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If you&#8217;re an <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a>
-user you&#8217;re already covered. This folder exists and is automatically
-added to <code>custom-theme-load-path</code> by Prelude, so all you have to do is
-drop there the themes you&#8217;d want to try out.</p>
-
-<p>You may find the
-<a href="http://julien.danjou.info/software/rainbow-mode">rainbow-mode</a> useful
-when developing color themes. If fontifies strings that represent
-color codes according to those colors. The mode is known to be a great
-addition to css-mode, but I find it very helpful with color theme
-development as well. It&#8217;s also included (and enabled) in Prelude by
-default. Here you can see it in action.</p>
-
-<p><img src="http://bbatsov.github.com/images/articles/rainbow-mode.png"></p>
-
-<p>The Emacs package manager <code>package.el</code> (formerly known as ELPA) is
-gaining a lot of popularity lately and the community
-<a href="http://marmalade-repo.org/">Marmalade</a> repository already houses a few
-Emacs 24 themes that you can install from there. If you&#8217;re developing
-a theme that you&#8217;d like to submit to Marmalade it&#8217;s imperative that
-the theme modifies the <code>custom-theme-load-path</code> in an <code>autoload</code> -
-otherwise it won&#8217;t be of much use. Add the following snippet (or
-something similar) before the <code>provide-theme</code> line if your custom
-theme:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="c1">;;;###autoload</span>
-</span><span class='line'><span class="p">(</span><span class="nb">when</span> <span class="nv">load-file-name</span>
-</span><span class='line'>  <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;custom-theme-load-path</span>
-</span><span class='line'>               <span class="p">(</span><span class="nv">file-name-as-directory</span> <span class="p">(</span><span class="nv">file-name-directory</span> <span class="nv">load-file-name</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I&#8217;d also advise you follow the proper naming convention
-<code>name-theme.el</code> so that it&#8217;s apparent that your theme is <code>deftheme</code>
-compatible.</p>
-
-<p>Oh, and one more thing - porting themes from color-theme to deftheme is
-really simple (just have a look at the old and the new version of
-Zenburn in its repo), so you should really consider porting all the
-themes you maintain to <code>deftheme</code>.</p>
-
-<h1>Epilogue</h1>
-
-<p>Color theming in Emacs has never been easier. It&#8217;s time to kill
-<code>color-theme</code> once and for all. If you&#8217;ve ever developed a color theme
-for it I urge you to convert it to the <code>deftheme</code> format and upload it
-to Marmalade.</p>
-
-<p>And if you&#8217;ve never developed a color theme for Emacs because you were
-afraid it was too hard - now is the time to do it.</p>
 ]]></content>
   </entry>
   

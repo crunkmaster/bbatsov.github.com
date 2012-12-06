@@ -4,7 +4,7 @@
   <title><![CDATA[Emacs @ (think)]]></title>
   <link href="http://bbatsov.github.com/emacs.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-10-20T20:46:52+03:00</updated>
+  <updated>2012-12-06T16:58:52+02:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs Tip #7: Remap Return to Control in OSX]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/12/06/emacs-tip-number-7-remap-return-to-control-in-osx/"/>
+    <updated>2012-12-06T16:06:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/12/06/emacs-tip-number-7-remap-return-to-control-in-osx</id>
+    <content type="html"><![CDATA[<p>One of the major problems when using
+<a href="http://batsov.com/articles/2012/10/14/emacs-on-osx/">Emacs on OSX</a> is
+not related to OSX itself - the problem has to do with the Mac&#8217;s
+hardware. Recent Mac keyboards(both laptop and desktop, with the
+exception of the wired full size Mac keyboard) lack a right <code>Control</code>
+key and it happens to be extremely important if you&#8217;re looking to
+fully leverage the power of Emacs.</p>
+
+<p>The traditional solution to the problem is to use a tool like
+<a href="http://pqrs.org/macosx/keyremap4macbook/">KeyRemap4MacBook</a> to remap
+the right <code>Option</code> key to right <code>Control</code> and to use a snippet like
+this to make <code>Command</code> behave like <code>Meta</code> in Emacs:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">mac-command-modifier</span> <span class="ss">&#39;meta</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This works, but it&#8217;s hardly ideal since you&#8217;re remapping <code>Option</code> at
+fairly low level and you won&#8217;t be able to use it anywhere as <code>Option</code>.</p>
+
+<p>A much better idea would be to leverage a little know capability of
+KeyRemap4MacBook (a great program which despite its name works with
+desktop Macs as well) and map the <code>Return</code> key to <code>Control</code> only
+when it&#8217;s held down (it will behave like a normal Return key in all
+other situations). The option you&#8217;ll have to find in KeyRemap4MacBook
+is in the <code>Change Return</code> section and it labeled <code>Return to Control_R
+(+ When you type Return only, send Return)</code>.</p>
+
+<p>This approach has several advantages.  First and foremost you&#8217;re not
+sacrificing a valuable key like <code>Option</code>. Second - it&#8217;s much easier to
+hit <code>Return</code> with your right pinky than it is to hit <code>Option</code>
+(especially if you&#8217;re using a US layout keyboard - these have long
+single row <code>Return</code> keys, compared to the short 2 row Returns found on
+European keyboards). Lastly, if you&#8217;ve already remapped <code>CapsLock</code> to
+<code>Control</code> (like so many people do) you&#8217;re getting a pretty symmetrical
+mapping on the opposite side of your keyboard.</p>
+
+<p>All in all - remapping <code>Return</code> to <code>Control</code> is a huge win if you&#8217;re
+using heavily one of Apple&#8217;s smaller keyboards. Of course, if you have
+the option to use an external keyboard you&#8217;d do yourself a solid if you
+obtained a good full size keyboard like the
+<a href="http://batsov.com/articles/2008/06/16/das-keyboard/">Das Keyboard</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[guru-mode]]></title>
@@ -2452,47 +2503,6 @@ named <strong>.Xdefaults</strong> in your home folder. Put the following in it:<
 
 <p>At this point you can start Emacs (in normal or daemon mode) and
 your new font settings should be in effect.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A new Zenburn theme for Emacs]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/05/11/zenburn-emacs/"/>
-    <updated>2011-05-11T00:00:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/05/11/zenburn-emacs</id>
-    <content type="html"><![CDATA[<p><a href="http://slinky.imukuppi.org/zenburnpage/">Zenburn</a> is a popular colour theme for
-vim, developed by Jani Nurminen. It&#8217;s my personal
-belief (and probably that of many of its users I presume) that it&#8217;s one of the
-best low contrast themes out there and that Zenburn is exceptionally
-easy on the eyes. Btw, I love Zenburn so much that I&#8217;ve even created a
-<a href="https://github.com/bbatsov/blog/blob/master/css/syntax.css">Zenburn theme for Jekyll</a> to be able to use for my blog.</p>
-
-<p>The project was originally
-<a href="https://github.com/dbrock/zenburn-el">ported to Emacs</a> by Daniel
-Brockman, but it seems that he has lost interest in it recently - very
-few updates has been published by him in the past few years. This is
-the reason why I gathered all improvements that I could find laying
-around the Internet and applied them to the last official Zenburn
-version, effectively starting
-a <a href="https://github.com/bbatsov/zenburn-emacs/blob/master/zenburn-legacy.el">fork of the project</a>. So far, so good&#8230;</p>
-
-<p>Daniel&#8217;s version of Zenburn, however, had reached a state in which it took me
-too much to make improvements to it - since a lot of users had direct access
-to modify it everything in it was in complete disarray - it&#8217;s full of
-uses of colours that were not defined by the original zenburn,
-questionable coding practices and inconsistent theming of
-faces. Yesterday I decided to take a closer look at the code of the
-theme and clean it up a little - 20 minutes later I was writing <a href="https://github.com/bbatsov/zenburn-emacs/blob/master/zenburn.el">a new
-zenburn theme from scratch</a>. I decided that making everything from
-the start will probably be less effort anyways.</p>
-
-<p>I&#8217;ve added enough faces in the new theme to make it usable for most
-users and I&#8217;ll (hopefully) continue to improve the theme and expand
-the supported modes constantly. If you&#8217;re interested - give it a try!
-If you&#8217;re unhappy with something - create an issue in GitHub (or even
-better send me a pull request with your suggested improvements).</p>
-
-<p>It&#8217;s my desire to make the new <a href="https://github.com/bbatsov/zenburn-emacs">Zenburn for Emacs</a> just as good as the original.</p>
 ]]></content>
   </entry>
   
