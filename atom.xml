@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-12-09T13:25:49+02:00</updated>
+  <updated>2012-12-09T13:46:47+02:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs 24.3 introduces native OSX full-screen support]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/"/>
+    <updated>2012-12-09T13:34:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support</id>
+    <content type="html"><![CDATA[<p>One of the most requested Emacs features - native OSX Lion style
+full-screen support has finally landed in Emacs 24.3 (due to be
+released in a few months). If you&#8217;re eager to try it out right now
+homebrew is your best bet:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install emacs --cocoa --use-git-head
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Homebrew&#8217;s devs have even backported the full-screen patch to Emacs
+24.2, so if you&#8217;re not very adventurous you can just do:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install emacs --cocoa
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using nightly builds from
+<a href="http://emacsformacosx.com/">Emacs for Mac OSX</a> is a no-go at the
+moment, since they seem to be compiling Emacs without the required
+compilation flag to enable the full-screen support.</p>
+
+<p>Here&#8217;s the beast in action:</p>
+
+<p><img src="http://bbatsov.github.com/images/articles/emacs-full-screen.png"></p>
+
+<p>This was a short article, but I do hope you&#8217;ll find it useful.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[From Linux to OSX: Meet Your New Apps]]></title>
@@ -1602,69 +1638,6 @@ Personally I find it much more useful that the standard auto-save
 mechanism in Emacs. And one more thing -
 <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> naturally
 enables this functionality by default.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Tip #2: Get a List of All Rake Tasks]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks/"/>
-    <updated>2012-03-08T15:28:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/03/08/ruby-tip-number-2-get-a-list-of-all-rake-tasks</id>
-    <content type="html"><![CDATA[<p>Many people are having trouble remembering all the rake tasks defined
-in a particular project&#8217;s <code>Rakefile</code> (especially if they hadn&#8217;t
-authored it). This is quite normal given the fact that Rails&#8217;s
-Rakefile, for instance, defines 39 tasks (as of version
-3.2.2). Personally I never memorize anything, but the most basic rake
-tasks - for everything else there is the <code>rake -T</code> (or <code>rake --tasks</code>)
-command. Here&#8217;s the command in action for Octopress&#8217;s Rakefile:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake -T
-</span><span class='line'>rake clean                 <span class="c"># Clean out caches: .pygments-cache, .gist-cache, .sass-cache</span>
-</span><span class='line'>rake copydot<span class="o">[</span><span class="nb">source</span>,dest<span class="o">]</span>  <span class="c"># copy dot files for deployment</span>
-</span><span class='line'>rake deploy                <span class="c"># Default deploy task</span>
-</span><span class='line'>rake gen_deploy            <span class="c"># Generate website and deploy</span>
-</span><span class='line'>rake generate              <span class="c"># Generate jekyll site</span>
-</span><span class='line'>rake install<span class="o">[</span>theme<span class="o">]</span>        <span class="c"># Initial setup for Octopress: copies the default theme into the path of Jekyll&#39;s generator.</span>
-</span><span class='line'>rake integrate             <span class="c"># Move all stashed posts back into the posts directory, ready for site generation.</span>
-</span><span class='line'>rake isolate<span class="o">[</span>filename<span class="o">]</span>     <span class="c"># Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much quicker.</span>
-</span><span class='line'>rake list                  <span class="c"># list tasks</span>
-</span><span class='line'>rake new_page<span class="o">[</span>filename<span class="o">]</span>    <span class="c"># Create a new page in source/(filename)/index.markdown</span>
-</span><span class='line'>rake new_post<span class="o">[</span>title<span class="o">]</span>       <span class="c"># Begin a new post in source/_posts</span>
-</span><span class='line'>rake preview               <span class="c"># preview the site in a web browser</span>
-</span><span class='line'>rake push                  <span class="c"># deploy public directory to github pages</span>
-</span><span class='line'>rake rsync                 <span class="c"># Deploy website via rsync</span>
-</span><span class='line'>rake set_root_dir<span class="o">[</span>dir<span class="o">]</span>     <span class="c"># Update configurations to support publishing to root or sub directory</span>
-</span><span class='line'>rake setup_github_pages    <span class="c"># Set up _deploy folder and deploy branch for Github Pages deployment</span>
-</span><span class='line'>rake update_source<span class="o">[</span>theme<span class="o">]</span>  <span class="c"># Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source.old&#39;s navigation</span>
-</span><span class='line'>rake update_style<span class="o">[</span>theme<span class="o">]</span>   <span class="c"># Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom</span>
-</span><span class='line'>rake watch                 <span class="c"># Watch the site and regenerate when it</span>
-</span><span class='line'>changes
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Not only did you get a list of all the tasks, but nice descriptions of
-the tasks as well.</p>
 ]]></content>
   </entry>
   

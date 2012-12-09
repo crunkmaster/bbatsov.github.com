@@ -4,7 +4,7 @@
   <title><![CDATA[Emacs @ (think)]]></title>
   <link href="http://bbatsov.github.com/emacs.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-12-09T13:25:49+02:00</updated>
+  <updated>2012-12-09T13:46:47+02:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs 24.3 introduces native OSX full-screen support]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/"/>
+    <updated>2012-12-09T13:34:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support</id>
+    <content type="html"><![CDATA[<p>One of the most requested Emacs features - native OSX Lion style
+full-screen support has finally landed in Emacs 24.3 (due to be
+released in a few months). If you&#8217;re eager to try it out right now
+homebrew is your best bet:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install emacs --cocoa --use-git-head
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Homebrew&#8217;s devs have even backported the full-screen patch to Emacs
+24.2, so if you&#8217;re not very adventurous you can just do:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install emacs --cocoa
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using nightly builds from
+<a href="http://emacsformacosx.com/">Emacs for Mac OSX</a> is a no-go at the
+moment, since they seem to be compiling Emacs without the required
+compilation flag to enable the full-screen support.</p>
+
+<p>Here&#8217;s the beast in action:</p>
+
+<p><img src="http://bbatsov.github.com/images/articles/emacs-full-screen.png"></p>
+
+<p>This was a short article, but I do hope you&#8217;ll find it useful.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs Tip #7: Remap Return to Control in OSX]]></title>
@@ -2459,50 +2495,6 @@ for a long wait before the final release is here and you&#8217;ll be missing
 on some really great features in the meantime. I&#8217;ll write a separate
 article soon detailing how to get started with Emacs 24 on the most
 popular platforms (Linux, OS X and Windows).</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs Tip #1: Set the default font in Emacs 23]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/06/05/emacs-default-font/"/>
-    <updated>2011-06-05T00:00:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/06/05/emacs-default-font</id>
-    <content type="html"><![CDATA[<p>Emacs 23.2 will pick up the default GNOME monospaced font, so if
-you&#8217;re a GNOME user - you&#8217;re basically covered. If you&#8217;re not - don&#8217;t
-worry.</p>
-
-<p>The simplest way to set the Emacs font is just to add the following
-in your .emacs (or init.el):</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Inconsolata-12&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This code will set the Emacs font to Inconsolata (my favorite
-monospaced font) with font size 12pt. The problem with this approach
-is that it will not work with a X Emacs client (emacsclient -c)
-connecting to an Emacs daemon (emacs &#8211;daemon), because the code will
-get run when the server starts and will basically mean nothing to
-it. You can alleviate this problem by using the appropriate hook for X
-clients, but I find this distasteful. A much simpler solution is to
-forget about <em>set-default-font</em> altogether and simply create a file
-named <strong>.Xdefaults</strong> in your home folder. Put the following in it:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>Emacs.font: Inconsolata-12
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Afterwards run the following command:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>xrdb -merge ~/.Xdefaults
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>At this point you can start Emacs (in normal or daemon mode) and
-your new font settings should be in effect.</p>
 ]]></content>
   </entry>
   
