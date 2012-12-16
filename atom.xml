@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-12-09T13:46:47+02:00</updated>
+  <updated>2012-12-16T10:29:02+02:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Deleting Remote Git Branches]]></title>
+    <link href="http://bbatsov.github.com/articles/2012/12/16/deleting-remote-git-branches/"/>
+    <updated>2012-12-16T10:10:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2012/12/16/deleting-remote-git-branches</id>
+    <content type="html"><![CDATA[<p>This post is mostly a note to myself, since I constantly forget how to
+delete remote Git branches.</p>
+
+<p>The classic way to do so (introduced in Git 1.5) would be:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin :branch-to-delete
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, if I were migrating an application from MySQL to PostgreSQL I might want to delete
+the <code>postgres</code> branch when I&#8217;m done:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin :postgres
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You have to agree this syntax is hardly something one can easily
+remember(and I&#8217;m extra certain nobody would have guessed it on their
+own). Fortunately in Git 1.7 a nicer alternative to the above command
+was introduced:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin --delete branch-to-delete
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&#8217;s all from me for today. Now go ahead and delete those unneeded Git branches.</p>
+
+<p>P.S. GitHub users might also want to take a look at this
+<a href="https://github.com/blog/1335-tidying-up-after-pull-requests">article</a>
+describing recently added functionality to clean up after pull
+requests.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs 24.3 introduces native OSX full-screen support]]></title>
@@ -1564,80 +1606,6 @@ something on Marmalade&#8230;</p>
 now another Emacs wiki out there. The new wiki is available at
 <a href="http://wikemacs.org">http://wikemacs.org</a>. It&#8217;s using MediaWiki (it
 turned out it had several nice advantages over MoinMoin).</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs Tip #5: Save Buffers Automatically on Buffer or Window Switch]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch/"/>
-    <updated>2012-03-08T15:58:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch</id>
-    <content type="html"><![CDATA[<p>When I program in Java I usually leave the comfort of Emacs and use
-IntelliJ IDEA instead (for various reasons that are irrelevant to this
-post). IDEA has one particularly nice feature - &#8220;auto-save on focus
-lost&#8221;. Basically you never have to hit <code>C-s</code> there explicitly, because
-any time your current editor window loses focus its contents get
-flushed to the disk automatically. Implementing something exactly the
-same in Emacs is impossible (at least in Emacs Lisp), but we can
-create a solution that is similar in spirit at least - we can
-auto-save buffers when we switch the Emacs window or the current
-buffer (which are more or less the most popular ways to change editing
-focus in Emacs). This is easy to achieve in Emacs Lisp:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="c1">;; use shift + arrow keys to switch between visible buffers</span>
-</span><span class='line'><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;windmove</span><span class="p">)</span>
-</span><span class='line'><span class="p">(</span><span class="nv">windmove-default-keybindings</span> <span class="ss">&#39;super</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">;; automatically save buffers associated with files on buffer switch</span>
-</span><span class='line'><span class="c1">;; and on windows switch</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">switch-to-buffer</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">save-buffer-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">other-window</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">windmove-up</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">windmove-down</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">windmove-left</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">windmove-right</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Obviously this code could have been written in a more compact manner
-with the use of a macro, but I&#8217;ve decided to use this more verbose
-variant for the sake of simplicity. We assume that you want to
-auto-save your current work (buffer) when you switch to a new buffer
-or to a new window (with either <code>C-x o</code> (<code>other-window</code>) or a
-<code>windmove</code> command).</p>
-
-<p>XEmacs has a hook called <code>deselect-frame-hook</code> that can take the
-concept even further, but it&#8217;s absent from GNU Emacs.</p>
-
-<p>So, that&#8217;s all for this tip, folks! I hope you&#8217;ve enjoyed it!
-Personally I find it much more useful that the standard auto-save
-mechanism in Emacs. And one more thing -
-<a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> naturally
-enables this functionality by default.</p>
 ]]></content>
   </entry>
   

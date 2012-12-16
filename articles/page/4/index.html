@@ -7,9 +7,8 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="A few weeks ago I wrote an
-article about the state of package management in Emacs. In
-that article I pointed out that on the side of package.el too &hellip;">
+	<meta name="description" content="This is a guest post from my friend Alexander Todorov
+who is a QA guru, software engineer and cloud enthusiast! Software changes fast! Open source &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +95,91 @@ that article I pointed out that on the side of package.el too &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2012/04/07/changelog-vs-api-diff/">Changelog vs API Diff</a></h1>
+	<div class="entry-content">
+		<p><em>This is a guest post from my friend <a href="http://about.me/atodorov">Alexander Todorov</a>
+who is a QA guru, software engineer and cloud enthusiast!</em></p>
+
+<p><strong>Software changes fast! Open source software even faster!</strong></p>
+
+<p>And once you start to update dependencies, libraries and frameworks it never ends&#8230;
+After all the testing and validation you may have done there is no
+guarantee that the software will keep working afterwards.
+This is no big deal for small and medium sized projects but becomes a full-time
+job for larger projects with longer life span which require constant maintenance
+and enhancements. I&#8217;ve seen this time and time again during my work on various projects.
+Even a simple <em>Drupal</em> based website pops up an update every couple of weeks.</p>
+
+<p>OTOH back porting fixes and keeping stable APIs can be a big business. This is what
+<em>Red Hat</em> is doing for their <em>Red Hat Enterprise Linux</em> distribution. Nearly all changes
+are backwards compatible and and the software stack remains stable compared
+to upstream <em>Fedora</em> or the more upstream projects which comprise it.</p>
+
+<p>Let me say that I don&#8217;t like to upgrade. Long ago I was using <em>Debian</em> <strong>stable</strong>
+on my computer. Now I use <em>RHEL</em>. No fancy features, no bells and
+whistles and more important predictable behavior wrt updates and APIs.
+The same approach I take when developing software. I stay away from the latest and
+greatest technology simply because it changes too often. I prefer mature frameworks and
+packages which produce new versions every six months or less frequent.
+This approach allows me to concentrate on writing code and getting the project done
+instead of plumbing bugs introduced by the latest <em>package foo</em> version.</p>
+
+<p>All this said I have a very careful approach to upgrades, especially if I&#8217;m
+using an upstream package. I will first look at the changelog if any. Luckily
+many of the mature projects provide comprehensive changelog records. This is
+especially true for Perl packages. I&#8217;m looking for notices about backward
+incompatible changes, API breakage, security notices, major bug fixes,
+changes in behavior and the like.
+When changelog is not available there&#8217;s the commit log. I admit this is
+not something I usually look at but it happens once in a while. I do this for projects
+I&#8217;m particularly interested in or otherwise following.
+Doing a content diff is another possibility which usually helps you
+spot (if you look carefully) some API changes as well. I resort to this if I&#8217;m not able to find the upstream
+source repository or when it is hosted on something ancient like CVS.</p>
+
+<p>Based on all of this I decide to upgrade or not. With careful planning
+of updates (which version, which moment of time) and testing I manage to
+minimize the hassle of breaking my projects and spending days fixing
+bugs afterwards. Instead I use the time to write some code that kicks ass
+(or at least I hope so).</p>
+
+<p>I&#8217;m curious to know what sort of information folks do prefer to have
+when considering an update? Changelog vs. API diff or seething else?
+I personally prefer well written Changelog and full list of fixed bugs.
+Please cast your vote in the comments or visit the
+<a href="http://www.surveymonkey.com/s/T7YW2MJ">survey</a>! Thank you!</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-07T12:22:00+03:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/software/'>Software</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -380,106 +464,6 @@ horizon. It&#8217;s a remnant from the <strong>Dark Emacs Days</strong> and it&#
 
 
 	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/rant/'>Rant</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch/">Emacs Tip #5: Save Buffers Automatically on Buffer or Window Switch</a></h1>
-	<div class="entry-content">
-		<p>When I program in Java I usually leave the comfort of Emacs and use
-IntelliJ IDEA instead (for various reasons that are irrelevant to this
-post). IDEA has one particularly nice feature - &#8220;auto-save on focus
-lost&#8221;. Basically you never have to hit <code>C-s</code> there explicitly, because
-any time your current editor window loses focus its contents get
-flushed to the disk automatically. Implementing something exactly the
-same in Emacs is impossible (at least in Emacs Lisp), but we can
-create a solution that is similar in spirit at least - we can
-auto-save buffers when we switch the Emacs window or the current
-buffer (which are more or less the most popular ways to change editing
-focus in Emacs). This is easy to achieve in Emacs Lisp:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="c1">;; use shift + arrow keys to switch between visible buffers</span>
-</span><span class='line'><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;windmove</span><span class="p">)</span>
-</span><span class='line'><span class="p">(</span><span class="nv">windmove-default-keybindings</span> <span class="ss">&#39;super</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">;; automatically save buffers associated with files on buffer switch</span>
-</span><span class='line'><span class="c1">;; and on windows switch</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">switch-to-buffer</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">save-buffer-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">other-window</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">windmove-up</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">windmove-down</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">windmove-left</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span><span class='line'><span class="p">(</span><span class="nv">defadvice</span> <span class="nv">windmove-right</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">other-window-now</span> <span class="nv">activate</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span> <span class="p">(</span><span class="nv">save-buffer</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Obviously this code could have been written in a more compact manner
-with the use of a macro, but I&#8217;ve decided to use this more verbose
-variant for the sake of simplicity. We assume that you want to
-auto-save your current work (buffer) when you switch to a new buffer
-or to a new window (with either <code>C-x o</code> (<code>other-window</code>) or a
-<code>windmove</code> command).</p>
-
-<p>XEmacs has a hook called <code>deselect-frame-hook</code> that can take the
-concept even further, but it&#8217;s absent from GNU Emacs.</p>
-
-<p>So, that&#8217;s all for this tip, folks! I hope you&#8217;ve enjoyed it!
-Personally I find it much more useful that the standard auto-save
-mechanism in Emacs. And one more thing -
-<a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> naturally
-enables this functionality by default.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-08T15:58:00+02:00" pubdate data-updated="true">Mar 8<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
 
 
 </div>
