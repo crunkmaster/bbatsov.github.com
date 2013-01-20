@@ -7,9 +7,10 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="After a long period of planning I finally migrated my professional CV
-from Word to LaTeX last weekend. Since I live in the European Union I
-used the &hellip;">
+	<meta name="description" content="This is my first post after a very long hiatus partially induced by a
+migration of my blog from WordPress to
+Jekyll, which I started half an
+year &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +97,72 @@ used the &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2011/04/23/moving-to-jekyll/">Moving From WordPress to Jekyll</a></h1>
+	<div class="entry-content">
+		<p>This is my first post after a very long hiatus partially induced by a
+migration of my blog from WordPress to
+<a href="https://github.com/mojombo/jekyll">Jekyll</a>, which I started half an
+year ago and never quite finished(until today, that is).</p>
+
+<p>I wasn&#8217;t particularly unhappy with WordPress, but some things there
+irritated me - for instance it was hard to edit my posts within my
+beloved Emacs(and yes - I know all the options and I hate them
+all). Accidentally I&#8217;ve stumbled upon the post
+<a href="http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html">&#8220;Bloggin like a hacker&#8221;</a>
+and I instantly knew Jekyll was what I needed. It allows me to create
+my posts as simple markdown templates, allows me to embed logic
+written in Ruby in them and it has built-in support for code
+highlighting(using the excellent Python library <em>pygments</em>). It also
+allows me to store my blog under version control in github which is
+really nice.</p>
+
+<p>Jekyll is not particularly well documented and I had a few problems
+with it at first, but I managed to overcome them all. One thing that
+will be problematic for some users is the need to add things like rss,
+commenting and analytics manually(they are bundled in a solution like
+WordPress). On the other hand - you&#8217;re not tied to anything in
+particular and may choose the service you like the most. I chose
+<a href="http://disqus.com">Disqus</a> for the comments and Google Analytics for the site
+analytics(what a surprise).</p>
+
+<p>By the way - my old blog Devcraft is no more. My new blog has a new
+domain and a new theme(based on my favourite coding theme
+<a href="https://github.com/bbatsov/zenburn-emacs">Zenburn</a>).  I know that the
+blog is currently pig ugly and the content is not particularly great
+either, but I&#8217;ll try to improve this along the way and add a lot of
+interesting and hopefully useful information.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-23T00:00:00+03:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/jekyll/'>Jekyll</a>, <a class='category' href='/articles/categories/misc/'>Misc</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -289,62 +356,6 @@ adding these options to the command line:</p>
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2009/12/18/center-jdialog-over-jframe/">How to Center a JDialog Over a JFrame in Swing</a></h1>
-	<div class="entry-content">
-		<p>I always thought that the fact that JDialogs accepted a parent frame
-as a constructor argument was the thing, that would make the dialog’s
-position relative to that of the frame:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="nf">JDialog</span><span class="o">(</span><span class="kd">final</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Frame</span> <span class="n">parent</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">modal</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Unfortunately all of my freshly opened dialogs would appear in the
-upper left angle of my screen, not centered over the parent JFrame. I
-looked around and found out that I simply needed one more method call
-per dialog:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">theDialog</span><span class="o">.</span><span class="na">setLocationRelativeTo</span><span class="o">(</span><span class="n">theFrame</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You need to call this method before the JDialog’s show() method. Now
-everything is perfect and the dialog appears always right above the
-center of the frame.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-18T00:00:00+02:00" pubdate data-updated="true">Dec 18<span>th</span>, 2009</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/java/'>Java</a>, <a class='category' href='/articles/categories/swing/'>Swing</a>
-
-
-</div>
-	
-</div></article>
-
 <nav id="pagenavi">
     
         <a href="/articles/page/12/" class="prev">Prev</a>
@@ -354,7 +365,7 @@ center of the frame.</p>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
-	<footer id="footer" class="inner">Copyright &copy; 2012
+	<footer id="footer" class="inner">Copyright &copy; 2013
 
     Bozhidar Batsov
 

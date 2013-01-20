@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Changelog vs API diff - (think)</title>
+	<title>drop-nth in Clojure - (think)</title>
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="This is a guest post from my friend Alexander Todorov
-who is a QA guru, software engineer and cloud enthusiast! Software changes fast! Open source &hellip;">
+	<meta name="description" content="For some reason the standard Clojure library doesn&#8217;t have a drop-nth
+function (although it has take-nth). Luckily implementing it is trivial: 1 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,58 +95,43 @@ who is a QA guru, software engineer and cloud enthusiast! Software changes fast!
 
 	
 	<div id="content" class="inner"><article class="post">
-	<h1 class="title">Changelog vs API Diff</h1>
-	<div class="entry-content"><p><em>This is a guest post from my friend <a href="http://about.me/atodorov">Alexander Todorov</a>
-who is a QA guru, software engineer and cloud enthusiast!</em></p>
+	<h1 class="title">Drop-nth in Clojure</h1>
+	<div class="entry-content"><p>For some reason the standard Clojure library doesn&#8217;t have a <code>drop-nth</code>
+function (although it has <code>take-nth</code>). Luckily implementing it is trivial:</p>
 
-<p><strong>Software changes fast! Open source software even faster!</strong></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">drop-nth</span>
+</span><span class='line'>  <span class="p">[</span><span class="nv">n</span> <span class="nv">coll</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="nv">coll</span>
+</span><span class='line'>       <span class="p">(</span><span class="nb">map vector </span><span class="p">(</span><span class="nb">iterate inc </span><span class="mi">1</span><span class="p">))</span>
+</span><span class='line'>       <span class="p">(</span><span class="nb">remove </span><span class="o">#</span><span class="p">(</span><span class="nb">zero? </span><span class="p">(</span><span class="nf">mod</span> <span class="p">(</span><span class="nb">first </span><span class="nv">%</span><span class="p">)</span> <span class="nv">n</span><span class="p">)))</span>
+</span><span class='line'>       <span class="p">(</span><span class="nb">map </span><span class="nv">second</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>And once you start to update dependencies, libraries and frameworks it never ends&#8230;
-After all the testing and validation you may have done there is no
-guarantee that the software will keep working afterwards.
-This is no big deal for small and medium sized projects but becomes a full-time
-job for larger projects with longer life span which require constant maintenance
-and enhancements. I&#8217;ve seen this time and time again during my work on various projects.
-Even a simple <em>Drupal</em> based website pops up an update every couple of weeks.</p>
 
-<p>OTOH back porting fixes and keeping stable APIs can be a big business. This is what
-<em>Red Hat</em> is doing for their <em>Red Hat Enterprise Linux</em> distribution. Nearly all changes
-are backwards compatible and and the software stack remains stable compared
-to upstream <em>Fedora</em> or the more upstream projects which comprise it.</p>
+<p>Let&#8217;s try it out:</p>
 
-<p>Let me say that I don&#8217;t like to upgrade. Long ago I was using <em>Debian</em> <strong>stable</strong>
-on my computer. Now I use <em>RHEL</em>. No fancy features, no bells and
-whistles and more important predictable behavior wrt updates and APIs.
-The same approach I take when developing software. I stay away from the latest and
-greatest technology simply because it changes too often. I prefer mature frameworks and
-packages which produce new versions every six months or less frequent.
-This approach allows me to concentrate on writing code and getting the project done
-instead of plumbing bugs introduced by the latest <em>package foo</em> version.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">10</span><span class="p">))</span>
+</span><span class='line'><span class="c1">;; =&gt; (1 2 4 5 7 8)</span>
+</span><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">10</span><span class="p">))</span>
+</span><span class='line'><span class="c1">;; =&gt; (1 2 3 4 6 7 8 9)</span>
+</span><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">20</span><span class="p">))</span>
+</span><span class='line'><span class="c1">;; =&gt; (1 2 3 4 6 7 8 9 11 12 13 14 16 17 18 19)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>All this said I have a very careful approach to upgrades, especially if I&#8217;m
-using an upstream package. I will first look at the changelog if any. Luckily
-many of the mature projects provide comprehensive changelog records. This is
-especially true for Perl packages. I&#8217;m looking for notices about backward
-incompatible changes, API breakage, security notices, major bug fixes,
-changes in behavior and the like.
-When changelog is not available there&#8217;s the commit log. I admit this is
-not something I usually look at but it happens once in a while. I do this for projects
-I&#8217;m particularly interested in or otherwise following.
-Doing a content diff is another possibility which usually helps you
-spot (if you look carefully) some API changes as well. I resort to this if I&#8217;m not able to find the upstream
-source repository or when it is hosted on something ancient like CVS.</p>
 
-<p>Based on all of this I decide to upgrade or not. With careful planning
-of updates (which version, which moment of time) and testing I manage to
-minimize the hassle of breaking my projects and spending days fixing
-bugs afterwards. Instead I use the time to write some code that kicks ass
-(or at least I hope so).</p>
-
-<p>I&#8217;m curious to know what sort of information folks do prefer to have
-when considering an update? Changelog vs. API diff or seething else?
-I personally prefer well written Changelog and full list of fixed bugs.
-Please cast your vote in the comments or visit the
-<a href="http://www.surveymonkey.com/s/T7YW2MJ">survey</a>! Thank you!</p>
+<p>Looks good to me. Hopefully it will be of some use to someone.</p>
 </div>
 
 
@@ -163,11 +148,11 @@ Please cast your vote in the comments or visit the
   
 
 
-<time datetime="2012-04-07T12:22:00+03:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time></div>
+<time datetime="2013-01-20T15:31:00+02:00" pubdate data-updated="true">Jan 20<span>th</span>, 2013</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/software/'>Software</a>
+	<a class='category' href='/articles/categories/clojure/'>Clojure</a>
 
 
 </div>
@@ -215,8 +200,8 @@ Please cast your vote in the comments or visit the
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://bbatsov.github.com/articles/2012/04/07/changelog-vs-api-diff/';
-        var disqus_url = 'http://bbatsov.github.com/articles/2012/04/07/changelog-vs-api-diff/';
+        var disqus_identifier = 'http://bbatsov.github.com/articles/2013/01/20/drop-nth-in-clojure/';
+        var disqus_url = 'http://bbatsov.github.com/articles/2013/01/20/drop-nth-in-clojure/';
         var disqus_script = 'embed.js';
       
     (function () {

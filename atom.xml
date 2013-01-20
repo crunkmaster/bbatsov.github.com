@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2012-12-23T14:54:39+02:00</updated>
+  <updated>2013-01-20T15:44:47+02:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[drop-nth in Clojure]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/01/20/drop-nth-in-clojure/"/>
+    <updated>2013-01-20T15:31:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/01/20/drop-nth-in-clojure</id>
+    <content type="html"><![CDATA[<p>For some reason the standard Clojure library doesn&#8217;t have a <code>drop-nth</code>
+function (although it has <code>take-nth</code>). Luckily implementing it is trivial:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">drop-nth</span>
+</span><span class='line'>  <span class="p">[</span><span class="nv">n</span> <span class="nv">coll</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="nv">coll</span>
+</span><span class='line'>       <span class="p">(</span><span class="nb">map vector </span><span class="p">(</span><span class="nb">iterate inc </span><span class="mi">1</span><span class="p">))</span>
+</span><span class='line'>       <span class="p">(</span><span class="nb">remove </span><span class="o">#</span><span class="p">(</span><span class="nb">zero? </span><span class="p">(</span><span class="nf">mod</span> <span class="p">(</span><span class="nb">first </span><span class="nv">%</span><span class="p">)</span> <span class="nv">n</span><span class="p">)))</span>
+</span><span class='line'>       <span class="p">(</span><span class="nb">map </span><span class="nv">second</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&#8217;s try it out:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">10</span><span class="p">))</span>
+</span><span class='line'><span class="c1">;; =&gt; (1 2 4 5 7 8)</span>
+</span><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">10</span><span class="p">))</span>
+</span><span class='line'><span class="c1">;; =&gt; (1 2 3 4 6 7 8 9)</span>
+</span><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">20</span><span class="p">))</span>
+</span><span class='line'><span class="c1">;; =&gt; (1 2 3 4 6 7 8 9 11 12 13 14 16 17 18 19)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Looks good to me. Hopefully it will be of some use to someone.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs Tip #8: Manipulating Word Case]]></title>
@@ -1349,124 +1393,6 @@ versa. This is not a contest and there will be no winner. I wish the
 best of luck to EmacsWiki and its supporters. What I wish for is to give
 our community the best source of documentation available and the
 option to choose.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[All Hands on Deck! (or the Action Plan for a new Emacs community wiki)]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/03/21/all-hands-on-deck-or-the-action-plan-for-a-new-emacs-community-wiki/"/>
-    <updated>2012-03-21T11:11:00+02:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/03/21/all-hands-on-deck-or-the-action-plan-for-a-new-emacs-community-wiki</id>
-    <content type="html"><![CDATA[<h2>Prelude</h2>
-
-<p>Yesterday I wrote a highly
-<a href="http://batsov.com/articles/2012/03/20/die-emacswiki/">controversial article about the state of the EmacsWiki</a>
-and suggested a few things we can do to make things better. I got the
-usual batch of hate mail and some remarks on the poor quality of my
-English and writing style (which generally amuse me a lot). But I
-got much more encouraging feedback from <strong>a lot</strong> of Emacs community
-members. So here our story continues&#8230;</p>
-
-<!--more -->
-
-
-<h2>On The Essence of Things</h2>
-
-<p>Some people accused me that I don&#8217;t even know what I wiki is. To them
-I&#8217;d like to say that a thing is not its dictionary/encyclopedia
-definition. A thing is what it&#8217;s perceived to be. People expect wiki
-entries to look and behave like those found in MediaWiki or Confluence
-and not like some mixture of a wiki, forum and irc conversation&#8230;</p>
-
-<h2>A Word from Our Sponsor</h2>
-
-<p>Alex wrote a
-<a href="http://www.emacswiki.org/emacs/2012-03-20">public response on the EmacsWiki</a>
-yesterday, that I&#8217;d first like to share (since probably more people
-will see it here, than there). I publish it here with no alternations:</p>
-
-<blockquote><p>Bozhidar Batsov is apparently very frustrated with Emacs Wiki. He<br/>seems to think that we should start over – use new software, add<br/>moderators, guidelines, and sorts of fancy stuff. My answer is the<br/>same as it was back in 2008 (http://www.emacswiki.org/emacs/MissionRant).</p><p>One of his ideas I actually agree with. &#8220;Submit documentation only to<br/>the official project pages.&#8221; Absolutely. :)</p><p>Some ideas I am luke warm about: &#8220;package something on Marmalade…&#8221;<br/>Sure, why not? I have never used Marmalade, but I encourage you to<br/>improve the tools you use. There&#8217;s also &#8220;don&#8217;t respond to any bug<br/>requests regarding modified copies of your sources distributed via<br/>EmacsWiki.&#8221; I also don&#8217;t want to encourage bug reports on the<br/>wiki. Use the facilities built into Emacs to report bugs. But almost<br/>all of you know that.</p><p>But other ideas?</p><p>&#8220;Drop the current format of the wiki - use something standard like<br/>MediaWiki instead of OddMuse.&#8221; How is reformatting the pages going to<br/>improve them?</p><p>&#8220;Drop all the articles about Emacs extensions.&#8221; Just delete them? Are<br/>you at least going to rewrite them and move them to the appropriate<br/>project pages out there? Or are you just going to delete them? Taking<br/>away and not giving back?</p><p>&#8220;Drop all the extensions hosted there.&#8221; Some of the old code has no<br/>other home. Some of the old code is here for the poor sods stuck with<br/>Emacs 20. Are you going to package them for ELPA or Marmalade or<br/>whatever you are going to suggest instead?</p><p>Some of you – like Drew Adams – keep their packages on the wiki. For<br/>those packages, I don&#8217;t see any alternative. Are you going to maintain<br/>his software? Fix his bugs? Develop his features? Unless you are, I<br/>guess you can try and fork his stuff and keep it on whatever other<br/>system you want. But please don&#8217;t suggest taking something away<br/>without giving something in return.</p><p>&#8220;Assemble a team of moderators.&#8221; Indeed. Moderators! Where have you<br/>been hiding for the last ten years! Are you volunteering? I&#8217;m a bit<br/>wary regarding your deletionist tendencies. But perhaps you’d like to<br/>start with a new Table of Contents and new top-down menus where only<br/>the pages you personally vetted and checked are listed. That would be<br/>an awesome thing to do! Of course, there’s no need to delete anything<br/>in order for you to do this. Just arrange the stuff you like and do<br/>it.</p><p>In fact, in order to do it, just do it.</p><p>&#8220;Accept only articles about general Emacs usage and Emacs Lisp<br/>programming.&#8221; How is that going to work – more deleting? I don&#8217;t<br/>know&#8230; I don&#8217;t think you understand where the value of Emacs Wiki<br/>comes from. Perhaps you should write a book about Emacs? Collect a<br/>team of authors and editors and deletionists, take a copy of the wiki,<br/>and just do it right.</p><p>Also, less hyperbole when posting&#8230; :P</p><footer><strong>Alex Schroeder</strong> <cite>Creator and Maintainer of EmacsWiki.org</cite></footer></blockquote>
-
-
-<p>Here&#8217;s my two cents on the letter:</p>
-
-<ul>
-<li><p>The markup format hardly matters. A new wiki engine would give us
-better structure of the wiki as whole (like separate discussion pages
-for one).</p></li>
-<li><p>Dropping it from the wiki doesn&#8217;t mean we&#8217;ll delete the code
-forever. What I meant was - dump all the extensions to some archive
-for the interested parties and remove them from the wiki. You&#8217;re
-basically putting words in my mouth.</p></li>
-<li><p>We should care for the bad choices some people made (like Drew - all
-my respect to his work). With so many free project hosting services I
-don&#8217;t feel we&#8217;ll be taking something away and not giving an alternative.</p></li>
-<li><p>No, I don&#8217;t volunteer. Not for this format of the wiki. But I do
-volunteer for an alternative matching the outline I&#8217;ve suggested.</p></li>
-<li><p>Mocking me is not right response, you know. The problem exists, you
-fail to acknowledge it, but I don&#8217;t care that much.</p></li>
-<li><p>Alex calls it hyperbole, I call it the simple truth (and many others
-would second me).</p></li>
-</ul>
-
-
-<h2>The Plan</h2>
-
-<p>Many people commented that my post is not worth a damn if I&#8217;m not
-willing to back it with action. I&#8217;m sad to disappoint my critics - but
-I&#8217;ll willing to go the whole nine yards on this one. Here&#8217;s the
-outline of my proposal for a new wiki:</p>
-
-<ol>
-<li><p>Use <a href="http://moinmo.in/">MoinMoin</a> as the wiki engine. It&#8217;s written in Python and
-it&#8217;s GPL software. It doesn&#8217;t use a database, it&#8217;s featureful and
-mature. It&#8217;s successfully used by Debian and Ubuntu (and many other
-respectable software organizations). I&#8217;m against using a Git backed
-systems since it will increase the entry bar for user
-participation. I&#8217;m even more against the use of a custom platform
-developed specially to serve as the EmacsWiki.</p></li>
-<li><p>I&#8217;ll pay for the hosting and the new domain and set up the wiki
-initially. I&#8217;d suggest that the new project begins with the domain
-emacswiki.net or emacswiki.info and eventually we&#8217;ll assume the old
-emacswiki.org domain as well (should the new wiki be successful
-enough). Suggestions for another name are welcome in the comments
-section.</p></li>
-<li><p>I and anyone willing to lend a hand will pick the articles worth
-saving from the EmacsWiki and migrate them to the new one. I and
-anyone willing to serve as moderator will monitor new contributions
-afterwards.</p></li>
-<li><p>Wiki entries will have a more or less standard structure and will
-adhere and community established guidelines.</p></li>
-<li><p>The old EmacsWiki will eventually be retired to another domain such
-as old.emacswiki.org (or similar) for historic purposes and benefit of
-users of old Emacs versions.</p></li>
-</ol>
-
-
-<p>It this good enough for you to call it an action plan? Comments on it
-are most welcome!</p>
-
-<h2>Epilogue</h2>
-
-<p>I&#8217;m sorry that I&#8217;m the guy that has to break the terrible news to all of
-the delusional EmacsWiki supporters out there - <em>It&#8217;s not
-special. It&#8217;s not a beautiful or unique snowflake. It&#8217;s the same
-decaying wiki matter like some many else.</em> I&#8217;m sorry for my terrible
-English and my lack of good manners. I&#8217;m sorry I&#8217;m willing do to
-something while so many of you are just whining and ignoring the
-existing problems.</p>
-
-<p>I think as a member of the Emacs community I&#8217;ve shown my worth so far
-and I&#8217;ll willing to do even more. But I cannot carry out such a
-massive undertaking on my own. I encourage everyone serious about
-helping out to comment the article (here, not on reddit or hacker
-news) or send me a personal email.</p>
-
-<p><strong>Update</strong></p>
-
-<p>The new wiki is now available at
-<a href="http://wikemacs.org">http://wikemacs.org</a>. It&#8217;s using MediaWiki (it
-turned out it had several nice advantages over MoinMoin).</p>
 ]]></content>
   </entry>
   
