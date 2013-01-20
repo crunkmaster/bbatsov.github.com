@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>(think)</title>
+	<title>Just juxt it! - (think)</title>
 	<meta name="author" content="Bozhidar Batsov">
 
 	
@@ -95,13 +95,9 @@ the &hellip;">
 </script>
 
 	
-	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/01/20/just-juxt-it/">Just Juxt It!</a></h1>
-	<div class="entry-content">
-		<p><code>juxt</code> is one remarkably useful core Clojure function, that doesn&#8217;t
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Just Juxt It!</h1>
+	<div class="entry-content"><p><code>juxt</code> is one remarkably useful core Clojure function, that doesn&#8217;t
 seem to be widely used (or understood for that matter), but is part of
 the arsenal of every experienced Clojure hacker.</p>
 
@@ -168,10 +164,7 @@ ways to do so, <code>juxt</code> offers one particularly elegant:</p>
 
 <p>Hopefully this short article has whetted your appetite and you&#8217;ll find
 even more elegant uses for <code>juxt</code> in your code.</p>
-
-		
-		
-	</div>
+</div>
 
 
 <div class="meta">
@@ -198,265 +191,28 @@ even more elegant uses for <code>juxt</code> in your code.</p>
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/01/20/drop-nth-in-clojure/">Drop-nth in Clojure</a></h1>
-	<div class="entry-content">
-		<p>For some reason the standard Clojure library doesn&#8217;t have a <code>drop-nth</code>
-function (although it has <code>take-nth</code>). Luckily implementing it is trivial:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">drop-nth</span>
-</span><span class='line'>  <span class="p">[</span><span class="nv">n</span> <span class="nv">coll</span><span class="p">]</span>
-</span><span class='line'>  <span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="nv">coll</span>
-</span><span class='line'>       <span class="p">(</span><span class="nb">map vector </span><span class="p">(</span><span class="nb">iterate inc </span><span class="mi">1</span><span class="p">))</span>
-</span><span class='line'>       <span class="p">(</span><span class="nb">remove </span><span class="o">#</span><span class="p">(</span><span class="nb">zero? </span><span class="p">(</span><span class="nf">mod</span> <span class="p">(</span><span class="nb">first </span><span class="nv">%</span><span class="p">)</span> <span class="nv">n</span><span class="p">)))</span>
-</span><span class='line'>       <span class="p">(</span><span class="nb">map </span><span class="nv">second</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Let&#8217;s try it out:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">10</span><span class="p">))</span>
-</span><span class='line'><span class="c1">;; =&gt; (1 2 4 5 7 8)</span>
-</span><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">10</span><span class="p">))</span>
-</span><span class='line'><span class="c1">;; =&gt; (1 2 3 4 6 7 8 9)</span>
-</span><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">20</span><span class="p">))</span>
-</span><span class='line'><span class="c1">;; =&gt; (1 2 3 4 6 7 8 9 11 12 13 14 16 17 18 19)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Looks good to me. Hopefully it will be of some use to someone.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-20T15:31:00+02:00" pubdate data-updated="true">Jan 20<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/clojure/'>Clojure</a>
-
-
-</div>
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/12/16/emacs-tip-number-8-manipulating-word-case/">Emacs Tip #8: Manipulating Word Case</a></h1>
-	<div class="entry-content">
-		<p>One operation that we have to do fairly often when editing text is
-manipulating the case of words. The most popular case manipulations
-are probably <strong>capitalize</strong>, <strong>convert to lowercase</strong> and <strong>convert to
-uppercase</strong>. Emacs naturally has built-in commands for all of those.</p>
-
-<p>Pressing <code>M-c</code> runs the command <code>capitalize-word</code>, which will
-capitalize the next word and move the cursor after it. Pressing <code>M--
-M-c</code> will capitalize the previous word without moving the cursor.</p>
-
-<p>Pressing <code>M-l</code> runs the command <code>downcase-word</code>, which will lowercase
-the next word and move the cursor after it. Pressing <code>M-- M-l</code> will
-lowercase the previous word without moving the cursor.</p>
-
-<p>Pressing <code>M-u</code> runs the command <code>upcase-word</code>, which will uppercase the
-next word and move the cursor after it. Pressing <code>M-- M-u</code> will uppercase
-the previous word without moving the cursor.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-16T17:57:00+02:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
-
-
-</div>
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/12/16/deleting-remote-git-branches/">Deleting Remote Git Branches</a></h1>
-	<div class="entry-content">
-		<p>This post is mostly a note to myself, since I constantly forget how to
-delete remote Git branches.</p>
-
-<p>The classic way to do so (introduced in Git 1.5) would be:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin :branch-to-delete
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So, if I were migrating an application from MySQL to PostgreSQL I might want to delete
-the <code>postgres</code> branch when I&#8217;m done:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin :postgres
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You have to agree this syntax is hardly something one can easily
-remember(and I&#8217;m extra certain nobody would have guessed it on their
-own). Fortunately in Git 1.7 a nicer alternative to the above command
-was introduced:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin --delete branch-to-delete
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That&#8217;s all from me for today. Now go ahead and delete those unneeded Git branches.</p>
-
-<p>P.S. GitHub users might also want to take a look at this
-<a href="https://github.com/blog/1335-tidying-up-after-pull-requests">article</a>
-describing recently added functionality to clean up after pull
-requests.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-16T10:10:00+02:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/git/'>git</a>
-
-
-</div>
+	<a class="addthis_button_tweet"></a>
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/">Emacs 24.3 Introduces Native OSX Full-screen Support</a></h1>
-	<div class="entry-content">
-		<p>One of the most requested Emacs features - native OSX Lion style
-full-screen support has finally landed in Emacs 24.3 (due to be
-released in a few months). If you&#8217;re eager to try it out right now
-homebrew is a good option:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install emacs --cocoa --use-git-head --HEAD
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Homebrew&#8217;s devs have even backported the full-screen patch to Emacs
-24.2, so if you&#8217;re not very adventurous you can just do:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install emacs --cocoa
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Alternatively you can install the
-<a href="http://emacsformacosx.com/emacs-builds/Emacs-pretest-24.2.91-universal-10.6.8.dmg">Emacs 24.2.91 pretest</a>
-(or a newer pretest/nightly build) from
-<a href="http://emacsformacosx.com/">Emacs for Mac OSX</a>. Personally I
-recommend this option, since cloning the Emacs git mirror (as homebrew
-does) takes like forever.</p>
-
-<p>Here&#8217;s the beast in action:</p>
-
-<p><img src="/images/articles/emacs-full-screen.png"></p>
-
-<p>This was a short article, but I do hope you&#8217;ll find it useful.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-09T13:34:00+02:00" pubdate data-updated="true">Dec 9<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/osx/'>OSX</a>
-
-
-</div>
 	
-</div></article>
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
-<nav id="pagenavi">
-    
-    
-        <a href="/articles/page/2/" class="next">Next</a>
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav></div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
 	<footer id="footer" class="inner">Copyright &copy; 2013
 
     Bozhidar Batsov
@@ -475,7 +231,10 @@ does) takes like forever.</p>
       var disqus_shortname = 'batsov';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bbatsov.github.com/articles/2013/01/20/just-juxt-it/';
+        var disqus_url = 'http://bbatsov.github.com/articles/2013/01/20/just-juxt-it/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
