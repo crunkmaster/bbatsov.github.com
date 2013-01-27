@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-01-20T18:51:22+02:00</updated>
+  <updated>2013-01-27T09:48:32+02:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The WikEmacs Experiment is over! Long Live EmacsWiki!]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/01/27/the-wikemacs-experiment-is-over-long-live-emacswiki/"/>
+    <updated>2013-01-27T09:23:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/01/27/the-wikemacs-experiment-is-over-long-live-emacswiki</id>
+    <content type="html"><![CDATA[<p>Less than an year ago
+<a href="http://batsov.com/articles/2012/03/20/die-emacswiki/">amid a lot of turmoil</a>
+I&#8217;ve started
+<a href="http://batsov.com/articles/2012/03/26/wikemacs-the-other-emacs-wiki/">an alternative to EmacsWiki</a>. The
+project took off to a great start, but quickly lost traction and now
+it&#8217;s time to face the truth - I had an assumption, it turned out it(I)
+was wrong and I should come to terms with that.</p>
+
+<p>It&#8217;s more than apparent at this point that the majority of the Emacs
+community is happy with EmacsWiki and that&#8217;s fine by me. I&#8217;ll be
+closing down WikEmacs after 2-3 months and I suggest that everyone who&#8217;s
+contributed significant chunks of content to it migrate them to
+EmacsWiki (I&#8217;ll personally move everything good I find). I don&#8217;t want
+the work people have done to just disappear.</p>
+
+<p>Given the small interest in WikEmacs I doubt that many will miss it. I
+thank all the contributors and the supporters of the idea. In the long
+term it would be better for us to have a single repository of Emacs
+knowledge, that&#8217;s why I decided to terminate WikEmacs sooner rather than later.</p>
+
+<p>I want to extend a big public apology to Alex Schroeder for my harsh
+criticism of EmacsWiki.  One year later I see that stewarding
+documentation projects and nurturing a healthy community around them
+is much harder that writing software. I&#8217;m but a humble software
+engineer and you&#8217;ll have to forgive me for my misguided actions.</p>
+
+<p>I hope that something good has(will) come up from all this drama. At
+the very least I urge everyone who cares for EmacsWiki to try and
+clean up, extend and improve at least a couple of articles on subjects
+that are of importance to him. I know that&#8217;s something I&#8217;ll be doing
+from now on.</p>
+
+<p>See you on EmacsWiki!</p>
+
+<p>WikEmacs is dead! Long live the one true EmacsWiki!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Just juxt it!]]></title>
@@ -1320,83 +1363,6 @@ when considering an update? Changelog vs. API diff or seething else?
 I personally prefer well written Changelog and full list of fixed bugs.
 Please cast your vote in the comments or visit the
 <a href="http://www.surveymonkey.com/s/T7YW2MJ">survey</a>! Thank you!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MELPA - homebrew (Emacs Edition)]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/04/06/melpa-homebrew-emacs-edition/"/>
-    <updated>2012-04-06T18:04:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/04/06/melpa-homebrew-emacs-edition</id>
-    <content type="html"><![CDATA[<p>A few weeks ago I wrote an
-<a href="http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/">article about the state of package management in Emacs</a>. In
-that article I pointed out that on the side of <a href="http://wikemacs.org/wiki/Package.el">package.el</a> too much
-was riding on the poorly maintained Marmalade repo. Today
-Marmalade went dark (again) and many people are wondering what to do
-now. The answer is simple - start using <a href="http://melpa.milkbox.net/">MELPA</a> instead.</p>
-
-<p>I was thinking of starting a project similar to Marmalade to alleviate
-its problems, but then the MELPA project was brought to my
-attention. This project follows the Homebrew (unofficial OSX package
-manager) model of using simple GitHub collaboration to maintain and
-grow a bunch of build recipes. In the case of MELPA, those recipes
-show how to bundle upstream source packages into package.el-compliant
-packages. The recipes can be tested locally by package authors, and
-they are run hourly on the MELPA server to create an HTTP package
-archive that Emacs users can simply add to their <code>'package-archives</code>
-list. As <a href="http://technomancy.us">Phil Hagelberg</a> said - there&#8217;s no reason to drag in
-complicated dependencies like Node for something that&#8217;s essentially a
-pile of static files. MELPA on the other hand is written mostly in
-Emacs Lisp and is thus much more comprehensible to casual Emacs hackers.</p>
-
-<p>Most packages currently contained in MELPA are development snapshots,
-but the project maintainer
-<a href="https://github.com/milkypostman">Donald Curtis</a> and
-<a href="http://www.sanityinc.com/">Steve Purcell</a> (aka <code>sanityinc</code>) are
-working on extending the MELPA build scripts to support stable
-packages, using upstream version tags.</p>
-
-<p>Adding a new package to MELPA is as simple as adding a few lines of
-code to the <code>pkglist</code> file in MELPA&#8217;s source code repo:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">name</span> <span class="ss">:url</span> <span class="s">&quot;&lt;repo url&gt;&quot;</span>
-</span><span class='line'> <span class="ss">:fetcher</span> <span class="nv">[git|svn|darcs</span><span class="err">|</span><span class="nv">wiki]</span>
-</span><span class='line'> <span class="nv">[:files</span> <span class="p">(</span><span class="s">&quot;&lt;file1&gt;&quot;</span><span class="o">,</span> <span class="o">...</span><span class="p">)</span><span class="nv">]</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You simply have to fork the <a href="https://github.com/milkypostman/melpa">official repo</a>, modify <code>pkglist</code>, send a pull
-request and <code>package.el</code> compatible packages will be built
-automatically for you on MELPA&#8217;s server (you can also build the
-packages locally to test if everything is OK with your recipes). Sure it&#8217;s not as easy as
-submitting a package via a web UI, but it&#8217;s a much more robust
-approach. It also eliminates a common problem in Marmalade - there
-only the original uploader (+ people selected by him) can update a
-package. Often the original uploaders are very hard to find&#8230;</p>
-
-<p>To use MELPA with Emacs 24 (or a recent version of <code>package.el</code>) just
-add this to your <code>.emacs</code> (or equivalent):</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;package-archives</span>
-</span><span class='line'><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;melpa&quot;</span> <span class="o">.</span> <span class="s">&quot;http://melpa.milkbox.net/packages/&quot;</span><span class="p">)</span> <span class="no">t</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There&#8217;s a lot more info regarding MELPA on its official website and
-I&#8217;d rather not duplicate it here.</p>
-
-<p>I would encourage package authors and users to investigate and
-contribute to MELPA. I&#8217;ve already submitted a bunch of packages
-there and rebased <a href="http://batsov.com/prelude">Emacs Prelude</a> to
-use MELPA instead of Marmalade.</p>
-
-<p>Together we can turn MELPA into the most extensive and robust community-supported
-<code>package.el</code> repo! Emacs users deserve one of those :-)</p>
 ]]></content>
   </entry>
   

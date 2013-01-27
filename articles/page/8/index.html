@@ -7,9 +7,8 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Prelude I&#8217;ve started my personal blog some three years ago. Back then in was
-hosted on wordpress.com and was called
-devcraft.wordpress.com. I &hellip;">
+	<meta name="description" content="Sometimes it&#8217;s useful to be able to open the file you&#8217;re editing in
+Emacs in an external program. For instance - you might be editing &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +95,82 @@ devcraft.wordpress.com. I &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2011/11/12/emacs-tip-number-2-open-file-in-external-program/">Emacs Tip #2: Open File in External Program</a></h1>
+	<div class="entry-content">
+		<p>Sometimes it&#8217;s useful to be able to open the file you&#8217;re editing in
+Emacs in an external program. For instance - you might be editing
+some HTML file and you might want to see how is it looking in a
+browser. I use the following handy command to do so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">prelude-open-with</span> <span class="p">()</span>
+</span><span class='line'>  <span class="s">&quot;Simple function that allows us to open the underlying</span>
+</span><span class='line'><span class="s">file of a buffer in an external program.&quot;</span>
+</span><span class='line'>  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">when</span> <span class="nv">buffer-file-name</span>
+</span><span class='line'>    <span class="p">(</span><span class="nv">shell-command</span> <span class="p">(</span><span class="nv">concat</span>
+</span><span class='line'>                    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">eq</span> <span class="nv">system-type</span> <span class="ss">&#39;darwin</span><span class="p">)</span>
+</span><span class='line'>                        <span class="s">&quot;open&quot;</span>
+</span><span class='line'>                      <span class="p">(</span><span class="nv">read-shell-command</span> <span class="s">&quot;Open current file with: &quot;</span><span class="p">))</span>
+</span><span class='line'>                    <span class="s">&quot; &quot;</span>
+</span><span class='line'>                    <span class="nv">buffer-file-name</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On OSX it would use the <code>open</code> program to decide which program to open
+the file with, otherwise you&#8217;d be prompted to enter the name of the
+program in the minibuffer.</p>
+
+<p>I find it convenient to bind the command to <code>C-c o</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c o&quot;</span><span class="p">)</span> <span class="ss">&#39;prelude-open-with</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This command is naturally part of <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a>.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-12T11:16:00+02:00" pubdate data-updated="true">Nov 12<span>th</span>, 2011</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -297,56 +372,6 @@ quite some time.</p>
 
 
 	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2011/07/04/debian-tips/">Debian Post Installation Setup & Tips</a></h1>
-	<div class="entry-content">
-		<h2>Prelude</h2>
-
-<p>I&#8217;ve recently been using Debian a lot (mostly Debian Wheezy (aka
-testing)), So I&#8217;ve decided to adapt my
-<a href="/Linux/Fedora/2011/05/31/fedora-15-tips.html">Fedora 15 post installation setup &amp; tips</a>
-article for Debian. Here are some of the common things I add to a
-typical &#8220;graphical desktop&#8221; Debian installation as well as some tips
-and tricks that you&#8217;ll hopefully find useful. Btw, I highly recommend
-you to use the <a href="http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/amd64/iso-cd/debian-testing-amd64-netinst.iso">netinstall Debian distribution</a> - that way you&#8217;ll get an
-up-to-date installation immediately and you won&#8217;t have to download
-huge installation images.</p>
-
-<p>This article will be of use mostly to people using Debian as a desktop
-OS (with GNOME as their desktop environment) - it doesn&#8217;t discuss any
-server configurations.</p>
-
-
-		
-		<a href="/articles/2011/07/04/debian-tips/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-04T00:00:00+03:00" pubdate data-updated="true">Jul 4<span>th</span>, 2011</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/debian/'>Debian</a>, <a class='category' href='/articles/categories/linux/'>Linux</a>
 
 
 </div>

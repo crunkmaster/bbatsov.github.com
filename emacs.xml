@@ -4,7 +4,7 @@
   <title><![CDATA[Emacs @ (think)]]></title>
   <link href="http://bbatsov.github.com/emacs.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-01-20T18:51:22+02:00</updated>
+  <updated>2013-01-27T09:48:32+02:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The WikEmacs Experiment is over! Long Live EmacsWiki!]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/01/27/the-wikemacs-experiment-is-over-long-live-emacswiki/"/>
+    <updated>2013-01-27T09:23:00+02:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/01/27/the-wikemacs-experiment-is-over-long-live-emacswiki</id>
+    <content type="html"><![CDATA[<p>Less than an year ago
+<a href="http://batsov.com/articles/2012/03/20/die-emacswiki/">amid a lot of turmoil</a>
+I&#8217;ve started
+<a href="http://batsov.com/articles/2012/03/26/wikemacs-the-other-emacs-wiki/">an alternative to EmacsWiki</a>. The
+project took off to a great start, but quickly lost traction and now
+it&#8217;s time to face the truth - I had an assumption, it turned out it(I)
+was wrong and I should come to terms with that.</p>
+
+<p>It&#8217;s more than apparent at this point that the majority of the Emacs
+community is happy with EmacsWiki and that&#8217;s fine by me. I&#8217;ll be
+closing down WikEmacs after 2-3 months and I suggest that everyone who&#8217;s
+contributed significant chunks of content to it migrate them to
+EmacsWiki (I&#8217;ll personally move everything good I find). I don&#8217;t want
+the work people have done to just disappear.</p>
+
+<p>Given the small interest in WikEmacs I doubt that many will miss it. I
+thank all the contributors and the supporters of the idea. In the long
+term it would be better for us to have a single repository of Emacs
+knowledge, that&#8217;s why I decided to terminate WikEmacs sooner rather than later.</p>
+
+<p>I want to extend a big public apology to Alex Schroeder for my harsh
+criticism of EmacsWiki.  One year later I see that stewarding
+documentation projects and nurturing a healthy community around them
+is much harder that writing software. I&#8217;m but a humble software
+engineer and you&#8217;ll have to forgive me for my misguided actions.</p>
+
+<p>I hope that something good has(will) come up from all this drama. At
+the very least I urge everyone who cares for EmacsWiki to try and
+clean up, extend and improve at least a couple of articles on subjects
+that are of importance to him. I know that&#8217;s something I&#8217;ll be doing
+from now on.</p>
+
+<p>See you on EmacsWiki!</p>
+
+<p>WikEmacs is dead! Long live the one true EmacsWiki!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs Tip #8: Manipulating Word Case]]></title>
@@ -2078,144 +2121,6 @@ program in the minibuffer.</p>
 
 
 <p>This command is naturally part of <a href="https://github.com/bbatsov/prelude">Emacs Prelude</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Getting started with Emacs 24]]></title>
-    <link href="http://bbatsov.github.com/articles/2011/10/09/getting-started-with-emacs-24/"/>
-    <updated>2011-10-09T00:00:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2011/10/09/getting-started-with-emacs-24</id>
-    <content type="html"><![CDATA[<h2>Prelude</h2>
-
-<p>Last month I&#8217;ve blogged about the
-<a href="http://bbatsov.github.com/articles/2011/08/19/a-peek-at-emacs24/">exciting things are coming up in Emacs 24</a>. What
-I failed to mention originally is that altough Emacs 24 is slated for
-a Spring 2012 (tentatively) release there is no real reason not to start using it
-now. You should also keep in mind that it&#8217;s feature complete since it
-officially entered the feature freeze of its development cycle in July 2011.</p>
-
-<p>I&#8217;ve been using Emacs 24 for several months now and it has been
-nothing but rock solid. I guess the only real obstacle currently is
-that the way to obtain Emacs 24 is not particularly straightfoward/clear,
-hence this post.</p>
-
-<p>I&#8217;ll discuss here the installation and initial configuration of Emacs
-24 on OSX, GNU/Linux and Windows.</p>
-
-<!--more-->
-
-
-<h2>Installing Emacs 24</h2>
-
-<h4>OS X</h4>
-
-<p>Obtaining Emacs 24 on OS X is really simple. There are two popular
-ways to do it. The first is to simply download a pretest (or a nightly
-build) from <a href="http://emacsformacosx.com">Emacs for OSX</a>. My personal
-recommendation would be to get the latest pretest (which is ironically
-the first pretest as well) from
-<a href="http://emacsformacosx.com/emacs-builds/Emacs-pretest-24.0.90-universal-10.6.7.dmg">here</a>.</p>
-
-<p>That was really easy, right?</p>
-
-<p>The second easy way to obtain Emacs 24 is via
-<a href="http://mxcl.github.com/homebrew/">homebrew</a>. Just type the following
-incantation in your shell and you&#8217;re done:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install emacs --cocoa --use-git-head --HEAD
-</span><span class='line'><span class="nv">$ </span>cp -r /usr/local/Cellar/emacs/HEAD/Emacs.app /Applications/
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The second step is optional, but it&#8217;s recommended if you like to start
-Emacs from the launchpad or from Spotlight. Personally I prefer to
-start Emacs in daemon mode (<code>emacs --daemon</code>), so that I could share a
-single Emacs instance between several Emacs clients (<code>emacsclient
--c/t</code>).</p>
-
-<p>That&#8217;s all folk! You may now proceed to the configuration section.</p>
-
-<h4>Linux</h4>
-
-<p>Given that Linux is more or less the home os of Emacs it presents us
-with the most installation options. Of course, we can build Emacs from
-<a href="https://github.com/emacsmirror/emacs">source</a> on every distribution
-out there, but I rarely bother to do so. Using the distribution&#8217;s
-package manager is a better idea for many reasons - you don&#8217;t need to
-install a build chain and lots of dev libraries, you get updated
-versions when they are released and you get automated dependency
-manager, just to name a few.</p>
-
-<p>That said, few distributions include in their primary repositories
-builds of Emacs 24. Luckily there are some unofficial repos that come
-to the rescue.</p>
-
-<p>Debian/Ubuntu users should look no further than the amazing
-<a href="http://emacs.naquadah.org/">emacs-snapshot APT repo</a>. You&#8217;ll find
-installation instructions there for all the relevant Debian and Ubuntu
-versions out there. High quality, highly recommended builds!</p>
-
-<p>Gentoo users have even less to do, since Emacs 24 can be obtained via
-the <code>emacs-vcs</code> package in portage, as noted in the official
-<a href="http://www.gentoo.org/proj/en/lisp/emacs/emacs.xml">Emacs on Gentoo page</a>.</p>
-
-<p>Unfortunately I wasn&#8217;t able to find prebuilt Emacs 24 packages for any
-of the RPM distros (Fedora, SUSE, Mandriva, etc). Since, I&#8217;m Debian
-user I have to admit that I didn&#8217;t look that far, but the source
-installation is not particularly hard and is always an option.</p>
-
-<h4>Windows</h4>
-
-<p>There are several ways to obtain precompiled Emacs 24 binaries if
-you&#8217;re a Windows users. The most popular are
-<a href="http://ourcomments.org/cgi-bin/emacsw32-dl-latest.pl">EmacsW32</a>,
-<a href="http://code.google.com/p/emacs-for-windows/">Emacs for Windows</a> and
-of course the official
-<a href="http://alpha.gnu.org/gnu/emacs/windows/">Emacs Windows builds</a>. I&#8217;ve
-,personally, never used any builds other than the official ones. The
-unofficial builds usually include installers and various patches that
-might be of use to some users.</p>
-
-<p>Since I rarely use Windows I cannot give you any more advice on the
-choice of a binary vendor.</p>
-
-<h2>Initial configuration</h2>
-
-<p>Installing Emacs has always been the easy part, configuring it
-properly - not that much. That&#8217;s why I&#8217;ve created the
-<a href="https://github.com/bbatsov/prelude">Emacs Prelude</a> - an
-advanced Emacs setup specifically for Emacs 24 that has been tested to
-properly work on OSX, Linux and Windows.</p>
-
-<p>Its installation is dead simple:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git clone git://github.com/bbatsov/prelude.git path/to/local/repo
-</span><span class='line'><span class="nv">$ </span>ln -s path/to/local/repo ~/.emacs.d
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>For Windows Vista/7 the ~(home) folder is
-<code>C:\Users\&lt;USER&gt;\AppData\Roaming\</code>.</p>
-
-<p>The configuration in the Prelude is commented extensively and will be
-improved more along the way. Reading it will be an enlightening
-experience for all new Emacs users.</p>
-
-<p>The Prelude itself is a moving target. I&#8217;ve created it recently and I
-plan to add a lot more cool things very soon, so stay tuned. If you
-have any problems with it or have feature suggestions - do not
-hesitate to open tickets and send pull requests.</p>
-
-<h2>Epilogue</h2>
-
-<p>Now that I&#8217;ve shown you how easy it is to get a hold of Emacs 24 and
-I&#8217;ve provided you with a starting configuration there is really no
-excuse not to switch to Emacs 24. Install it, use it, love it!</p>
 ]]></content>
   </entry>
   
