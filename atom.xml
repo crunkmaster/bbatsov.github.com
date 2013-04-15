@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-01-27T09:48:32+02:00</updated>
+  <updated>2013-04-15T17:13:59+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs Redux]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/04/15/emacs-redux/"/>
+    <updated>2013-04-15T17:10:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/04/15/emacs-redux</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve recently launched a new blog dedicated to Emacs -
+<a href="http://emacsredux.com/">Emacs Redux</a>.</p>
+
+<p>There I’ll be sharing with you (hopefully) useful tips and tricks to
+make your experience with Emacs more productive and more enjoyable.</p>
+
+<p>I hope you&#8217;ll like it!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The WikEmacs Experiment is over! Long Live EmacsWiki!]]></title>
@@ -41,7 +56,7 @@ knowledge, that&#8217;s why I decided to terminate WikEmacs sooner rather than l
 <p>I want to extend a big public apology to Alex Schroeder for my harsh
 criticism of EmacsWiki.  One year later I see that stewarding
 documentation projects and nurturing a healthy community around them
-is much harder that writing software. I&#8217;m but a humble software
+is much harder than writing software. I&#8217;m but a humble software
 engineer and you&#8217;ll have to forgive me for my misguided actions.</p>
 
 <p>I hope that something good has(will) come up from all this drama. At
@@ -1304,65 +1319,6 @@ I plan to resume my usual blogging and open-source coding duties soon.</p>
 Stancheva). Feel free to use it wherever you see fit.</p>
 
 <p><img src="http://bbatsov.github.com/images/articles/emacs_knight.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Changelog vs API diff]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/04/07/changelog-vs-api-diff/"/>
-    <updated>2012-04-07T12:22:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/04/07/changelog-vs-api-diff</id>
-    <content type="html"><![CDATA[<p><em>This is a guest post from my friend <a href="http://about.me/atodorov">Alexander Todorov</a>
-who is a QA guru, software engineer and cloud enthusiast!</em></p>
-
-<p><strong>Software changes fast! Open source software even faster!</strong></p>
-
-<p>And once you start to update dependencies, libraries and frameworks it never ends&#8230;
-After all the testing and validation you may have done there is no
-guarantee that the software will keep working afterwards.
-This is no big deal for small and medium sized projects but becomes a full-time
-job for larger projects with longer life span which require constant maintenance
-and enhancements. I&#8217;ve seen this time and time again during my work on various projects.
-Even a simple <em>Drupal</em> based website pops up an update every couple of weeks.</p>
-
-<p>OTOH back porting fixes and keeping stable APIs can be a big business. This is what
-<em>Red Hat</em> is doing for their <em>Red Hat Enterprise Linux</em> distribution. Nearly all changes
-are backwards compatible and and the software stack remains stable compared
-to upstream <em>Fedora</em> or the more upstream projects which comprise it.</p>
-
-<p>Let me say that I don&#8217;t like to upgrade. Long ago I was using <em>Debian</em> <strong>stable</strong>
-on my computer. Now I use <em>RHEL</em>. No fancy features, no bells and
-whistles and more important predictable behavior wrt updates and APIs.
-The same approach I take when developing software. I stay away from the latest and
-greatest technology simply because it changes too often. I prefer mature frameworks and
-packages which produce new versions every six months or less frequent.
-This approach allows me to concentrate on writing code and getting the project done
-instead of plumbing bugs introduced by the latest <em>package foo</em> version.</p>
-
-<p>All this said I have a very careful approach to upgrades, especially if I&#8217;m
-using an upstream package. I will first look at the changelog if any. Luckily
-many of the mature projects provide comprehensive changelog records. This is
-especially true for Perl packages. I&#8217;m looking for notices about backward
-incompatible changes, API breakage, security notices, major bug fixes,
-changes in behavior and the like.
-When changelog is not available there&#8217;s the commit log. I admit this is
-not something I usually look at but it happens once in a while. I do this for projects
-I&#8217;m particularly interested in or otherwise following.
-Doing a content diff is another possibility which usually helps you
-spot (if you look carefully) some API changes as well. I resort to this if I&#8217;m not able to find the upstream
-source repository or when it is hosted on something ancient like CVS.</p>
-
-<p>Based on all of this I decide to upgrade or not. With careful planning
-of updates (which version, which moment of time) and testing I manage to
-minimize the hassle of breaking my projects and spending days fixing
-bugs afterwards. Instead I use the time to write some code that kicks ass
-(or at least I hope so).</p>
-
-<p>I&#8217;m curious to know what sort of information folks do prefer to have
-when considering an update? Changelog vs. API diff or seething else?
-I personally prefer well written Changelog and full list of fixed bugs.
-Please cast your vote in the comments or visit the
-<a href="http://www.surveymonkey.com/s/T7YW2MJ">survey</a>! Thank you!</p>
 ]]></content>
   </entry>
   
