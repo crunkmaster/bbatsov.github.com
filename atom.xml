@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-04-15T17:13:59+03:00</updated>
+  <updated>2013-04-15T17:33:53+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RuboCop]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/04/15/rubocop/"/>
+    <updated>2013-04-15T17:22:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/04/15/rubocop</id>
+    <content type="html"><![CDATA[<p>After I launched the
+<a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a> I
+often received requests to create a tool enforcing the rules in the guide
+automatically.</p>
+
+<p>Today this tool is a reality - meet
+<a href="https://github.com/bbatsov/rubocop">RuboCop</a>. RuboCop already covers
+a significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
+and has pretty neat Emacs integration(via
+<a href="https://github.com/bbatsov/rubocop-emacs">rubocop.el</a> and
+<a href="https://github.com/lunaryorn/flycheck">flycheck</a>).</p>
+
+<p>I&#8217;d love to see more Ruby hackers check out RuboCop!</p>
+
+<p>I&#8217;d love to thank all the great people who contributed code, issue
+reports and ideas to RuboCop&#8217;s development and I sincerely hope many
+Ruby hackers will find it useful!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Emacs Redux]]></title>
@@ -1307,18 +1332,6 @@ things have been crazy at work ever since.</p>
 <p>While this is without a doubt my coolest job to date, it&#8217;s also the
 most demanding. Anyways - just wanted to let you know I&#8217;m doing OK and
 I plan to resume my usual blogging and open-source coding duties soon.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A True Emacs Knight]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/05/28/a-true-emacs-knight/"/>
-    <updated>2012-05-28T15:39:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/05/28/a-true-emacs-knight</id>
-    <content type="html"><![CDATA[<p>Here&#8217;s one true Emacs Knight (courtesy of my friend Gergana
-Stancheva). Feel free to use it wherever you see fit.</p>
-
-<p><img src="http://bbatsov.github.com/images/articles/emacs_knight.jpg"></p>
 ]]></content>
   </entry>
   
