@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-04-15T17:33:53+03:00</updated>
+  <updated>2013-04-23T14:54:48+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RuboCop 0.6.0 released]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/04/23/rubocop-0-dot-6-0-released/"/>
+    <updated>2013-04-23T14:46:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/04/23/rubocop-0-dot-6-0-released</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/bbatsov/rubocop">RuboCop</a> 0.6.0 was just released!
+It&#8217;s RuboCop&#8217;s biggest and most ambitious release yet.  Here&#8217;s the
+highlights:</p>
+
+<ul>
+<li>15 new cops(checks)</li>
+<li>Support for disabling cops locally in a file with <code>rubocop:disable</code> comments</li>
+<li>Half a dozen bugs squashed</li>
+<li>Small improvements across the board</li>
+</ul>
+
+
+<p>I guess the support for disabling cops locally deserves a bit of special treatment.</p>
+
+<p>So here&#8217;s the basics - you&#8217;re now allowed to enable/disable certain cops
+(checks) and to alter their behavior if they accept any parameters.</p>
+
+<p>One or more individual cops can be disabled locally in a section of a
+file by adding a comment such as:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># rubocop:disable LineLength, StringLiterals</span>
+</span><span class='line'><span class="o">[.</span><span class="n">.</span><span class="o">.]</span>
+</span><span class='line'><span class="c1"># rubocop:enable LineLength, StringLiterals</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can also disable <em>all</em> cops with:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># rubocop:disable all</span>
+</span><span class='line'><span class="o">[.</span><span class="n">.</span><span class="o">.]</span>
+</span><span class='line'><span class="c1"># rubocop:enable all</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>One or more cops can be disabled on a single line with an end-of-line
+comment:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">x</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">19</span><span class="p">)</span> <span class="c1"># rubocop:disable AvoidFor</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can see all the gory details in the
+<a href="https://github.com/bbatsov/rubocop/blob/master/CHANGELOG.md">changelog</a>. I hope you&#8217;ll enjoy RuboCop 0.6.0!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RuboCop]]></title>
@@ -1315,23 +1373,6 @@ dreaming of great Slim experience in Emacs. :-)</p>
 <p><img src="http://bbatsov.github.com/images/articles/slim-mode.png"></p>
 
 <p>Let us together eliminate that big Haml advantage. :-)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Long Time, No See]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/09/09/long-time-no-see/"/>
-    <updated>2012-09-09T19:50:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/09/09/long-time-no-see</id>
-    <content type="html"><![CDATA[<p>It&#8217;s been quite a while since my last blog post. And there hasn&#8217;t been that
-much action on the open-source projects I happen to maintain
-either. The reason for this is quite simple - recently I&#8217;ve joined the
-ranks of the social trading start-up <a href="http://tradeo.com">Tradeo</a> and
-things have been crazy at work ever since.</p>
-
-<p>While this is without a doubt my coolest job to date, it&#8217;s also the
-most demanding. Anyways - just wanted to let you know I&#8217;m doing OK and
-I plan to resume my usual blogging and open-source coding duties soon.</p>
 ]]></content>
   </entry>
   

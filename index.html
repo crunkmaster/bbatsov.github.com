@@ -7,10 +7,9 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="After I launched the
-Ruby Style Guide I
-often received requests to create a tool enforcing the rules in the guide
-automatically. Today this tool is &hellip;">
+	<meta name="description" content="RuboCop 0.6.0 was just released!
+It&#8217;s RuboCop&#8217;s biggest and most ambitious release yet. Here&#8217;s the
+highlights: 15 new cops(checks &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -97,6 +96,90 @@ automatically. Today this tool is &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2013/04/23/rubocop-0-dot-6-0-released/">RuboCop 0.6.0 Released</a></h1>
+	<div class="entry-content">
+		<p><a href="https://github.com/bbatsov/rubocop">RuboCop</a> 0.6.0 was just released!
+It&#8217;s RuboCop&#8217;s biggest and most ambitious release yet.  Here&#8217;s the
+highlights:</p>
+
+<ul>
+<li>15 new cops(checks)</li>
+<li>Support for disabling cops locally in a file with <code>rubocop:disable</code> comments</li>
+<li>Half a dozen bugs squashed</li>
+<li>Small improvements across the board</li>
+</ul>
+
+
+<p>I guess the support for disabling cops locally deserves a bit of special treatment.</p>
+
+<p>So here&#8217;s the basics - you&#8217;re now allowed to enable/disable certain cops
+(checks) and to alter their behavior if they accept any parameters.</p>
+
+<p>One or more individual cops can be disabled locally in a section of a
+file by adding a comment such as:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># rubocop:disable LineLength, StringLiterals</span>
+</span><span class='line'><span class="o">[.</span><span class="n">.</span><span class="o">.]</span>
+</span><span class='line'><span class="c1"># rubocop:enable LineLength, StringLiterals</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can also disable <em>all</em> cops with:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># rubocop:disable all</span>
+</span><span class='line'><span class="o">[.</span><span class="n">.</span><span class="o">.]</span>
+</span><span class='line'><span class="c1"># rubocop:enable all</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>One or more cops can be disabled on a single line with an end-of-line
+comment:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">for</span> <span class="n">x</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">19</span><span class="p">)</span> <span class="c1"># rubocop:disable AvoidFor</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can see all the gory details in the
+<a href="https://github.com/bbatsov/rubocop/blob/master/CHANGELOG.md">changelog</a>. I hope you&#8217;ll enjoy RuboCop 0.6.0!</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-23T14:46:00+03:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -350,76 +433,6 @@ even more elegant uses for <code>juxt</code> in your code.</p>
 
 
 <time datetime="2013-01-20T18:16:00+02:00" pubdate data-updated="true">Jan 20<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/clojure/'>Clojure</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/01/20/drop-nth-in-clojure/">Drop-nth in Clojure</a></h1>
-	<div class="entry-content">
-		<p>For some reason the standard Clojure library doesn&#8217;t have a <code>drop-nth</code>
-function (although it has <code>take-nth</code>). Luckily implementing it is trivial:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">drop-nth</span>
-</span><span class='line'>  <span class="p">[</span><span class="nv">n</span> <span class="nv">coll</span><span class="p">]</span>
-</span><span class='line'>  <span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="nv">coll</span>
-</span><span class='line'>       <span class="p">(</span><span class="nb">map vector </span><span class="p">(</span><span class="nb">iterate inc </span><span class="mi">1</span><span class="p">))</span>
-</span><span class='line'>       <span class="p">(</span><span class="nb">remove </span><span class="o">#</span><span class="p">(</span><span class="nb">zero? </span><span class="p">(</span><span class="nf">mod</span> <span class="p">(</span><span class="nb">first </span><span class="nv">%</span><span class="p">)</span> <span class="nv">n</span><span class="p">)))</span>
-</span><span class='line'>       <span class="p">(</span><span class="nb">map </span><span class="nv">second</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Let&#8217;s try it out:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">10</span><span class="p">))</span>
-</span><span class='line'><span class="c1">;; =&gt; (1 2 4 5 7 8)</span>
-</span><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">10</span><span class="p">))</span>
-</span><span class='line'><span class="c1">;; =&gt; (1 2 3 4 6 7 8 9)</span>
-</span><span class='line'><span class="p">(</span><span class="nf">drop-nth</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="mi">20</span><span class="p">))</span>
-</span><span class='line'><span class="c1">;; =&gt; (1 2 3 4 6 7 8 9 11 12 13 14 16 17 18 19)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Looks good to me. Hopefully it will be of some use to someone.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-20T15:31:00+02:00" pubdate data-updated="true">Jan 20<span>th</span>, 2013</time></div>
 	<div class="tags">
 
 

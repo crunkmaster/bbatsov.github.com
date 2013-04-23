@@ -387,12 +387,16 @@
         <lastmod>2013-04-15T17:33:02+03:00</lastmod>
     </url>
     <url>
+        <loc>http://bbatsov.github.com/articles/2013/04/23/rubocop-0-dot-6-0-released/</loc>
+        <lastmod>2013-04-23T14:54:28+03:00</lastmod>
+    </url>
+    <url>
         <loc>http://bbatsov.github.com/about/</loc>
         <lastmod>2012-10-11T21:16:05+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/blog/archives/</loc>
-        <lastmod>2013-04-15T17:33:02+03:00</lastmod>
+        <lastmod>2013-04-23T14:54:28+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/colophon/</loc>
@@ -404,7 +408,7 @@
     </url>
     <url>
         <loc>http://bbatsov.github.com/</loc>
-        <lastmod>2013-04-15T17:33:02+03:00</lastmod>
+        <lastmod>2013-04-23T14:54:28+03:00</lastmod>
     </url>
     <url>
         <loc>http://bbatsov.github.com/lisp-problems/</loc>
