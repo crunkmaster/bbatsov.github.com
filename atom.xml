@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-04-24T11:52:39+03:00</updated>
+  <updated>2013-05-28T12:23:58+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RuboCop 0.8.0 is out, support for JRuby and Rubinius is in!]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/05/28/rubocop-0-dot-8-0-is-out/"/>
+    <updated>2013-05-28T12:11:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/05/28/rubocop-0-dot-8-0-is-out</id>
+    <content type="html"><![CDATA[<p><a href="http://github.com/bbatsov/rubocop">RuboCop</a> 0.8.0 is out!</p>
+
+<p>While the version bump is minor, this release represents an almost
+total rewrite of the code. We&#8217;ve moved away from MRI&#8217;s <code>Ripper</code> parser
+and ported RuboCop to <a href="https://github.com/whitequark">Peter Zotov</a>&#8217;s
+fantastic <a href="https://github.com/whitequark/parser">Parser</a>.</p>
+
+<p>What does this mean for users of RuboCop? It means that now both
+Rubinius and JRuby are supported (in 1.9 and 2.0 modes). I&#8217;d say this
+is kind of a big deal! The support for the them should be considered
+beta at this point, since they have not yet received extensive field
+testing.</p>
+
+<p>And what does the change mean for developers? It&#8217;s now a lot easier to
+comprehend RuboCop&#8217;s source code, lowering the bar for contributions
+immensely.</p>
+
+<p>What&#8217;s coming down the road for 0.9.0? We have two big changes
+planned - providing an auto-fix functionality(meaning RuboCop will be
+able to fix on its own some of the problems detected) and providing
+more precise diagnostic messages(a-la <code>clang</code>).</p>
+
+<p>The changelog for 0.8.0 is available <a href="https://github.com/bbatsov/rubocop/blob/master/CHANGELOG.md">here</a>.</p>
+
+<p>Stay tuned for more!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[WikEmacs lives on under new stewardship]]></title>
@@ -1332,42 +1365,6 @@ implication of the migration. Cheers, mates!</p>
 
 <p><strong>P.S. I&#8217;ve updated the original post a bit to reflect some of the
 initial feedback I received.</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[guru-mode]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/09/09/guru-mode/"/>
-    <updated>2012-09-09T21:17:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/09/09/guru-mode</id>
-    <content type="html"><![CDATA[<p>Getting started with Emacs is hard. That&#8217;s a fact of life and you
-shouldn&#8217;t believe anyone telling you otherwise.</p>
-
-<p>One of the harder parts of the journey to Emacs mastery is remembering
-all those keybindings at the beginning (<code>C-h t</code>), which can be really
-overwhelming. To make matters worse for many common commands there are
-two sets of keybindings - the Emacs ones (that are touch typing
-friendly) and the popular ones (that typically involve the use of the
-arrow keys). Most people never get to use the <em>proper</em> keybindings and
-forever make use of the arrow keys.</p>
-
-<p>To help Emacs newcomers get used to the proper Emacs keybindings I&#8217;ve
-created <a href="http://github.com/bbatsov/guru-mode">guru-mode</a> - a simple
-minor mode that will show you a (helpful) message in the minibuffer
-every time you try to use a <em>non Emacs way</em> keybinding.</p>
-
-<p><img src="http://bbatsov.github.com/images/articles/guru-mode.png"></p>
-
-<p>It will probably annoy you <strong>a lot</strong> in the beginning, but trust me -
-it&#8217;ll be worth it in the long run.</p>
-
-<p><code>guru-mode</code> comes bundled with
-<a href="http://github.com/bbatsov/prelude">Emacs Prelude</a> and is available
-for installation from <a href="http://marmalade-repo.org">Marmalade</a> and <a href="http://melpa.milkbox.net">MELPA</a>.</p>
-
-<p>P.S. True Emacs mastery cannot be achieved if you do not practice
-touch typing; if you&#8217;re doing hunt-and-peck typing you&#8217;d better fire up the
-venerable <code>gtypist</code> before looking at <code>guru-mode</code>.</p>
 ]]></content>
   </entry>
   

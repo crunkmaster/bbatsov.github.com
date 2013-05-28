@@ -7,10 +7,8 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Several months passed since I stated my intent
-to shutdown WikEmacs. While
-I still consider the project a failed experiment and stand by
-everything &hellip;">
+	<meta name="description" content="RuboCop 0.8.0 is out! While the version bump is minor, this release represents an almost
+total rewrite of the code. We&#8217;ve moved away from MRI &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -97,6 +95,65 @@ everything &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2013/05/28/rubocop-0-dot-8-0-is-out/">RuboCop 0.8.0 Is Out, Support for JRuby and Rubinius Is In!</a></h1>
+	<div class="entry-content">
+		<p><a href="http://github.com/bbatsov/rubocop">RuboCop</a> 0.8.0 is out!</p>
+
+<p>While the version bump is minor, this release represents an almost
+total rewrite of the code. We&#8217;ve moved away from MRI&#8217;s <code>Ripper</code> parser
+and ported RuboCop to <a href="https://github.com/whitequark">Peter Zotov</a>&#8217;s
+fantastic <a href="https://github.com/whitequark/parser">Parser</a>.</p>
+
+<p>What does this mean for users of RuboCop? It means that now both
+Rubinius and JRuby are supported (in 1.9 and 2.0 modes). I&#8217;d say this
+is kind of a big deal! The support for the them should be considered
+beta at this point, since they have not yet received extensive field
+testing.</p>
+
+<p>And what does the change mean for developers? It&#8217;s now a lot easier to
+comprehend RuboCop&#8217;s source code, lowering the bar for contributions
+immensely.</p>
+
+<p>What&#8217;s coming down the road for 0.9.0? We have two big changes
+planned - providing an auto-fix functionality(meaning RuboCop will be
+able to fix on its own some of the problems detected) and providing
+more precise diagnostic messages(a-la <code>clang</code>).</p>
+
+<p>The changelog for 0.8.0 is available <a href="https://github.com/bbatsov/rubocop/blob/master/CHANGELOG.md">here</a>.</p>
+
+<p>Stay tuned for more!</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-28T12:11:00+03:00" pubdate data-updated="true">May 28<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -315,75 +372,6 @@ make your experience with Emacs more productive and more enjoyable.</p>
 
 
 <time datetime="2013-04-15T17:10:00+03:00" pubdate data-updated="true">Apr 15<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/01/27/the-wikemacs-experiment-is-over-long-live-emacswiki/">The WikEmacs Experiment Is Over! Long Live EmacsWiki!</a></h1>
-	<div class="entry-content">
-		<p>Less than an year ago
-<a href="http://batsov.com/articles/2012/03/20/die-emacswiki/">amid a lot of turmoil</a>
-I&#8217;ve started
-<a href="http://batsov.com/articles/2012/03/26/wikemacs-the-other-emacs-wiki/">an alternative to EmacsWiki</a>. The
-project took off to a great start, but quickly lost traction and now
-it&#8217;s time to face the truth - I had an assumption, it turned out it(I)
-was wrong and I should come to terms with that.</p>
-
-<p>It&#8217;s more than apparent at this point that the majority of the Emacs
-community is happy with EmacsWiki and that&#8217;s fine by me. I&#8217;ll be
-closing down WikEmacs after 2-3 months and I suggest that everyone who&#8217;s
-contributed significant chunks of content to it migrate them to
-EmacsWiki (I&#8217;ll personally move everything good I find). I don&#8217;t want
-the work people have done to just disappear.</p>
-
-<p>Given the small interest in WikEmacs I doubt that many will miss it. I
-thank all the contributors and the supporters of the idea. In the long
-term it would be better for us to have a single repository of Emacs
-knowledge, that&#8217;s why I decided to terminate WikEmacs sooner rather than later.</p>
-
-<p>I want to extend a big public apology to Alex Schroeder for my harsh
-criticism of EmacsWiki.  One year later I see that stewarding
-documentation projects and nurturing a healthy community around them
-is much harder than writing software. I&#8217;m but a humble software
-engineer and you&#8217;ll have to forgive me for my misguided actions.</p>
-
-<p>I hope that something good has(will) come up from all this drama. At
-the very least I urge everyone who cares for EmacsWiki to try and
-clean up, extend and improve at least a couple of articles on subjects
-that are of importance to him. I know that&#8217;s something I&#8217;ll be doing
-from now on.</p>
-
-<p>See you on EmacsWiki!</p>
-
-<p>WikEmacs is dead! Long live the one true EmacsWiki!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-27T09:23:00+02:00" pubdate data-updated="true">Jan 27<span>th</span>, 2013</time></div>
 	<div class="tags">
 
 
