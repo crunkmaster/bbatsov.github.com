@@ -7,11 +7,10 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Less than an year ago
-amid a lot of turmoil
-I&#8217;ve started
-an alternative to EmacsWiki. The
-project took off to a great start, but quickly lost &hellip;">
+	<meta name="description" content="After I launched the
+Ruby Style Guide I
+often received requests to create a tool enforcing the rules in the guide
+automatically. Today this tool is &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +97,98 @@ project took off to a great start, but quickly lost &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2013/04/15/rubocop/">RuboCop</a></h1>
+	<div class="entry-content">
+		<p>After I launched the
+<a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a> I
+often received requests to create a tool enforcing the rules in the guide
+automatically.</p>
+
+<p>Today this tool is a reality - meet
+<a href="https://github.com/bbatsov/rubocop">RuboCop</a>. RuboCop already covers
+a significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
+and has pretty neat Emacs integration(via
+<a href="https://github.com/bbatsov/rubocop-emacs">rubocop.el</a> and
+<a href="https://github.com/lunaryorn/flycheck">flycheck</a>).</p>
+
+<p>I&#8217;d love to see more Ruby hackers check out RuboCop!</p>
+
+<p>I&#8217;d love to thank all the great people who contributed code, issue
+reports and ideas to RuboCop&#8217;s development and I sincerely hope many
+Ruby hackers will find it useful!</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-15T17:22:00+03:00" pubdate data-updated="true">Apr 15<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2013/04/15/emacs-redux/">Emacs Redux</a></h1>
+	<div class="entry-content">
+		<p>I&#8217;ve recently launched a new blog dedicated to Emacs -
+<a href="http://emacsredux.com/">Emacs Redux</a>.</p>
+
+<p>There I’ll be sharing with you (hopefully) useful tips and tricks to
+make your experience with Emacs more productive and more enjoyable.</p>
+
+<p>I hope you&#8217;ll like it!</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-15T17:10:00+03:00" pubdate data-updated="true">Apr 15<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -333,124 +424,6 @@ function (although it has <code>take-nth</code>). Luckily implementing it is tri
 
 
 	<a class='category' href='/articles/categories/clojure/'>Clojure</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/12/16/emacs-tip-number-8-manipulating-word-case/">Emacs Tip #8: Manipulating Word Case</a></h1>
-	<div class="entry-content">
-		<p>One operation that we have to do fairly often when editing text is
-manipulating the case of words. The most popular case manipulations
-are probably <strong>capitalize</strong>, <strong>convert to lowercase</strong> and <strong>convert to
-uppercase</strong>. Emacs naturally has built-in commands for all of those.</p>
-
-<p>Pressing <code>M-c</code> runs the command <code>capitalize-word</code>, which will
-capitalize the next word and move the cursor after it. Pressing <code>M--
-M-c</code> will capitalize the previous word without moving the cursor.</p>
-
-<p>Pressing <code>M-l</code> runs the command <code>downcase-word</code>, which will lowercase
-the next word and move the cursor after it. Pressing <code>M-- M-l</code> will
-lowercase the previous word without moving the cursor.</p>
-
-<p>Pressing <code>M-u</code> runs the command <code>upcase-word</code>, which will uppercase the
-next word and move the cursor after it. Pressing <code>M-- M-u</code> will uppercase
-the previous word without moving the cursor.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-16T17:57:00+02:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/12/16/deleting-remote-git-branches/">Deleting Remote Git Branches</a></h1>
-	<div class="entry-content">
-		<p>This post is mostly a note to myself, since I constantly forget how to
-delete remote Git branches.</p>
-
-<p>The classic way to do so (introduced in Git 1.5) would be:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin :branch-to-delete
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So, if I were migrating an application from MySQL to PostgreSQL I might want to delete
-the <code>postgres</code> branch when I&#8217;m done:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin :postgres
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You have to agree this syntax is hardly something one can easily
-remember(and I&#8217;m extra certain nobody would have guessed it on their
-own). Fortunately in Git 1.7 a nicer alternative to the above command
-was introduced:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin --delete branch-to-delete
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That&#8217;s all from me for today. Now go ahead and delete those unneeded Git branches.</p>
-
-<p>P.S. GitHub users might also want to take a look at this
-<a href="https://github.com/blog/1335-tidying-up-after-pull-requests">article</a>
-describing recently added functionality to clean up after pull
-requests.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-16T10:10:00+02:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/git/'>git</a>
 
 
 </div>

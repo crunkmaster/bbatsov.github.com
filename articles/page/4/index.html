@@ -7,8 +7,10 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Prelude In this article I&#8217;ll share with you a few tips and tricks about
-running Emacs under the Max OSX operating system. Installation While &hellip;">
+	<meta name="description" content="One of the major problems when using
+Emacs on OSX is
+not related to OSX itself - the problem has to do with the Mac&#8217;s
+hardware. Recent Mac &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +97,138 @@ running Emacs under the Max OSX operating system. Installation While &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2012/12/06/emacs-tip-number-7-remap-return-to-control-in-osx/">Emacs Tip #7: Remap Return to Control in OSX</a></h1>
+	<div class="entry-content">
+		<p>One of the major problems when using
+<a href="http://batsov.com/articles/2012/10/14/emacs-on-osx/">Emacs on OSX</a> is
+not related to OSX itself - the problem has to do with the Mac&#8217;s
+hardware. Recent Mac keyboards(both laptop and desktop, with the
+exception of the wired full size Mac keyboard) lack a right <code>Control</code>
+key and it happens to be extremely important if you&#8217;re looking to
+fully leverage the power of Emacs.</p>
+
+<p>The traditional solution to the problem is to use a tool like
+<a href="http://pqrs.org/macosx/keyremap4macbook/">KeyRemap4MacBook</a> to remap
+the right <code>Option</code> key to right <code>Control</code> and to use a snippet like
+this to make <code>Command</code> behave like <code>Meta</code> in Emacs:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">mac-command-modifier</span> <span class="ss">&#39;meta</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This works, but it&#8217;s hardly ideal since you&#8217;re remapping <code>Option</code> at
+fairly low level and you won&#8217;t be able to use it anywhere as <code>Option</code>.</p>
+
+<p>A much better idea would be to leverage a little know capability of
+KeyRemap4MacBook (a great program which despite its name works with
+desktop Macs as well) and map the <code>Return</code> key to <code>Control</code> only
+when it&#8217;s held down (it will behave like a normal Return key in all
+other situations). The option you&#8217;ll have to find in KeyRemap4MacBook
+is in the <code>Change Return</code> section and it labeled <code>Return to Control_R
+(+ When you type Return only, send Return)</code>.</p>
+
+<p>This approach has several advantages.  First and foremost you&#8217;re not
+sacrificing a valuable key like <code>Option</code>. Second - it&#8217;s much easier to
+hit <code>Return</code> with your right pinky than it is to hit <code>Option</code>
+(especially if you&#8217;re using a US layout keyboard - these have long
+single row <code>Return</code> keys, compared to the short 2 row Returns found on
+European keyboards). Lastly, if you&#8217;ve already remapped <code>CapsLock</code> to
+<code>Control</code> (like so many people do) you&#8217;re getting a pretty symmetrical
+mapping on the opposite side of your keyboard.</p>
+
+<p>All in all - remapping <code>Return</code> to <code>Control</code> is a huge win if you&#8217;re
+using heavily one of Apple&#8217;s smaller keyboards. Of course, if you have
+the option to use an external keyboard you&#8217;d do yourself a solid if you
+obtained a good full size keyboard like the
+<a href="http://batsov.com/articles/2008/06/16/das-keyboard/">Das Keyboard</a>.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-06T16:06:00+02:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>tip</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2012/10/20/emacs-tip-number-6-remove-variable-and-function-definitions/">Emacs Tip #6: Remove Variable &amp; Function Definitions</a></h1>
+	<div class="entry-content">
+		<p>From time to time you might want to void (unbind) a variable or a
+function definition in Emacs. Most often you&#8217;ll probably be dealing
+with variables created with <code>defvar</code> whose values you&#8217;ll want to
+update.  The magic functions you need are the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="c1">;; this will make the symbol my-nasty-variable&#39;s value void</span>
+</span><span class='line'><span class="p">(</span><span class="nb">makunbound</span> <span class="ss">&#39;my-nasty-variable</span><span class="p">)</span>
+</span><span class='line'><span class="c1">;; this will make the symbol my-nasty-function&#39;s</span>
+</span><span class='line'><span class="c1">;; function definition void</span>
+</span><span class='line'><span class="p">(</span><span class="nb">fmakunbound</span> <span class="ss">&#39;my-nasty-function</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The names aren&#8217;t exactly intuitive and even I happen to forget them from time to
+time. Now at least I&#8217;ll now where to look for them if that happens
+again. :-)</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-20T20:29:00+03:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>emacs</a>, <a class='category' href='/articles/categories/tip/'>tip</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -404,142 +538,6 @@ expression:</p>
 
 
 	<a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/">Setting Up Fallback Locale(s) in Rails 3</a></h1>
-	<div class="entry-content">
-		<p>I18n(internationalization) and l10n(localization) are topics that are
-covered superbly by the
-<a href="http://guides.rubyonrails.org/i18n.html">Rails Guides</a>. The one thing
-that&#8217;s left out is the setup of fallback locales in case something is
-missing in the currently selected locale (and mark my words -
-something probably is). Therefore I&#8217;m writing this
-post.</p>
-
-<p>Ideally we&#8217;d have i18n-ed and localized everything perfectly, but
-that&#8217;s rarely the case. I&#8217;d rather have the users see things from
-another locale than error messages. So how do we do that in Rails 3?
-It&#8217;s pretty simple actually. There are three fallback options we can
-select and they all require small changes to the <code>application.rb</code> file.</p>
-
-<ul>
-<li>fallback to the default locale</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># fallback to what&#39;s specified in config.i18n.default_locale</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="kp">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>fallback to a specified locale</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># fallback to en, regardless of what&#39;s in config.i18n.default_locale</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="o">[</span><span class="ss">:en</span><span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>specify a fallback map (different fallback locales for different
-locales)</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># missing translations of es and fr languages will fallback to english</span>
-</span><span class='line'><span class="c1"># missing translations in german will fallback to french</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;es&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;fr&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;de&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;fr&#39;</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Well, that&#8217;s the gist of it. Happy coding!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-12T14:56:00+03:00" pubdate data-updated="true">Sep 12<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/programming/'>programming</a>, <a class='category' href='/articles/categories/rails/'>rails</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/">From Linux to OSX - 1 Year Later</a></h1>
-	<div class="entry-content">
-		<h2>Prelude</h2>
-
-<p>A little more than an year ago I wrote my rant post
-<a href="http://batsov.com/articles/2011/06/11/linux-desktop-experience-killing-linux-on-the-desktop/">The Linux Desktop Experience is Killing Linux on the Desktop</a>
-and for the first time in 8 years I wasn&#8217;t a desktop Linux user
-anymore. I spent about a month wrestling with Windows 7, but let&#8217;s
-face it - Windows is ill suited for professional Ruby programmers like
-me (and it&#8217;s ill suited for most programmers, except maybe Java &amp; .Net I
-guess).</p>
-
-<p>Anyways, it was never my intention to stick with Windows - I was just
-doing my Mac due diligence. Now with 1+ year of OSX usage I&#8217;d
-like to share a few things about my experience thus far with you.</p>
-
-
-		
-		<a href="/articles/2012/09/09/from-linux-to-osx-1-year-later/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-09T22:11:00+03:00" pubdate data-updated="true">Sep 9<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/linux/'>Linux</a>, <a class='category' href='/articles/categories/osx/'>OSX</a>, <a class='category' href='/articles/categories/misc/'>misc</a>
 
 
 </div>

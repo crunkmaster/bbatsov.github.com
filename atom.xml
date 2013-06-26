@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-05-28T12:26:51+03:00</updated>
+  <updated>2013-06-26T17:27:32+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,105 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Elements of Style in Ruby #1: Maximum line length]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/06/26/the-elements-of-style-in-ruby-number-1-maximum-line-length/"/>
+    <updated>2013-06-26T16:57:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/06/26/the-elements-of-style-in-ruby-number-1-maximum-line-length</id>
+    <content type="html"><![CDATA[<p>Welcome to the first installment of <strong>The Elements of Style in Ruby</strong>.</p>
+
+<p>We&#8217;ll start off with something pretty generic, that&#8217;s not specific to
+Ruby at all - the maximum line length that&#8217;s acceptable in our code.</p>
+
+<p>The guide currently states:</p>
+
+<blockquote><p>Limit lines to 80 characters.</p></blockquote>
+
+<p>How did we get here?</p>
+
+<p>Due to limitations of the old 80-column computer screens for many
+years 80 (or 79 depending on your preferences) columns has been the
+gold standard for maximum line length in most languages. That was the
+bulk of the reasoning behind the rule. There was also fact that Ruby&#8217;s
+main competitor Python upholds the same line-length limit.</p>
+
+<p>Many would argue that such a restriction does not make sense with the
+advances in computer displays in recent years - after all a full hd
+computer display would give you much more columns to play with. Why
+not go with no limit what-so-ever? That would be simple, right?</p>
+
+<p>Wrong! We should definitely have a limit - that&#8217;s beyond any
+doubt. It&#8217;s common knowledge that humans read much faster vertically,
+than horizontally. Try to read the source code of something with
+200-character lines and you&#8217;ll come to acknowledge that. On the other
+hand the problem with aggressive line-length limits is that they often
+come at the expense of code readability - programmers start using less
+descriptive variable and method names, span long expressions over
+multiple lines, etc. A balance has to struck somewhere.</p>
+
+<p>Ruby has generally favored succinctness (not to be confused with
+terseness) and 80 columns are generally not some attainable goal as
+many of you probably already know (Java developers on the other hand
+can barely fit something meaningful in less that 100 or even 120
+characters per line). Short, but descriptive names, proper
+abstractions, judicious nesting and heredocs certainly help to keep
+the lines short in Ruby.</p>
+
+<p>And what of the benefit for our efforts? Apart from enabling faster
+scanning though the code, shorter lines allow you to keep two or more
+files opened side by side in your IDE or text editor, which is often
+pretty handy. On a <code>1366*768</code> screen (somewhat unfortunately - the
+most popular today) - you won&#8217;t be able to achieve this with
+normal-sized fonts and lines longer than 80-90 characters.</p>
+
+<p>That said, maybe 80 columns is a bit too restrictive and a 100 columns
+limit strikes a better balance between reading speed, code readability
+and practical considerations like have two files opened side-by-side.</p>
+
+<p>I&#8217;d love to hear your thoughts! Feel free to leave a comment here or
+ping me on <a href="http://twitter.com/bbatsov">Twitter</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Elements of Style in Ruby: An Essay in N parts]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/06/26/the-elements-of-style-in-ruby-an-essay-in-n-parts/"/>
+    <updated>2013-06-26T16:30:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/06/26/the-elements-of-style-in-ruby-an-essay-in-n-parts</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/bbatsov/ruby-style-guide">The Ruby Style Guide</a> is
+nearing its second birthday. The project has gained more attention and
+more traction than I could have imagined. For the millionth time I was
+amazed by the fantastic Ruby developers around the world.</p>
+
+<p>The project has also steadily evolved:</p>
+
+<ul>
+<li>it covers more and more aspects of programming in Ruby</li>
+<li>it features many more code examples</li>
+<li>it is now translated in several languages</li>
+<li>it gave birth to the automated static code analyzer <a href="https://github.com/bbatsov/rubocop">RuboCop</a></li>
+<li>it has become the basis for hundreds of slightly modified internal project or company style guides</li>
+</ul>
+
+
+<p>One common criticism for the Ruby style guide is that it doesn&#8217;t
+feature extensive rationale about most of the rules in it. That&#8217;s
+deliberate - even now the document is pretty intimidating. If we were
+to delve into the reasoning behind each and every rule, the guide&#8217;s
+size might come close to that of a small book.</p>
+
+<p>I do, however, feel that the rationale behind some of the rules is
+important. That&#8217;s why I&#8217;ll be starting a series of <em>N</em> posts devoted
+to the topic. I&#8217;ll try to cover as many of the rules as I can - from
+the more straightforward ones like <em>maximum line-length</em>, to the most
+controversial ones like <em>the use of single-quoted strings when possible</em>.</p>
+
+<p>Keep an eye for the installments in the series here and on
+<a href="http://twitter.com/bbatsov">Twitter</a>. I&#8217;m looking forward to many
+interesting discussions with you!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RuboCop 0.8.0 is out, support for JRuby and Rubinius is in!]]></title>
@@ -1060,311 +1159,6 @@ expression:</p>
 
 
 <p>Hopefully you&#8217;ll find this small tip useful.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setting up fallback locale(s) in Rails 3]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3/"/>
-    <updated>2012-09-12T14:56:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/09/12/setting-up-fallback-locale-s-in-rails-3</id>
-    <content type="html"><![CDATA[<p>I18n(internationalization) and l10n(localization) are topics that are
-covered superbly by the
-<a href="http://guides.rubyonrails.org/i18n.html">Rails Guides</a>. The one thing
-that&#8217;s left out is the setup of fallback locales in case something is
-missing in the currently selected locale (and mark my words -
-something probably is). Therefore I&#8217;m writing this
-post.</p>
-
-<p>Ideally we&#8217;d have i18n-ed and localized everything perfectly, but
-that&#8217;s rarely the case. I&#8217;d rather have the users see things from
-another locale than error messages. So how do we do that in Rails 3?
-It&#8217;s pretty simple actually. There are three fallback options we can
-select and they all require small changes to the <code>application.rb</code> file.</p>
-
-<ul>
-<li>fallback to the default locale</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># fallback to what&#39;s specified in config.i18n.default_locale</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="kp">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>fallback to a specified locale</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># fallback to en, regardless of what&#39;s in config.i18n.default_locale</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="o">[</span><span class="ss">:en</span><span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>specify a fallback map (different fallback locales for different
-locales)</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># missing translations of es and fr languages will fallback to english</span>
-</span><span class='line'><span class="c1"># missing translations in german will fallback to french</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">i18n</span><span class="o">.</span><span class="n">fallbacks</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;es&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;fr&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;de&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;fr&#39;</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Well, that&#8217;s the gist of it. Happy coding!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[From Linux to OSX - 1 Year Later]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/09/09/from-linux-to-osx-1-year-later/"/>
-    <updated>2012-09-09T22:11:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/09/09/from-linux-to-osx-1-year-later</id>
-    <content type="html"><![CDATA[<h2>Prelude</h2>
-
-<p>A little more than an year ago I wrote my rant post
-<a href="http://batsov.com/articles/2011/06/11/linux-desktop-experience-killing-linux-on-the-desktop/">The Linux Desktop Experience is Killing Linux on the Desktop</a>
-and for the first time in 8 years I wasn&#8217;t a desktop Linux user
-anymore. I spent about a month wrestling with Windows 7, but let&#8217;s
-face it - Windows is ill suited for professional Ruby programmers like
-me (and it&#8217;s ill suited for most programmers, except maybe Java &amp; .Net I
-guess).</p>
-
-<p>Anyways, it was never my intention to stick with Windows - I was just
-doing my Mac due diligence. Now with 1+ year of OSX usage I&#8217;d
-like to share a few things about my experience thus far with you.</p>
-
-<!--more-->
-
-
-<h2>From Linux to OSX</h2>
-
-<p>The transition was initially painful - I felt very odd dragging app
-icons to the <code>Applications</code> folder to install them. To be honest I was
-quite puzzled what was I supposed to do the first time I had to
-install an app this way (it didn&#8217;t have those helpful hints with the arrows most apps
-do). The Linux distro package management is definitely infinitely
-better, or at least it seems so from where I&#8217;m standing. Luckily for me most of the
-tools I use are available from the third-party <a href="http://mxcl.github.com/homebrew/">homebrew</a> package
-manager for OSX. It&#8217;s like an extremely basic version of the mighty
-Gentoo <code>portage</code>, but it generally gets the job done.</p>
-
-<p>On a more positive note - I was impressed with the quality and
-responsiveness of the OSX desktop and the fact that Emacs keybindings
-are used by default in its editor toolkit (and strangely puzzled by
-the lack of right control key - how is one supposed to hit <code>Control +
-a</code> I dare ask?). One app in particular - <code>spotlight</code>, blew me off the
-water, especially after having dealt on Linux with crappy clones like
-<code>beagle</code> in the past. Spotlight can truly find just about anything,
-was it&#8217;s own SQL-like query language and is <strong>blazingly</strong> fast.</p>
-
-<p>I quickly found a good terminal emulator (that would be
-<a href="http://www.iterm2.com/#/section/home">iterm2</a> - it&#8217;s actually the
-best terminal emulator in the world IMHO) and
-most of the command-line apps I used from day to day were already lying around
-(after all OSX <strong>is</strong> Unix) - to my great surprise even stuff like PostgreSQL
-(only on OSX Server) and <code>zsh</code> came preinstalled. Most of the other
-apps I really needed had native OSX ports; the others - worthy
-alternatives.</p>
-
-<p>Having hated OpenOffice.org for many years I was very pleasantly
-surprised by quality of apps like <code>Keynote</code> &amp; <code>Words</code>.</p>
-
-<p>Being a keyboard chap preaching in the church of <code>Das Keyboard</code> I was
-a bit underwhelmed by the whole multi-touch mumbo-jumbo at first, but
-after a while I came to the conclusion that Apple have the only
-trackpads and mice that are actually worth using (even though I still
-like using the keyboard way more).</p>
-
-<p>To sum it all up - I got up to speed fairly quickly, but it was a
-bumpy ride.</p>
-
-<p>Here&#8217;s a bit more details&#8230;</p>
-
-<h2>The things I love about OSX</h2>
-
-<h3>The Desktop</h3>
-
-<p>It&#8217;s pretty, it&#8217;s quick, it&#8217;s stable. It makes KDE4 and GNOME3 look
-like school projects in comparison. And did I mention that the fonts
-on OSX are even prettier than the ones in Windows?</p>
-
-<h3>The OSX flavored apps</h3>
-
-<p><a href="http://sparrowapp.com/">Sparrow</a> is the first desktop mail client I ever liked (shame on
-you Google for killing it).</p>
-
-<p>iTerm2 is the ultimate terminal emulator. It alone warrants the
-purchase of a Mac.</p>
-
-<p>Keynote is the best presentation program I&#8217;ve come to use thus far.</p>
-
-<p><a href="http://www.parallels.com/">Parallels Desktop</a> is light years ahead of VirtualBox and KVM (as far
-as desktop virtualization is concerned).</p>
-
-<p>I could go on a lot like this, but I&#8217;ll stop now.</p>
-
-<p>It&#8217;s obvious that Mac users have developed a taste in extremely
-refined software.</p>
-
-<h3>Hardware compatibility</h3>
-
-<p>If something is supposed to work with OSX - it works superbly
-out-of-the-box. I&#8217;ve almost forgotten now the days of constant battle
-with crappy hardware. Sleep &amp; Wake just work. Battery life is
-exceptional (due to very advanced power management capabilities).</p>
-
-<p>Certainly controlling all of the hardware an OS will run on helps a
-lot, but we still have to acknowledge Apple&#8217;s achievement.</p>
-
-<h3>Stability</h3>
-
-<p>One year, three Macs - only two or three system crashes. For a
-developer that likes to tinker a little bit more than he should -
-that&#8217;s impressive.</p>
-
-<p>That having said I had some Linux desktops that used run for more than
-half an year without reboots (and the reboots were often caused by
-power outages or distro/kernel updates). Linux stability on a (fairly
-new) laptop? Well, that&#8217;s a whole different story&#8230;</p>
-
-<h2>The things that are OK</h2>
-
-<h3>The default apps</h3>
-
-<p>The apps bundled with OSX are not bad at all, but they aren&#8217;t
-particularly great. Still - Safari is a very good browser, Mail is a
-much better desktop client than Evolution/Thunderbird, Calendar is a
-good organizer (but a bit buggy when it comes down to Google Calendar
-integration), Messages is so-so.</p>
-
-<p>The bottom line is - you can go a long way with the bundled apps, but
-they aren&#8217;t exactly perfect. My advice - shop for alternatives (both
-open-source and proprietary).</p>
-
-<h3>Mac App Store</h3>
-
-<p>Decent way to distribute proprietary apps, but with all the
-restrictions on the app sandboxing there aren&#8217;t many interesting apps
-out there. Hopefully it&#8217;ll get better in time. The ability to upgrade
-your OSX by purchasing the new version from the App Store is very cool
-(for a proprietary OS of course).</p>
-
-<h3>Emacs</h3>
-
-<p>The Cocoa port of Emacs is a bit immature and there are some visual
-glitches here and there (try out <code>M-x linum-mode</code> for instance), but
-they are forgivable. I&#8217;m also missing the deep integration Emacs had with Linux.
-And who the fuck designed all the official Mac keyboards without a
-right control key? I finally understood why so many Mac users where on
-vim :-)</p>
-
-<p>Btw, remapping the <code>Caps</code> to <code>Control</code> is not the answer. I do it now,
-I did it on Linux as well. You simply not supposed to hit Control +
-any other key with the same hand. It&#8217;s disruptive to your
-typing&#8230; But then again - you should probably do most of your typing
-will a full sized keyboard :-)</p>
-
-<h3>Software Development</h3>
-
-<p>OSX doesn&#8217;t nurture software development as much as Linux does, but it
-comes pretty close in second place. All the tools you know and love
-are available, but their installation &amp; setup is a little bit more
-involved on OSX. There is a reason why the screenshots in most
-programming books show OSX.</p>
-
-<h3>System administration</h3>
-
-<p>Definitely a step back from Linux. Programs like <code>launchctl</code> (for instance) are not
-exactly fun to work with, but they do get the job done. I&#8217;d never use
-an OSX box for anything more than a desktop workstation. Setting up a
-sensible <code>$PATH</code> is not as trivial as it was on Linux either
-(<code>/etc/paths</code> and some plist I forgotten come to mind).</p>
-
-<h2>The things I hate</h2>
-
-<h3>The special keys</h3>
-
-<p>Not exactly an OSX feature, but still&#8230;</p>
-
-<p>One year and I still hate <code>Command</code> and <code>Option</code> - option is basically <code>Alt</code>
-on a strange location and Command is totally useless IMHO. I&#8217;d
-probably wouldn&#8217;t have hated them as much if there were room left on
-the Apple keyboards (expect of course the old wired Apple keyboard) for an addition control key. Luckily for me I use an
-external
-<a href="http://batsov.com/articles/2008/06/16/das-keyboard/">Das Keyboard Ultimate</a>
-most of the time&#8230;</p>
-
-<p>Command and Option do have some value, I&#8217;d probably would have
-appreciated it if they didn&#8217;t come at the cost of my beloved right
-control (which I guess only Emacs users are missing anyways).</p>
-
-<h3>No standard all mighty package manager</h3>
-
-<p>On Linux I had <code>aptitude</code>, <code>yum</code>, <code>portage</code> and <code>pacman</code> - all amazing at what
-they do. On OSX - <code>homebrew</code> is a decent option, but it&#8217;s a far cry from
-the might and magic of the Linux package managers. Still, <code>homebrew</code>
-is better than it&#8217;s alternative, so beware!</p>
-
-<h3>Ugly XML config files</h3>
-
-<p>Here and there in OSX you have to write some appalling <a href="http://en.wikipedia.org/wiki/Property_list">XML config
-files</a>. I thought I&#8217;d never see the likes of those again after I put
-Java development behind me :-)</p>
-
-<h3>XCode</h3>
-
-<p>You need to install a giant lame IDE just to get a bunch of command
-line development tools? That&#8217;s one of the most annoying things I&#8217;ve
-encountered up-to-date in OSX.</p>
-
-<p>Yep, I know about the tools being available
-<a href="http://kennethreitz.com/xcode-gcc-and-homebrew.html">separately</a> for
-couple of months now, but requesting an Apple developer registration
-just to get them seems a bit to much to me.</p>
-
-<h2>Epilogue</h2>
-
-<p>Am I happier now without Linux? Definitely! Is OSX a better OS than
-Linux? Absolutely not! It does have a <strong>much</strong> better desktop
-experience and since I spend most of the time on a computer
-interacting with the desktop - that&#8217;s a big win for me. Of course I
-wouldn&#8217;t mind seeing Linux achieve this level of desktop maturity and
-stability.</p>
-
-<p>Should you dump Linux and join me in <strong>darkness</strong>? How the hell should
-I know? :-) I&#8217;m just sharing my two cents - if you&#8217;re happy using
-Linux you should <strong>definitely</strong> stick with it. Obviously I wasn&#8217;t and
-there weren&#8217;t that many alternatives lying around.</p>
-
-<p>Not having to deal with hardware problems and immature desktop apps is
-like a breath of fresh air and it more than compensates for the few
-shortcomings of OSX. Nothing compensates the lack of that right
-control key on most keyboards, but after all that&#8217;s not an OS problem
-;-)</p>
-
-<p>There is great vibrant hacker community gathered around OSX and it&#8217;s
-one of the main driving forces of the OS. There is unfortunately a lot
-of corporate pressure from Apple as well, but as you already know by
-now - there are never perfect things, there are always
-compromises. I&#8217;d rather use a proprietary OS that stays out of my way,
-than a free OS into which I bump at every turn.</p>
-
-<p>Soon I&#8217;ll blog a little bit more about the practical aspects and
-implication of the migration. Cheers, mates!</p>
-
-<p><strong>P.S. I&#8217;ve updated the original post a bit to reflect some of the
-initial feedback I received.</strong></p>
 ]]></content>
   </entry>
   
