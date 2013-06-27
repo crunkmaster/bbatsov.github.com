@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-06-27T14:23:09+03:00</updated>
+  <updated>2013-06-27T14:28:19+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -96,7 +96,7 @@ with a modulo operation (if <code>a</code> and <code>b</code> are fixnums), <cod
 <code>a</code> is an instance of some other class which has implemented the <code>%</code>
 method.</p>
 
-<p>With <code>sprintf</code> its always crystal-clear what&#8217;s going on.</p>
+<p>With <code>sprintf</code> it&#8217;s always crystal-clear what&#8217;s going on.</p>
 
 <ul>
 <li><code>%</code> does not carry much of a semantic value in it.</li>
