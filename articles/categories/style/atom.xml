@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Style | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/style/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-06-28T16:04:39+03:00</updated>
+  <updated>2013-06-28T16:05:53+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -18,7 +18,7 @@
     <link href="http://bbatsov.github.com/articles/2013/06/28/the-elements-of-style-in-ruby-number-3-make-sure-something-is-an-array/"/>
     <updated>2013-06-28T15:39:00+03:00</updated>
     <id>http://bbatsov.github.com/articles/2013/06/28/the-elements-of-style-in-ruby-number-3-make-sure-something-is-an-array</id>
-    <content type="html"><![CDATA[<p>The subject today's post is the following rule from the
+    <content type="html"><![CDATA[<p>The subject of today's post is the following rule from the
 <a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
 
 <blockquote><p>Use <code>[*var]</code> or <code>Array()</code> instead of an explicit <code>Array</code> check, when dealing with a </br>
