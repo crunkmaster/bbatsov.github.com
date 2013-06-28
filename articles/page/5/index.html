@@ -7,9 +7,9 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="From time to time you might want to take different actions depending
-on an object&#8217;s class. One handy way to do so is with a case
-expression: 1 &hellip;">
+	<meta name="description" content="This tip is going to be a really short one. Hopefully by now you&#8217;ve
+heard about pry - a fantastic irb
+replacement, that somewhat reminds me of &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +96,51 @@ expression: 1 &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2012/10/14/rails-tip-number-1-use-pry-instead-of-irb-for-the-rails-console/">Rails Tip #1: Use Pry Instead of Irb for the Rails Console</a></h1>
+	<div class="entry-content">
+		<p>This tip is going to be a really short one. Hopefully by now you&#8217;ve
+heard about <a href="http://pryrepl.org/">pry</a> - a fantastic <code>irb</code>
+replacement, that somewhat reminds me of the mighty Lisp REPLs. What
+you might not know is how to hook it into Rails so that the <code>rails
+console</code> (a.k.a. <code>rails c</code>) command would fire a pry shell instead of
+an irb one. There are several ways to do so, but I find one
+particularly straightforward - the awesome little gem
+<a href="https://github.com/rweng/pry-rails">pry-rails</a>.</p>
+
+<p>So what are you waiting for? Go ahead, install the little sucker and
+enjoy your new pry-powered Rails console.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-14T18:06:00+03:00" pubdate data-updated="true">Oct 14<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/rails/'>rails</a>, <a class='category' href='/articles/categories/ruby/'>ruby</a>, <a class='category' href='/articles/categories/tip/'>tip</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -377,62 +422,6 @@ venerable <code>gtypist</code> before looking at <code>guru-mode</code>.</p>
 
 
 	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/09/09/emacs-support-for-the-slim-template-language/">Emacs Support for the Slim Template Language</a></h1>
-	<div class="entry-content">
-		<p>I&#8217;m mostly a Ruby on Rails developer these days and as such I&#8217;m pretty
-fond of the <a href="http://slim-lang.com">Slim template language</a>. I&#8217;ve
-always hated HTML + ERB, since that evil duo encourages all sorts of
-ever practices and recently I&#8217;ve adopted Slim as a replacement for
-my long time favourite ERB alternative - <a href="http://haml-lang.com">Haml</a>.</p>
-
-<p>I won&#8217;t discuss here the shortcomings of Haml vs Slim, but I&#8217;ll share
-with you the big advantage Haml has over Slim (for Emacs users at
-least) - it has a pretty nice major editing mode for Emacs. Slim&#8217;s
-Emacs support on the other hand is rather iffy and is presently mostly
-based on <code>haml-mode</code>. That will hopefully change soon, since recently
-I&#8217;ve become a co-maintainer of
-<a href="http://github.com/minad/emacs-slim">slim-mode</a> and I plan to improve
-it as much as I can (currently I&#8217;m mostly working on precise
-font-locking). Any help from interested parties is, naturally, most
-welcome. I very much doubt that me and
-<a href="https://github.com/minad">Daniel Mendler</a> are the only two people
-dreaming of great Slim experience in Emacs. :-)</p>
-
-<p><img src="/images/articles/slim-mode.png"></p>
-
-<p>Let us together eliminate that big Haml advantage. :-)</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-09T20:16:00+03:00" pubdate data-updated="true">Sep 9<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/rails/'>Rails</a>
 
 
 </div>

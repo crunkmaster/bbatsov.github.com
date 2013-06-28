@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Style | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/style/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-06-27T14:37:33+03:00</updated>
+  <updated>2013-06-28T16:04:39+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,94 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Elements of Style in Ruby #3: Make sure something is an array]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/06/28/the-elements-of-style-in-ruby-number-3-make-sure-something-is-an-array/"/>
+    <updated>2013-06-28T15:39:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/06/28/the-elements-of-style-in-ruby-number-3-make-sure-something-is-an-array</id>
+    <content type="html"><![CDATA[<p>The subject today's post is the following rule from the
+<a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
+
+<blockquote><p>Use <code>[*var]</code> or <code>Array()</code> instead of an explicit <code>Array</code> check, when dealing with a </br>
+variable you want to treat as an Array, but you're not certain it's </br>
+an array.</p></blockquote>
+
+<p>Countless times I've seen code like this:</p>
+
+<p><code>ruby
+paths = [paths] unless paths.is_a? Array
+paths.each { |path| do_something(path) }
+</code></p>
+
+<p>It seems that <code>paths</code> could be either an <code>Array</code> object or an object
+of some other class. The author of the code needed to make sure
+<code>paths</code> would be an array so he creates a single element array in the
+case <code>paths</code> is not already an array.</p>
+
+<p>While the above code works it's not something an experienced Rubyist
+would write. The most popular alternative is the use of the mighty splat
+operator(<code>*</code>):</p>
+
+<p><code>ruby
+[*paths].each { |path| do_something(path) }
+</code></p>
+
+<p>It case you're puzzled by the preceding snippet consider the following example:</p>
+
+<p>``` ruby
+elems = 1
+[*elems]</p>
+
+<h1>=> [1]</h1>
+
+<p>elems = [1, 2, 3]
+[*elems]</p>
+
+<h1>= [1, 2, 3]</h1>
+
+<p>```</p>
+
+<p>Hope that makes clear what's going on.</p>
+
+<p>While I'm extremely fond of this particular usage of <code>*</code> I tend to
+avoid it, since there is another equally powerful, but more readable
+alternative to it - <code>Kernel#Array</code>. Here's it in action:</p>
+
+<p><code>ruby
+Array(paths).each { |path| do_something(path) }
+</code></p>
+
+<p><code>Array</code> looks like the name of class, but it's not. It's a totally
+normal method defined in the <code>Kernel</code> module. There is a whole family
+of conversion methods similar to <code>Array</code> there - <code>Array</code>, <code>Complex</code>,
+<code>Float</code>, <code>Hash</code>, <code>Integer</code>, <code>Rational</code> and <code>String</code>. They are all used
+for often in practice and we'll probably revisit them in a separate
+post somewhere down the road.</p>
+
+<p>The <code>Array</code> method operates exactly like <code>*</code> - it takes a single argument and
+converts it to an <code>Array</code> object if necessary:</p>
+
+<p>``` ruby
+Array(1)</p>
+
+<h1>=> [1]</h1>
+
+<p>Array([1, 2, 3])</p>
+
+<h1>=> [1, 2, 3]</h1>
+
+<p>```</p>
+
+<p>You can also use <code>*</code> and <code>Array</code> to convert to array other data
+composite data structures (like hashes and sets), but that's
+irrelevant to today's discussion.</p>
+
+<p>That's all I have for you today, mates. As usual I'm looking forward
+to hearing your thoughts here and on
+<a href="http://twitter.com/bbatsov">Twitter</a>!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Elements of Style in Ruby #2: Favor sprintf(format) over String#%]]></title>
