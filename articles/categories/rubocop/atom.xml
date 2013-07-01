@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RuboCop | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/rubocop/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-07-01T18:31:11+03:00</updated>
+  <updated>2013-07-01T18:39:36+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -73,8 +73,8 @@ an excellent test suite (that you undoubtedly have).</p>
 <h2>Rails Support</h2>
 
 <p><code>rubocop -R</code> will run additional Rails specific code checks. This
-feature is also alpha at this point (meaning there's just one specific
-Rails check at this point).</p>
+feature is also alpha at this point (meaning there's just one Rails
+specific check at this point).</p>
 
 <h2>The Road to 1.0</h2>
 
