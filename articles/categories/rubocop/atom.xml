@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: RuboCop | (think)]]></title>
+  <link href="http://bbatsov.github.com/articles/categories/rubocop/atom.xml" rel="self"/>
+  <link href="http://bbatsov.github.com/"/>
+  <updated>2013-07-01T17:39:37+03:00</updated>
+  <id>http://bbatsov.github.com/</id>
+  <author>
+    <name><![CDATA[Bozhidar Batsov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RuboCop 0.9 is now patrolling the streets!]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/07/01/rubocop-0-dot-9-is-now-patrolling-the-streets/"/>
+    <updated>2013-07-01T17:06:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/07/01/rubocop-0-dot-9-is-now-patrolling-the-streets</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/bbatsov/rubocop">RuboCop</a> 0.9 is finally out! This
+was one of our most ambitious releases - over a month of work, ~250
+commits, lots of new cops and features and a lot less bugs (OK, I'm
+not sure about this, but I sincerely hope it's true). Here's the
+highlights.</p>
+
+<h2>Portable Linting</h2>
+
+<p>This is a big deal! Prior to 0.9, RuboCop piggybacked on MRI's <code>ruby
+-wc</code> to find syntax errors and lint warnings. Obviously apart from
+being unportable - this wasn't particularly fast (spawning processes
+never is) either.</p>
+
+<p>That's no longer the case - errors are not reported directly by
+<a href="https://github.com/whitequark/parser">Parser</a> and we've reimplemented
+MRI's linting in pure Ruby into RuboCop itself. Now you'll get the
+same errors and warnings on MRI, JRuby and Rubinius. And to top it
+off - we've added much nicer warning messages and we report even
+column information for those (MRI doesn't). This brings me to the next
+point.</p>
+
+<h2>Column information</h2>
+
+<p>All RuboCop diagnostics now feature column information as well. Now
+you'll be able to jump to a problem in your code even faster. But that's not all...</p>
+
+<h2>Formatter Support</h2>
+
+<p>We've introduced the concept of formatters (similar the to RSpec
+formatter concept) and we've bundled a few formatters. We've also
+changed the default output format - it now pretty similar to <code>clang</code>'s
+and features extra context information:</p>
+
+<p><code>``
+spec/models/authentication_spec.rb:12:44: W:</code>-' interpreted as argument prefix</p>
+
+<pre><code>}.to change(Authentication, :count).by -1
+                                       ^
+</code></pre>
+
+<p>```</p>
+
+<p>Pretty sure most of you will love this :-)</p>
+
+<h2>Auto-correction Support</h2>
+
+<p>Running <code>rubocop -a</code> will now correct certain problems automatically. This
+feature is alpha quality and just a few cops have support for it right
+now. It goes without saying that you shouldn't use it on projects not under
+version control (who doesn't use version control?) and without
+an excellent test suite (that you undoubtedly have).</p>
+
+<h2>Rails Support</h2>
+
+<p><code>rubocop -R</code> will run additional Rails specific code checks. This
+feature is also alpha at this point (meaning there's just one specific
+Rails check at this point).</p>
+
+<h2>The Road to 1.0</h2>
+
+<p>We plan 1.0 to be the next RuboCop major release. No new features are in
+the pipeline for 1.0 - we already have so many features that require extra
+work and polish anyways. If all goes well expect 1.0 by summer's end with:</p>
+
+<ul>
+<li>performance optimizations</li>
+<li>refined formatters</li>
+<li>enhanced auto-correction support</li>
+<li>lots of Rails specific checks</li>
+</ul>
+
+
+<p>I hope you'll enjoy RuboCop 0.9. For the gory details, please take a
+look at the epic
+<a href="https://github.com/bbatsov/rubocop/blob/master/CHANGELOG.md">Changelog</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

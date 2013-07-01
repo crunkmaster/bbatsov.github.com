@@ -7,9 +7,8 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="One of the most requested Emacs features - native OSX Lion style
-full-screen support has finally landed in Emacs 24.3 (due to be
-released in a few &hellip;">
+	<meta name="description" content="This post is mostly a note to myself, since I constantly forget how to
+delete remote Git branches. The classic way to do so (introduced in Git 1.5) &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +95,74 @@ released in a few &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2012/12/16/deleting-remote-git-branches/">Deleting Remote Git Branches</a></h1>
+	<div class="entry-content">
+		<p>This post is mostly a note to myself, since I constantly forget how to
+delete remote Git branches.</p>
+
+<p>The classic way to do so (introduced in Git 1.5) would be:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin :branch-to-delete
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, if I were migrating an application from MySQL to PostgreSQL I might want to delete
+the <code>postgres</code> branch when I&#8217;m done:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin :postgres
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You have to agree this syntax is hardly something one can easily
+remember(and I&#8217;m extra certain nobody would have guessed it on their
+own). Fortunately in Git 1.7 a nicer alternative to the above command
+was introduced:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git push origin --delete branch-to-delete
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&#8217;s all from me for today. Now go ahead and delete those unneeded Git branches.</p>
+
+<p>P.S. GitHub users might also want to take a look at this
+<a href="https://github.com/blog/1335-tidying-up-after-pull-requests">article</a>
+describing recently added functionality to clean up after pull
+requests.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-16T10:10:00+02:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/git/'>git</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -382,61 +449,6 @@ obtained a good full size keyboard like the
 
 
 	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>tip</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/10/20/emacs-tip-number-6-remove-variable-and-function-definitions/">Emacs Tip #6: Remove Variable &amp; Function Definitions</a></h1>
-	<div class="entry-content">
-		<p>From time to time you might want to void (unbind) a variable or a
-function definition in Emacs. Most often you&#8217;ll probably be dealing
-with variables created with <code>defvar</code> whose values you&#8217;ll want to
-update.  The magic functions you need are the following:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="c1">;; this will make the symbol my-nasty-variable&#39;s value void</span>
-</span><span class='line'><span class="p">(</span><span class="nb">makunbound</span> <span class="ss">&#39;my-nasty-variable</span><span class="p">)</span>
-</span><span class='line'><span class="c1">;; this will make the symbol my-nasty-function&#39;s</span>
-</span><span class='line'><span class="c1">;; function definition void</span>
-</span><span class='line'><span class="p">(</span><span class="nb">fmakunbound</span> <span class="ss">&#39;my-nasty-function</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The names aren&#8217;t exactly intuitive and even I happen to forget them from time to
-time. Now at least I&#8217;ll now where to look for them if that happens
-again. :-)</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-20T20:29:00+03:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>emacs</a>, <a class='category' href='/articles/categories/tip/'>tip</a>
 
 
 </div>

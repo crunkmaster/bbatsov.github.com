@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-07-01T16:55:37+03:00</updated>
+  <updated>2013-07-01T17:39:37+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,88 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RuboCop 0.9 is now patrolling the streets!]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/07/01/rubocop-0-dot-9-is-now-patrolling-the-streets/"/>
+    <updated>2013-07-01T17:06:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/07/01/rubocop-0-dot-9-is-now-patrolling-the-streets</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/bbatsov/rubocop">RuboCop</a> 0.9 is finally out! This
+was one of our most ambitious releases - over a month of work, ~250
+commits, lots of new cops and features and a lot less bugs (OK, I&#8217;m
+not sure about this, but I sincerely hope it&#8217;s true). Here&#8217;s the
+highlights.</p>
+
+<h2>Portable Linting</h2>
+
+<p>This is a big deal! Prior to 0.9, RuboCop piggybacked on MRI&#8217;s <code>ruby
+-wc</code> to find syntax errors and lint warnings. Obviously apart from
+being unportable - this wasn&#8217;t particularly fast (spawning processes
+never is) either.</p>
+
+<p>That&#8217;s no longer the case - errors are not reported directly by
+<a href="https://github.com/whitequark/parser">Parser</a> and we&#8217;ve reimplemented
+MRI&#8217;s linting in pure Ruby into RuboCop itself. Now you&#8217;ll get the
+same errors and warnings on MRI, JRuby and Rubinius. And to top it
+off - we&#8217;ve added much nicer warning messages and we report even
+column information for those (MRI doesn&#8217;t). This brings me to the next
+point.</p>
+
+<h2>Column information</h2>
+
+<p>All RuboCop diagnostics now feature column information as well. Now
+you&#8217;ll be able to jump to a problem in your code even faster. But that&#8217;s not all&#8230;</p>
+
+<h2>Formatter Support</h2>
+
+<p>We&#8217;ve introduced the concept of formatters (similar the to RSpec
+formatter concept) and we&#8217;ve bundled a few formatters. We&#8217;ve also
+changed the default output format - it now pretty similar to <code>clang</code>&#8217;s
+and features extra context information:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>spec/models/authentication_spec.rb:12:44: W: `-' interpreted as argument prefix
+</span><span class='line'>    }.to change(Authentication, :count).by -1
+</span><span class='line'>                                           ^</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pretty sure most of you will love this :-)</p>
+
+<h2>Auto-correction Support</h2>
+
+<p>Running <code>rubocop -a</code> will now correct certain problems automatically. This
+feature is alpha quality and just a few cops have support for it right
+now. It goes without saying that you shouldn&#8217;t use it on projects not under
+version control (who doesn&#8217;t use version control?) and without
+an excellent test suite (that you undoubtedly have).</p>
+
+<h2>Rails Support</h2>
+
+<p><code>rubocop -R</code> will run additional Rails specific code checks. This
+feature is also alpha at this point (meaning there&#8217;s just one specific
+Rails check at this point).</p>
+
+<h2>The Road to 1.0</h2>
+
+<p>We plan 1.0 to be the next RuboCop major release. No new features are in
+the pipeline for 1.0 - we already have so many features that require extra
+work and polish anyways. If all goes well expect 1.0 by summer&#8217;s end with:</p>
+
+<ul>
+<li>performance optimizations</li>
+<li>refined formatters</li>
+<li>enhanced auto-correction support</li>
+<li>lots of Rails specific checks</li>
+</ul>
+
+
+<p>I hope you&#8217;ll enjoy RuboCop 0.9. For the gory details, please take a
+look at the epic
+<a href="https://github.com/bbatsov/rubocop/blob/master/CHANGELOG.md">Changelog</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Elements of Style in Ruby #4: Array#join vs Array#*]]></title>
@@ -1219,35 +1301,6 @@ using heavily one of Apple&#8217;s smaller keyboards. Of course, if you have
 the option to use an external keyboard you&#8217;d do yourself a solid if you
 obtained a good full size keyboard like the
 <a href="http://batsov.com/articles/2008/06/16/das-keyboard/">Das Keyboard</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Emacs Tip #6: Remove variable &amp; function definitions]]></title>
-    <link href="http://bbatsov.github.com/articles/2012/10/20/emacs-tip-number-6-remove-variable-and-function-definitions/"/>
-    <updated>2012-10-20T20:29:00+03:00</updated>
-    <id>http://bbatsov.github.com/articles/2012/10/20/emacs-tip-number-6-remove-variable-and-function-definitions</id>
-    <content type="html"><![CDATA[<p>From time to time you might want to void (unbind) a variable or a
-function definition in Emacs. Most often you&#8217;ll probably be dealing
-with variables created with <code>defvar</code> whose values you&#8217;ll want to
-update.  The magic functions you need are the following:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='cl'><span class='line'><span class="c1">;; this will make the symbol my-nasty-variable&#39;s value void</span>
-</span><span class='line'><span class="p">(</span><span class="nb">makunbound</span> <span class="ss">&#39;my-nasty-variable</span><span class="p">)</span>
-</span><span class='line'><span class="c1">;; this will make the symbol my-nasty-function&#39;s</span>
-</span><span class='line'><span class="c1">;; function definition void</span>
-</span><span class='line'><span class="p">(</span><span class="nb">fmakunbound</span> <span class="ss">&#39;my-nasty-function</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The names aren&#8217;t exactly intuitive and even I happen to forget them from time to
-time. Now at least I&#8217;ll now where to look for them if that happens
-again. :-)</p>
 ]]></content>
   </entry>
   
