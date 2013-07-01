@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-07-01T17:39:37+03:00</updated>
+  <updated>2013-07-01T18:31:11+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -31,7 +31,7 @@ highlights.</p>
 being unportable - this wasn&#8217;t particularly fast (spawning processes
 never is) either.</p>
 
-<p>That&#8217;s no longer the case - errors are not reported directly by
+<p>That&#8217;s no longer the case - errors are now reported directly by
 <a href="https://github.com/whitequark/parser">Parser</a> and we&#8217;ve reimplemented
 MRI&#8217;s linting in pure Ruby into RuboCop itself. Now you&#8217;ll get the
 same errors and warnings on MRI, JRuby and Rubinius. And to top it
