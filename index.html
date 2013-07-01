@@ -7,8 +7,8 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="The subject of today&#8217;s post is the following rule from the
-Ruby Style Guide: Use [*var] or Array() instead of an explicit Array check, when &hellip;">
+	<meta name="description" content="Today&#8217;s topic is the following rule from the Ruby Style Guide: Favor the use of Array#join over the fairly cryptic Array#* with
+a string &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,6 +95,125 @@ Ruby Style Guide: Use [*var] or Array() instead of an explicit Array check, when
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2013/07/01/the-elements-of-style-in-ruby-number-4-array-number-join-vs-array-number-star/">The Elements of Style in Ruby #4: Array#join vs Array#*</a></h1>
+	<div class="entry-content">
+		<p>Today&#8217;s topic is the following rule from the <a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
+
+<blockquote><p>Favor the use of <code>Array#join</code> over the fairly cryptic <code>Array#*</code> with
+a string argument.</p></blockquote>
+
+<p><code>Array#join</code> and <code>Array#*</code> (with a string argument) behave exactly the same:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sx">%w(Bruce Wayne)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; &quot;Bruce Wayne&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">%w(Bruce Wayne)</span> <span class="o">*</span> <span class="s1">&#39; &#39;</span>
+</span><span class='line'><span class="c1"># =&gt; &quot;Bruce Wayne&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, considering they both do the same thing why should you opt to use
+<code>join</code> instead of <code>*</code>? Here&#8217;s a few reasons:</p>
+
+<ul>
+<li><code>*</code> behaves totally differently when passed an integer argument:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="mi">1</span> <span class="mi">2</span><span class="o">]</span> <span class="o">*</span> <span class="mi">3</span>
+</span><span class='line'><span class="c1"># =&gt; [1 2 1 2 1 2]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Personally, I&#8217;d expect this to be only behavior of such an operator
+method and find the alternative one (with a string argument) to be
+pretty much counter-intuitive.</p>
+
+<ul>
+<li>It&#8217;s not always clear what <code>*</code> means without additional
+context. Take a look at this short snippet:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># a and b are variables</span>
+</span><span class='line'><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Without some knowledge of <code>a</code> and <code>b</code> we cannot be certain what this
+code is going to do. It&#8217;s hard even to speculate what the code is
+going to do. Obviously better variable names would certainly help, but
+the point still stands.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>While we still cannot be absolutely certain, it&#8217;s highly likely that <code>a</code> is
+an <code>Array</code> and <code>b</code> is a <code>String</code>.</p>
+
+<ul>
+<li><code>*</code> does not carry much of a semantic value in it.</li>
+</ul>
+
+
+<p>Unlike <code>String#%</code>, <code>Array#*</code> with a string argument carries pretty
+much no meaning. It&#8217;s absolutely beyond me how this came into
+existence. On the other hand the behavior of <code>Array#*</code> with an integer
+argument is pretty reasonable. Here we see a classic example of the
+notion that too much operator overloading can be a bad thing, leading
+to some pretty unreadable code. An operator should be employed only
+when it&#8217;s use would add clarity to the code, not take clarity away.</p>
+
+<p><code>Array#*</code> has one thing going for it, however - the fact that few
+people know about its use as a substitute for <code>Array#join</code>. I hope
+they realize that some unknown features are unknown for a reason -
+because it&#8217;s bad idea to make use of them.</p>
+
+<p>As usual I&#8217;m looking forward to hearing your thoughts here and on
+<a href="http://twitter.com/bbatsov">Twitter</a>!</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-01T16:28:00+03:00" pubdate data-updated="true">Jul 1<span>st</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/style/'>Style</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -286,7 +405,7 @@ arguments.</li>
 
 <ul>
 <li>It&#8217;s not always clear what <code>%</code> means without additional
-context. Take a loot at this short snippet:</li>
+context. Take a look at this short snippet:</li>
 </ul>
 
 
@@ -492,6 +611,16 @@ interesting discussions with you!</p>
 <p>Feel free to take a look at the
 <a href="/articles/2013/06/26/the-elements-of-style-in-ruby-number-1-maximum-line-length/">first article in the series, dedicated to the maximum line length we should aim for</a>.</p>
 
+<h2>Articles in the Series</h2>
+
+<ol>
+<li><a href="/articles/2013/06/26/the-elements-of-style-in-ruby-number-1-maximum-line-length/">Maximum Line Length</a></li>
+<li><a href="/articles/2013/06/27/the-elements-of-style-in-ruby-number-2-favor-sprintf-format-over-string-number-percent/">Favor sprintf(format) Over String#%</a></li>
+<li><a href="/articles/2013/06/28/the-elements-of-style-in-ruby-number-3-make-sure-something-is-an-array/">Make Sure Something Is an Array</a></li>
+<li><a href="/articles/2013/07/01/the-elements-of-style-in-ruby-number-4-array-number-join-vs-array-number-star/">Array#join vs Array#*</a></li>
+</ol>
+
+
 		
 		
 	</div>
@@ -511,65 +640,6 @@ interesting discussions with you!</p>
 
 
 <time datetime="2013-06-26T16:30:00+03:00" pubdate data-updated="true">Jun 26<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/ruby/'>Ruby</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/05/28/rubocop-0-dot-8-0-is-out/">RuboCop 0.8.0 Is Out, Support for JRuby and Rubinius Is In!</a></h1>
-	<div class="entry-content">
-		<p><a href="http://github.com/bbatsov/rubocop">RuboCop</a> 0.8.0 is out!</p>
-
-<p>While the version bump is minor, this release represents an almost
-total rewrite of the code. We&#8217;ve moved away from MRI&#8217;s <code>Ripper</code> parser
-and ported RuboCop to <a href="https://github.com/whitequark">Peter Zotov</a>&#8217;s
-fantastic <a href="https://github.com/whitequark/parser">Parser</a>.</p>
-
-<p>What does this mean for users of RuboCop? It means that now both
-Rubinius and JRuby are supported (in 1.9 and 2.0 modes). I&#8217;d say this
-is kind of a big deal! The support for the them should be considered
-beta at this point, since they have not yet received extensive field
-testing.</p>
-
-<p>And what does the change mean for developers? It&#8217;s now a lot easier to
-comprehend RuboCop&#8217;s source code, lowering the bar for contributions
-immensely.</p>
-
-<p>What&#8217;s coming down the road for 0.9.0? We have two big changes
-planned - providing an auto-fix functionality(meaning RuboCop will be
-able to fix on its own some of the problems detected) and providing
-more precise diagnostic messages(a-la <code>clang</code>).</p>
-
-<p>The changelog for 0.8.0 is available <a href="https://github.com/bbatsov/rubocop/blob/master/CHANGELOG.md">here</a>.</p>
-
-<p>Stay tuned for more!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-28T12:11:00+03:00" pubdate data-updated="true">May 28<span>th</span>, 2013</time></div>
 	<div class="tags">
 
 
