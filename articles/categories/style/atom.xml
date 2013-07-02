@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Style | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/style/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-07-01T18:39:36+03:00</updated>
+  <updated>2013-07-02T15:48:07+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Elements of Style in Ruby #5: Readability of long numeric literals]]></title>
+    <link href="http://bbatsov.github.com/articles/2013/07/02/the-elements-of-style-in-ruby-number-5-readability-of-long-numeric-literals/"/>
+    <updated>2013-07-02T15:01:00+03:00</updated>
+    <id>http://bbatsov.github.com/articles/2013/07/02/the-elements-of-style-in-ruby-number-5-readability-of-long-numeric-literals</id>
+    <content type="html"><![CDATA[<p>Today's topic is the following rule from the <a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
+
+<blockquote><p>Add underscores to large numeric literals to improve their readability.</p></blockquote>
+
+<p>Most of the programs we write feature a substantial number of numeric
+literals(e.g. <code>10</code>, <code>0.34</code>, <code>0b1010</code>, <code>0123</code>, <code>0xCAFE</code>). There is nothing
+strange or unusual about that. From time to time, however, those literals are pretty long:</p>
+
+<p><code>
+MAX_SIZE = 10000000000
+DEVIATION = 0.2343434343
+BIT_MASK = 0b100101010101
+</code></p>
+
+<p>I'm pretty sure most of you would have pretty hard time to quickly
+digest a number written in this way - lots of digits and no separators
+between them to help us discern the number's <code>structure</code>. At this
+point <code>_</code> makes a dramatic appearance and comes to the rescue:</p>
+
+<p><code>
+MAX_SIZE = 10_000_000_000
+DEVIATION = 0.2_343_434_343
+BIT_MASK = 0b1001_0101_0101
+</code></p>
+
+<p>The addition of a few <code>_</code> improves the readability of those huge literals a ton!</p>
+
+<p>The underscores we add to numeric literals are ignored by <code>Ruby</code>:</p>
+
+<p>``` ruby
+100_000</p>
+
+<h1>=> 100000</h1>
+
+<p>```</p>
+
+<p>As you can see from the preceding example nothing's lost or changed -
+we've only gained readability and eased the parsing burden on our
+brains.</p>
+
+<p>Obviously we should not overdo <code>_</code>:</p>
+
+<p>``` ruby</p>
+
+<h1>short literals are pretty readable on their own</h1>
+
+<h1>bad</h1>
+
+<p>1_00</p>
+
+<h1>good</h1>
+
+<p>100
+```</p>
+
+<p>Personally, when dealing with decimal literals, I tend to use <code>_</code> for
+numbers with at least digits. The number of digits to separate with
+<code>_</code> depends on the numeric base - in decimal it makes sense to group
+digits by 3, in binary by 4, etc.</p>
+
+<p>That's all for today folks!</p>
+
+<p>As usual I'm looking forward to hearing your thoughts here and on
+<a href="http://twitter.com/bbatsov">Twitter</a>!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Elements of Style in Ruby #4: Array#join vs Array#*]]></title>
