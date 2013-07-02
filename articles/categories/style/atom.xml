@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Style | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/style/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-07-02T15:48:07+03:00</updated>
+  <updated>2013-07-02T15:52:37+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -74,11 +74,12 @@ brains.</p>
 ```</p>
 
 <p>Personally, when dealing with decimal literals, I tend to use <code>_</code> for
-numbers with at least digits. The number of digits to separate with
+numbers with at 5 least digits(e.g. <code>11_948</code>). The number of digits to separate with
 <code>_</code> depends on the numeric base - in decimal it makes sense to group
-digits by 3, in binary by 4, etc.</p>
+digits by 3(<code>1_000_000</code>), in binary by 4(<code>0b1111_1010_1110</code>), etc.</p>
 
-<p>That's all for today folks!</p>
+<p>That's all for today folks! Hope I managed to convince at least of few
+of you of benefits of using underscores in your long numeric literals.</p>
 
 <p>As usual I'm looking forward to hearing your thoughts here and on
 <a href="http://twitter.com/bbatsov">Twitter</a>!</p>
