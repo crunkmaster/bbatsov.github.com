@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>(think)</title>
+	<title>The Elements of Style in Ruby #6: Attributes Redux - (think)</title>
 	<meta name="author" content="Bozhidar Batsov">
 
 	
@@ -94,13 +94,9 @@ Ruby Style Guide: Use the attr family of &hellip;">
 </script>
 
 	
-	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/07/04/the-elements-of-style-in-ruby-number-6-attributes-redux/">The Elements of Style in Ruby #6: Attributes Redux</a></h1>
-	<div class="entry-content">
-		<p>Today we&#8217;ll talk about attributes in Ruby.</p>
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">The Elements of Style in Ruby #6: Attributes Redux</h1>
+	<div class="entry-content"><p>Today we&#8217;ll talk about attributes in Ruby.</p>
 
 <p>Let&#8217;s start with the following rule from the
 <a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
@@ -417,10 +413,7 @@ you&#8217;ve found my musing on the subject of attributes useful.</p>
 <a href="http://twitter.com/bbatsov">Twitter</a>!</p>
 
 <p><strong>P.S.</strong> Happy 4th of July to all my American readers! :-)</p>
-
-		
-		
-	</div>
+</div>
 
 
 <div class="meta">
@@ -447,469 +440,28 @@ you&#8217;ve found my musing on the subject of attributes useful.</p>
 	
 </div></article>
 
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/07/02/the-elements-of-style-in-ruby-number-5-readability-of-long-numeric-literals/">The Elements of Style in Ruby #5: Readability of Long Numeric Literals</a></h1>
-	<div class="entry-content">
-		<p>Today&#8217;s topic is the following rule from the <a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
-
-<blockquote><p>Add underscores to large numeric literals to improve their readability.</p></blockquote>
-
-<p>Most of the programs we write feature a substantial number of numeric
-literals(e.g. <code>10</code>, <code>0.34</code>, <code>0b1010</code>, <code>0123</code>, <code>0xCAFE</code>). There is nothing
-strange or unusual about that. From time to time, however, those literals are pretty long:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>MAX_SIZE = 10000000000
-</span><span class='line'>DEVIATION = 0.2343434343
-</span><span class='line'>BIT_MASK = 0b100101010101</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I&#8217;m pretty sure most of you would have pretty hard time to quickly
-digest a number written in this way - lots of digits and no separators
-between them to help us discern the number&#8217;s <code>structure</code>. At this
-point <code>_</code> makes a dramatic appearance and comes to the rescue:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>MAX_SIZE = 10_000_000_000
-</span><span class='line'>DEVIATION = 0.2_343_434_343
-</span><span class='line'>BIT_MASK = 0b1001_0101_0101</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The addition of a few <code>_</code> improves the readability of those huge literals a ton!</p>
-
-<p>The underscores we add to numeric literals are ignored by <code>Ruby</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">100_000</span>
-</span><span class='line'><span class="c1"># =&gt; 100000</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>As you can see from the preceding example nothing&#8217;s lost or changed -
-we&#8217;ve only gained readability and eased the parsing burden on our
-brains.</p>
-
-<p>Obviously we should not overdo <code>_</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># short literals are pretty readable on their own</span>
-</span><span class='line'><span class="c1"># bad</span>
-</span><span class='line'><span class="mi">1_00</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># good</span>
-</span><span class='line'><span class="mi">100</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Personally, when dealing with decimal literals, I tend to use <code>_</code> for
-numbers with at 5 least digits(e.g. <code>11_948</code>). The number of digits to separate with
-<code>_</code> depends on the numeric base - in decimal it makes sense to group
-digits by 3(<code>1_000_000</code>), in binary by 4(<code>0b1111_1010_1110</code>), etc.</p>
-
-<p>That&#8217;s all for today folks! Hope I managed to convince at least a few
-of you of the benefits of using underscores in your long numeric literals.</p>
-
-<p>As usual I&#8217;m looking forward to hearing your thoughts here and on
-<a href="http://twitter.com/bbatsov">Twitter</a>!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-02T15:01:00+03:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/style/'>Style</a>
-
-
-</div>
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/07/01/rubocop-0-dot-9-is-now-patrolling-the-streets/">RuboCop 0.9 Is Now Patrolling the Streets!</a></h1>
-	<div class="entry-content">
-		<p><a href="https://github.com/bbatsov/rubocop">RuboCop</a> 0.9 is finally out! This
-was one of our most ambitious releases - over a month of work, ~250
-commits, lots of new cops and features and a lot less bugs (OK, I&#8217;m
-not sure about this, but I sincerely hope it&#8217;s true). Here&#8217;s the
-highlights.</p>
-
-<h2>Portable Linting</h2>
-
-<p>This is a big deal! Prior to 0.9, RuboCop piggybacked on MRI&#8217;s <code>ruby
--wc</code> to find syntax errors and lint warnings. Obviously apart from
-being unportable - this wasn&#8217;t particularly fast (spawning processes
-never is) either.</p>
-
-<p>That&#8217;s no longer the case - errors are now reported directly by
-<a href="https://github.com/whitequark/parser">Parser</a> and we&#8217;ve reimplemented
-MRI&#8217;s linting in pure Ruby into RuboCop itself. Now you&#8217;ll get the
-same errors and warnings on MRI, JRuby and Rubinius. And to top it
-off - we&#8217;ve added much nicer warning messages and we report even
-column information for those (MRI doesn&#8217;t). This brings me to the next
-point.</p>
-
-<h2>Column information</h2>
-
-<p>All RuboCop diagnostics now feature column information as well. Now
-you&#8217;ll be able to jump to a problem in your code even faster. But that&#8217;s not all&#8230;</p>
-
-<h2>Formatter Support</h2>
-
-<p>We&#8217;ve introduced the concept of formatters (similar the to RSpec
-formatter concept) and we&#8217;ve bundled a few formatters. We&#8217;ve also
-changed the default output format - it now pretty similar to <code>clang</code>&#8217;s
-and features extra context information:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>spec/models/authentication_spec.rb:12:44: W: `-' interpreted as argument prefix
-</span><span class='line'>    }.to change(Authentication, :count).by -1
-</span><span class='line'>                                           ^</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Pretty sure most of you will love this :-)</p>
-
-<h2>Auto-correction Support</h2>
-
-<p>Running <code>rubocop -a</code> will now correct certain problems automatically. This
-feature is alpha quality and just a few cops have support for it right
-now. It goes without saying that you shouldn&#8217;t use it on projects not under
-version control (who doesn&#8217;t use version control?) and without
-an excellent test suite (that you undoubtedly have).</p>
-
-<h2>Rails Support</h2>
-
-<p><code>rubocop -R</code> will run additional Rails specific code checks. This
-feature is also alpha at this point (meaning there&#8217;s just one Rails
-specific check at this point).</p>
-
-<h2>The Road to 1.0</h2>
-
-<p>We plan 1.0 to be the next RuboCop major release. No new features are in
-the pipeline for 1.0 - we already have so many features that require extra
-work and polish anyways. If all goes well expect 1.0 by summer&#8217;s end with:</p>
-
-<ul>
-<li>performance optimizations</li>
-<li>refined formatters</li>
-<li>enhanced auto-correction support</li>
-<li>lots of Rails specific checks</li>
-</ul>
-
-
-<p>I hope you&#8217;ll enjoy RuboCop 0.9. For the gory details, please take a
-look at the epic
-<a href="https://github.com/bbatsov/rubocop/blob/master/CHANGELOG.md">Changelog</a>.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-01T17:06:00+03:00" pubdate data-updated="true">Jul 1<span>st</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/rubocop/'>RuboCop</a>, <a class='category' href='/articles/categories/ruby/'>Ruby</a>
-
-
-</div>
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/07/01/the-elements-of-style-in-ruby-number-4-array-number-join-vs-array-number-star/">The Elements of Style in Ruby #4: Array#join vs Array#*</a></h1>
-	<div class="entry-content">
-		<p>Today&#8217;s topic is the following rule from the <a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
-
-<blockquote><p>Favor the use of <code>Array#join</code> over the fairly cryptic <code>Array#*</code> with
-a string argument.</p></blockquote>
-
-<p><code>Array#join</code> and <code>Array#*</code> (with a string argument) behave exactly the same:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sx">%w(Bruce Wayne)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;Bruce Wayne&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sx">%w(Bruce Wayne)</span> <span class="o">*</span> <span class="s1">&#39; &#39;</span>
-</span><span class='line'><span class="c1"># =&gt; &quot;Bruce Wayne&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So, considering they both do the same thing why should you opt to use
-<code>join</code> instead of <code>*</code>? Here&#8217;s a few reasons:</p>
-
-<ul>
-<li><code>*</code> behaves totally differently when passed an integer argument:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="mi">1</span> <span class="mi">2</span><span class="o">]</span> <span class="o">*</span> <span class="mi">3</span>
-</span><span class='line'><span class="c1"># =&gt; [1 2 1 2 1 2]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Personally, I&#8217;d expect this to be only behavior of such an operator
-method and find the alternative one (with a string argument) to be
-pretty much counter-intuitive.</p>
-
-<ul>
-<li>It&#8217;s not always clear what <code>*</code> means without additional
-context. Take a look at this short snippet:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># a and b are variables</span>
-</span><span class='line'><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Without some knowledge of <code>a</code> and <code>b</code> we cannot be certain what this
-code is going to do. It&#8217;s hard even to speculate what the code is
-going to do. Obviously better variable names would certainly help, but
-the point still stands.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>While we still cannot be absolutely certain, it&#8217;s highly likely that <code>a</code> is
-an <code>Array</code> and <code>b</code> is a <code>String</code>.</p>
-
-<ul>
-<li><code>*</code> does not carry much of a semantic value in it.</li>
-</ul>
-
-
-<p>Unlike <code>String#%</code>, <code>Array#*</code> with a string argument carries pretty
-much no meaning. It&#8217;s absolutely beyond me how this came into
-existence. On the other hand the behavior of <code>Array#*</code> with an integer
-argument is pretty reasonable. Here we see a classic example of the
-notion that too much operator overloading can be a bad thing, leading
-to some pretty unreadable code. An operator should be employed only
-when it&#8217;s use would add clarity to the code, not take clarity away.</p>
-
-<p><code>Array#*</code> has one thing going for it, however - the fact that few
-people know about its use as a substitute for <code>Array#join</code>. I hope
-they realize that some unknown features are unknown for a reason -
-because it&#8217;s bad idea to make use of them.</p>
-
-<p>As usual I&#8217;m looking forward to hearing your thoughts here and on
-<a href="http://twitter.com/bbatsov">Twitter</a>!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-01T16:28:00+03:00" pubdate data-updated="true">Jul 1<span>st</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/style/'>Style</a>
-
-
-</div>
+	<a class="addthis_button_tweet"></a>
 	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2013/06/28/the-elements-of-style-in-ruby-number-3-make-sure-something-is-an-array/">The Elements of Style in Ruby #3: Make Sure Something Is an Array</a></h1>
-	<div class="entry-content">
-		<p>The subject of today&#8217;s post is the following rule from the
-<a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
-
-<blockquote><p>Use <code>[*var]</code> or <code>Array()</code> instead of an explicit <code>Array</code> check, when dealing with a </br>
-variable you want to treat as an Array, but you&#8217;re not certain it&#8217;s </br>
-an array.</p></blockquote>
-
-<p>Countless times I&#8217;ve seen code like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">paths</span> <span class="o">=</span> <span class="o">[</span><span class="n">paths</span><span class="o">]</span> <span class="k">unless</span> <span class="n">paths</span><span class="o">.</span><span class="n">is_a?</span> <span class="nb">Array</span>
-</span><span class='line'><span class="n">paths</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It seems that <code>paths</code> could be either an <code>Array</code> object or an object
-of some other class. The author of the code needed to make sure
-<code>paths</code> would be an array so he creates a single element array in the
-case <code>paths</code> is not already an array.</p>
-
-<p>While the above code works it&#8217;s not something an experienced Rubyist
-would write. The most popular alternative is the use of the mighty splat
-operator(<code>*</code>):</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[*</span><span class="n">paths</span><span class="o">].</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It case you&#8217;re puzzled by the preceding snippet consider the following example:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">elems</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class='line'><span class="o">[*</span><span class="n">elems</span><span class="o">]</span>
-</span><span class='line'><span class="c1"># =&gt; [1]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">elems</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
-</span><span class='line'><span class="o">[*</span><span class="n">elems</span><span class="o">]</span>
-</span><span class='line'><span class="c1"># = [1, 2, 3]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Hope that makes clear what&#8217;s going on.</p>
-
-<p>While I&#8217;m extremely fond of this particular usage of <code>*</code> I tend to
-avoid it, since there is another equally powerful, but more readable
-alternative to it - <code>Kernel#Array</code>. Here&#8217;s it in action:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">Array</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>Array</code> looks like the name of class, but it&#8217;s not. It&#8217;s a totally
-normal method defined in the <code>Kernel</code> module. There is a whole family
-of conversion methods similar to <code>Array</code> there - <code>Array</code>, <code>Complex</code>,
-<code>Float</code>, <code>Hash</code>, <code>Integer</code>, <code>Rational</code> and <code>String</code>. They are all used
-for often in practice and we&#8217;ll probably revisit them in a separate
-post somewhere down the road.</p>
-
-<p>The <code>Array</code> method operates exactly like <code>*</code> - it takes a single argument and
-converts it to an <code>Array</code> object if necessary:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">Array</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; [1]</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">Array</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="c1"># =&gt; [1, 2, 3]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You can also use <code>*</code> and <code>Array</code> to convert to array other data
-composite data structures (like hashes and sets), but that&#8217;s
-irrelevant to today&#8217;s discussion.</p>
-
-<p>That&#8217;s all I have for you today, mates. As usual I&#8217;m looking forward
-to hearing your thoughts here and on
-<a href="http://twitter.com/bbatsov">Twitter</a>!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-28T15:39:00+03:00" pubdate data-updated="true">Jun 28<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/style/'>Style</a>
-
-
-</div>
 	
-</div></article>
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
-<nav id="pagenavi">
-    
-    
-        <a href="/articles/page/2/" class="next">Next</a>
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav></div>
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
 	<footer id="footer" class="inner">Copyright &copy; 2013
 
     Bozhidar Batsov
@@ -928,7 +480,10 @@ to hearing your thoughts here and on
       var disqus_shortname = 'batsov';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bbatsov.github.com/articles/2013/07/04/the-elements-of-style-in-ruby-number-6-attributes-redux/';
+        var disqus_url = 'http://bbatsov.github.com/articles/2013/07/04/the-elements-of-style-in-ruby-number-6-attributes-redux/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
