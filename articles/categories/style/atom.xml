@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Style | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/style/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-07-10T16:24:50+03:00</updated>
+  <updated>2013-07-10T16:25:33+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -82,7 +82,7 @@ to <code>=~</code> for regular expressions.</p>
 code. That means we should abstain ourselves from doing clever tricks
 like:</p>
 
-<p><code>Ruby
+<p><code>ruby
 Array === something
 (1..100) === 7
 /something/ === some_string
@@ -90,7 +90,7 @@ Array === something
 
 <p>And bet on clarity instead:</p>
 
-<p><code>Ruby
+<p><code>ruby
 something.is_a?(Array)
 (1..100).include?(7)
 some_string =~ /something/

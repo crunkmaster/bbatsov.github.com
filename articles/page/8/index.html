@@ -7,9 +7,9 @@
 	<meta name="author" content="Bozhidar Batsov">
 
 	
-	<meta name="description" content="Prelude Yesterday I wrote a highly
-controversial article about the state of the EmacsWiki
-and suggested a few things we can do to make things better &hellip;">
+	<meta name="description" content="I&#8217;d like to apologize to everyone insulted by my previous
+posts. Contrary to popular belief I acknowledge EmacsWiki&#8217;s
+contribution to &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -96,6 +96,103 @@ and suggested a few things we can do to make things better &hellip;">
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/articles/2012/03/26/wikemacs-the-other-emacs-wiki/">WikEmacs - the Other Emacs Wiki</a></h1>
+	<div class="entry-content">
+		<p>I&#8217;d like to apologize to everyone insulted by my previous
+posts. Contrary to popular belief I acknowledge EmacsWiki&#8217;s
+contribution to the Emacs community. Obviously many people are too
+fond of its current format so I doubt that it will ever change
+(considerably). I didn&#8217;t mean to insult anyone, I just wanted to catch
+your attention (which unfortunately requires harsher words from time to
+time) and point it in the direction of the existing problems.</p>
+
+<p>For the people that weren&#8217;t happy with EmacsWiki - the ones that felt
+my pain and were looking for a change I present
+<a href="http://wikemacs.org">WikEmacs</a> (pronounced wikimacs). It&#8217;s a
+MediaWiki powered Emacs wiki, that will try to bring to the community
+cleaner, leaner and more up-to-date documentation.</p>
+
+<p>There are only a few guidelines for the contributors there:</p>
+
+<ul>
+<li>articles should be geared only towards the current and future
+versions of Emacs (currently 23 and 24) for maintainability&#8217;s sake.</li>
+<li>articles should not copy Emacs&#8217;s or extension&#8217;s official
+documentation - they should refer to it instead. An overview, some
+nice pointers, tips and links - that seems like a good article,
+doesn&#8217;t it?</li>
+<li>comments and questions should go to an article&#8217;s discussion page</li>
+</ul>
+
+
+<p>File uploads are disabled on WikEmacs (but image file uploads will
+probably be allowed soon) - it will never host Emacs extensions of any
+sort.</p>
+
+<p>There is a Google discussion group
+<a href="https://groups.google.com/forum/?fromgroups#!forum/wikemacs">here</a>
+for more general questions regarding the wiki.</p>
+
+<p>Our goal is not to copy over the 8500 articles available at
+EmacsWiki. It&#8217;s to provide a good road map for new users coming to
+Emacs and enough helpful hints and tips for experienced users. Everyone
+is welcome to join our efforts.</p>
+
+<p>As far as short term goals go - have a look at the outlined structure
+of the wiki (on its home page), pick a section that interests you and
+create/extend/improve it. Our content is licensed with GNU&#8217;s Free
+Documentation License (which is compatible with Wikipedia&#8217;s and
+probably EmacsWiki&#8217;s GPL2). Some nice blog articles about Emacs might
+be converted to wiki articles with permission from their authors. You
+might find <a href="http://johnmacfarlane.net/pandoc/try">pandoc</a> useful to
+automatically convert articles from other formats to MediaWiki markup
+and <a href="https://launchpad.net/mediawiki-el">mediawiki.el</a> to edit
+articles on wiki from the comfort of your beloved editor.</p>
+
+<p>Thanks to the people that brought us the original EmacsWiki. Thanks to
+everyone who supported the idea for the new wiki. Thanks in advance to
+all future contributors.</p>
+
+<p>Some people will undoubtedly see the birth of WikEmacs as a separatist move to fraction
+the Emacs community. To them I&#8217;d like to say that few things in life
+are as productive as competition. Obviously a lot of people willing to
+contribute to a new wiki are unwilling to do so for EmacsWiki and vice
+versa. This is not a contest and there will be no winner. I wish the
+best of luck to EmacsWiki and its supporters. What I wish for is to give
+our community the best source of documentation available and the
+option to choose.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-26T11:23:00+03:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/articles/categories/emacs/'>Emacs</a>
+
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -369,66 +466,6 @@ the tasks as well.</p>
 
 
 	<a class='category' href='/articles/categories/ruby/'>Ruby</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/articles/2012/03/08/emacs-tip-number-4-repeat-last-command/">Emacs Tip #4: Repeat Last Command</a></h1>
-	<div class="entry-content">
-		<p>Some times you&#8217;d want to quickly repeat an Emacs command several times and
-most of the time it won&#8217;t have a convenient keybinding you can use to
-do this. Enter <code>C-x z</code> (<code>repeat</code>) - it simply repeats the most
-recently executed command. And the best part? After you&#8217;ve pressed
-<code>C-x z</code> once you can continue repeating the last command simply by
-pressing <code>z</code>. Vi(m) users will probably note that this is quite similar
-to the <code>.</code> command there.</p>
-
-<p>For instance - if you want to execute the <code>er/expand-region</code> command
-(part of the
-<a href="https://github.com/magnars/expand-region.el">expand-region package</a>)
-a few times you can do it like this:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>M-x er/expand-region
-</span><span class='line'>C-x z
-</span><span class='line'>z
-</span><span class='line'>z
-</span><span class='line'>z</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Neat, ah?</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-08T15:09:00+02:00" pubdate data-updated="true">Mar 8<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/articles/categories/emacs/'>Emacs</a>, <a class='category' href='/articles/categories/tip/'>Tip</a>
 
 
 </div>
