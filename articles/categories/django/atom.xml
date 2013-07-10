@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Django | (think)]]></title>
   <link href="http://bbatsov.github.com/articles/categories/django/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-07-04T16:33:30+03:00</updated>
+  <updated>2013-07-10T16:24:50+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -528,18 +528,16 @@ suggestions. You can unroll any URL mapping scheme by simply
 associating regular expressions in urls.py with callback view
 functions:</p>
 
-<p><div>
-  <pre><code class='python'>from django.conf.urls.defaults import patterns, include, url&lt;/p&gt;
+<p>{% highlight python %}
+from django.conf.urls.defaults import patterns, include, url</p>
 
-&lt;p&gt;urlpatterns = patterns('',&lt;/p&gt;
+<p>urlpatterns = patterns('',</p>
 
-&lt;pre&gt;&lt;code&gt;url(r'^$', 'djangodemo.views.home', name='home')
+<pre><code>url(r'^$', 'djangodemo.views.home', name='home')
 url(r'^users', 'djangodemo.view.users', name='list_users'))
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;</code></pre>
-</div>
-</p>
+<p>{% endhighlight %}</p>
 
 <p>An url is mapped to the callback function, which in turn either renders a
 template or directly returns some Http response.</p>
