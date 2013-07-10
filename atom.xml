@@ -4,7 +4,7 @@
   <title><![CDATA[(think)]]></title>
   <link href="http://bbatsov.github.com/atom.xml" rel="self"/>
   <link href="http://bbatsov.github.com/"/>
-  <updated>2013-07-10T16:25:33+03:00</updated>
+  <updated>2013-07-10T16:30:22+03:00</updated>
   <id>http://bbatsov.github.com/</id>
   <author>
     <name><![CDATA[Bozhidar Batsov]]></name>
@@ -18,14 +18,14 @@
     <link href="http://bbatsov.github.com/articles/2013/07/10/the-elements-of-style-in-ruby-number-7-the-case-against-equals-equals-equals/"/>
     <updated>2013-07-10T15:44:00+03:00</updated>
     <id>http://bbatsov.github.com/articles/2013/07/10/the-elements-of-style-in-ruby-number-7-the-case-against-equals-equals-equals</id>
-    <content type="html"><![CDATA[<p>Today we&#8217;ll discuss the following section from <a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
+    <content type="html"><![CDATA[<p>Today we&#8217;ll discuss the following section from the <a href="https://github.com/bbatsov/ruby-style-guide">Ruby Style Guide</a>:</p>
 
 <blockquote><p>Avoid explicit use of the case equality operator <code>===</code>. As it name<br/>
 implies it&#8217;s meant to be used implicitly by <code>case</code> expressions and<br/>
 outside of them it yields some pretty confusing code.</p></blockquote>
 
 <p>For those of you who don&#8217;t know of the case equality operator <code>===</code> -
-it&#8217;s the magic behind <code>case</code> that allows to write code like this:</p>
+it&#8217;s the magic behind <code>case</code> that allows us to write code like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -55,9 +55,11 @@ it&#8217;s the magic behind <code>case</code> that allows to write code like thi
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>For many classes <code>===</code> will behave the same way as <code>==</code>.  On the other hand - <code>Module</code>,
-<code>Range</code> and <code>Regexp</code> define customized versions of the operator method <code>===</code>.
-Knowing how these 3 classes have defined <code>===</code> the case expression is also equivalent to this one:</p>
+<p>For many classes (like <code>Fixnum</code> and <code>String</code>) <code>===</code> will behave the
+same way as <code>==</code>.  On the other hand - <code>Module</code>, <code>Range</code> and <code>Regexp</code>
+define customized versions of the operator method <code>===</code>.  Knowing how
+these 3 classes have defined <code>===</code>, the case expression is also
+equivalent to this one:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -67,10 +69,12 @@ Knowing how these 3 classes have defined <code>===</code> the case expression is
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="n">something</span>
 </span><span class='line'><span class="k">when</span> <span class="n">something</span><span class="o">.</span><span class="n">is_a?</span> <span class="nb">Array</span> <span class="k">then</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 </span><span class='line'><span class="k">when</span> <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="o">.</span><span class="n">include?</span> <span class="n">something</span> <span class="k">then</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'><span class="k">when</span> <span class="n">something</span> <span class="o">=~</span> <span class="sr">/some_regexp/</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">when</span> <span class="n">something</span> <span class="o">=~</span> <span class="sr">/some_regexp/</span> <span class="k">then</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>So far everything is peachy, right?</p>
 
 <p>The problem with the <code>===</code> is that when some people see it they decide
 it&#8217;s very <em>cool</em> and start using it all over their code instead of
@@ -84,10 +88,10 @@ its much clearer alternatives. I&#8217;ve seen <code>===</code> (ab)used quite o
 <span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># wtf, why doesn&#39;t this work???</span>
 </span><span class='line'><span class="c1"># extremely common mistake I&#39;ve seen numerous times</span>
-</span><span class='line'><span class="n">a</span> <span class="o">===</span> <span class="nb">Array</span>
+</span><span class='line'><span class="k">return</span> <span class="k">unless</span> <span class="n">a</span> <span class="o">===</span> <span class="nb">Array</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1"># === is defined in Module</span>
-</span><span class='line'><span class="nb">Array</span> <span class="o">===</span> <span class="n">a</span> <span class="c1"># same as Array.===(a)</span>
+</span><span class='line'><span class="k">return</span> <span class="k">unless</span> <span class="nb">Array</span> <span class="o">===</span> <span class="n">a</span> <span class="c1"># same as Array.===(a)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -95,9 +99,9 @@ its much clearer alternatives. I&#8217;ve seen <code>===</code> (ab)used quite o
 tests. Fortunately nobody has decided so far that <code>===</code> is preferable
 to <code>=~</code> for regular expressions.</p>
 
-<p>It should be our utmost goal to produce clear and easily digestible
-code. That means we should abstain ourselves from doing clever tricks
-like:</p>
+<p>It should be our utmost goal as programmers to produce clear and
+easily digestible code. This means we should abstain ourselves from
+doing clever tricks like:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
